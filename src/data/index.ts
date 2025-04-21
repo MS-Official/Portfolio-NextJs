@@ -5,183 +5,140 @@ export const domainPath = "https://kelvinyou.vercel.app";
 
 export const experiences: Experience[] = [
   {
-    title: "Frontend Engineer",
-    company: "Simpletruss Sdn Bhd",
-    companyUrl: "https://www.simpletruss.com/",
-    location: "Kuala Lumpur, Malaysia",
-    type: "Full-time",
-    startDate: "2024-6-10",
-    endDate: undefined,
-    description: "Building reusable React component libraries, optimizing frontend performance, and integrating APIs for seamless user experiences.",
+    title: "Freelance Software Engineer | Full-Stack Web Developer",
+    company: "Self-Employed",
+    companyUrl: "",
+    location: "Remote",
+    type: "Freelance",
+    startDate: "2024-08-28",
+    endDate: null,
+    description: "Designed and developed dynamic, scalable web applications and backend services for various clients.",
     responsibilities: [
-      "Designed and implemented reusable React component libraries to streamline development processes and ensure UI consistency across projects.",
-      "Collaborated with cross-functional teams to deliver responsive, mobile-first web app.",
-      "Optimized frontend performance, reducing load times by implementing lazy loading and effective state management.",
-      "Developed and integrated APIs with frontend interfaces, ensuring seamless data flow."
+      "Designed and developed dynamic, scalable web applications using React.js, Next.js, and Node.js.",
+      "Built and optimized RESTful APIs and backend services with Node.js, Express.js, and MongoDB.",
+      "Integrated Firebase for real-time database management, authentication, and cloud storage solutions.",
+      "Created responsive, user-friendly interfaces with Tailwind CSS, Bootstrap, and modern UI/UX practices.",
+      "Deployed and maintained full-stack applications, ensuring high performance, security, and scalability.",
+      "Worked with clients to understand project requirements, provide technical solutions, and deliver high-quality products.",
+      "Managed project timelines, version control (Git), and collaborated in agile development environments."
     ],
-    skills: ["React", "TypeScript", "GraphQL", "Material UI", "Git", "Jest", "Storybook"],
-    logo: "/images/companies/simpletruss.jpeg",
-    projects: [
-      {
-        title: "LessenPro - Property Management SaaS",
-        description: "A comprehensive SaaS platform designed to centralize and automate property management services, integrating scheduling, vendor coordination, and maintenance tracking for efficiency-driven operations.",
-        demo: "https://www.lessenpro.com/",
-        techStacks: ["React", "TypeScript", "GraphQL", "Material UI", "Apollo Client"],
-      }
-    ]
+    skills: ["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "Firebase", "Tailwind CSS", "Bootstrap", "Git"],
+    logo: "",
+    projects: []
   },
   {
-    title: "Frontend Developer",
-    company: "Beyondsoft (Malaysia) Sdn. Bhd.",
-    companyUrl: "https://www.beyondsoft.com/",
-    location: "Kuala Lumpur, Malaysia",
+    title: "Digital Marketing and Content Creator",
+    company: "Capital Link International Holdings",
+    companyUrl: "",
+    location: "Colombo, Western Province, Sri Lanka",
     type: "Full-time",
-    startDate: "2023-7-31",
-    endDate: "2024-6-7",
-    description: "Developing and maintaining ReactJS-based web and mobile UIs, optimizing performance, and ensuring cross-browser compatibility. Collaborating with Tencent's team to implement designs, adding features based on user feedback, and upholding coding best practices through code reviews and Git-based version control.",
+    startDate: "2025-02-26",
+    endDate: null,
+    description: "Managed digital branding and social media content to boost company presence online.",
     responsibilities: [
-      "Developed and maintain user interfaces for web & mobile apps using ReactJS.",
-      "Optimized web applications for performance, cross-browser compatibility, and responsive design.",
-      "Collaborated closely with Tencent's development team to understand project requirements and implement designs according to specifications.",
-      "Implemented features and functionality based on user requirements and feedback.",
-      "Participated in code reviews and Git-based version control to ensure high-quality code and maintainability.",
-      "Utilized version control systems (Git) for collaborative development and code management.",
-      "Utilized Docker for containerization and CI/CD pipelines for automated testing and deployment."
+      "Handled brand marketing and digital strategy.",
+      "Created and posted engaging content on social media platforms.",
+      "Contributed to digital campaigns and performance tracking."
     ],
-    skills: ["React", "Redux", "Webpack", "MySQL", "GraphQL", "Jest", "Git", "Docker", "CI/CD", "TypeScript", "Go"],
-    logo: "/images/companies/beyondsoft.jpeg",
-    blogSlugs: ['beyondsoft'],
-    projects: [
-      {
-        title: "Databrain Global - Data Analysis Platform",
-        description: "A platform for analyzing games data for Tencent, MiHoYo, and other game companies.",
-        demo: "https://databrain-global.intlgame.com/",
-        techStacks: ["React", "Umi.js", "Ant Design", "TypeScript", "Go"],
-      }
-    ]
+    skills: ["Digital Marketing", "Content Creation", "Social Media", "Branding"],
+    logo: "",
+    projects: []
   },
   {
-    title: "Java Software Engineer (Internship)",
-    company: "Finexus International Sdn. Bhd.",
-    companyUrl: "https://www.finexusgroup.com/",
-    location: "Kuala Lumpur, Malaysia",
+    title: "Software Engineer Intern",
+    company: "CDAZZDEV (Ceylon Dazzling Dev Holding PVT LTD)",
+    companyUrl: "",
+    location: "Remote",
     type: "Internship",
-    startDate: "2023-2-1",
-    endDate: "2023-7-31",
-    description: "Enhancing Java-based projects with new features, rigorous testing, and optimized deployment. Mastering debugging, web resource searches, and performance improvements for seamless project execution.",
+    startDate: "2023-09-28",
+    endDate: "2024-03-28",
+    description: "Contributed to software development and data extraction solutions while collaborating with a dynamic engineering team.",
     responsibilities: [
-      "Revitalized and advanced Java-based projects by integrating innovative features and implementing a thorough testing regimen.",
-      "Proficiently mastered debugging techniques, conducted efficient web resource searches, simplify application deployment processes, ensuring optimal project performance.",
+      "Gained hands-on experience in designing and developing innovative software solutions.",
+      "Developed and implemented web scraping solutions using Python to extract and analyze data efficiently.",
+      "Collaborated with a dynamic team to solve real-world technical challenges and enhance system performance.",
+      "Worked on coding, debugging, and optimizing applications to improve efficiency and scalability.",
+      "Contributed to various projects, applying problem-solving skills and modern development practices.",
+      "Strengthened expertise in software engineering principles, agile methodologies, and industry best practices."
     ],
-    skills: [
-      "Java",
-      "Firebase",
-      "Oracle SQL",
-      "XML",
-      "Servlets",
-      "JavaServer Pages (JSP)",
-      "Tomcat",
-      "Linux",
-      "Shell Scripting",
-      "Jasper",
-      "TortoiseSVN",
-      "SOAP"
-    ],
-    logo: "/images/companies/finexus.png"
+    skills: ["Python", "Web Scraping", "Problem Solving", "Agile Development", "Software Engineering"],
+    logo: "",
+    projects: []
   },
   {
-    title: "Software Engineer (Intern)",
-    company: "Techtics Blockchain PLT",
-    companyUrl: "https://www.techtics.io/",
-    location: "Kuala Lumpur, Malaysia",
-    type: "Internship",
-    startDate: "2020-10-1",
-    endDate: "2021-1-31",
-    description: "Modernizing frontend with ReactJS for improved maintenance and dynamic capabilities. Developing a blockchain app with ReactJS and Solidity, integrating smart contracts with MetaMask. Exploring Laravel's MVC, ORM, and event-driven architecture. Implementing authentication, real-time exchange rates, dynamic UI updates, and seamless CRUD APIs.",
+    title: "Direct Shipping - self-employed",
+    company: "Daraz.lk",
+    companyUrl: "https://www.daraz.lk/",
+    location: "Sri Lanka",
+    type: "Part-time",
+    startDate: "2022-12-10",
+    endDate: "2025-03-10",
+    description: "Managing Daraz direct shipping part-time, overseeing order processing, packaging, and timely dispatch.",
     responsibilities: [
-      "Revitalized project's frontend using ReactJS for enhanced maintenance, modernization, and dynamic website capabilities.",
-      "Developed a cutting-edge blockchain app utilizing ReactJS and Solidity to seamlessly integrate smart contracts with MetaMask for secure and streamlined transactions.",
-      "Explored Laravel's router functionality, MVC architecture, ORM, events, listeners, and data seeding techniques for efficient database testing.",
-      "Implemented key functionalities such as authentication, real-time exchange rate fetching, dynamic UI updates, and built APIs for seamless CRUD operations on transactions."
+      "Oversaw order processing, packaging, and timely dispatch for Daraz.lk's direct shipping service.",
+      "Ensured efficient logistics and excellent customer service to maintain a smooth delivery experience."
     ],
-    skills: [
-      "Laravel PHP",
-      "PhpMyAdmin",
-      "Typescript",
-      "Javascript",
-      "Solidity",
-      "ReactJS",
-      "NodeJS",
-      "ExpressJS",
-      "PuppeteerJS",
-      "Git",
-      "MetaMask"
-    ],
-    logo: "/images/companies/techtics.png"
+    skills: ["Logistics", "Customer Service", "Time Management", "Order Management"],
+    logo: "",
+    projects: []
   },
-  {
-    title: "Frontend Web Developer",
-    company: "Jonvi Marketing Sdn. Bhd.",
-    location: "Kuala Lumpur, Malaysia",
-    type: "Full-time",
-    startDate: "2019-1-1",
-    endDate: "2019-5-20",
-    description: "Developed two user-friendly web apps with HTML, CSS, JavaScript, PHP, and Bootstrap. Integrated front-end components with API endpoints for authentication and CRUD operations. Automated data tasks using Python and Google Script for efficient data fetching, entry, and Excel file generation.",
-    responsibilities: [
-      "Developed 2 web apps using HTML, CSS, JavaScript, PHP, and Bootstrap, with a focus on user-friendly design.",
-      "Integrated front-end components to interact with API endpoints for authentication and CRUD operations.",
-      "Leveraged Python and Google Script to automate data tasks, including fetching, entry, and Excel file generation.",
-    ],
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Php",
-      "Python",
-      "MySQL",
-      "Git",
-      "NodeJS",
-      "Bootstrap",
-      "Postman API"
-    ],
-    logo: "/images/companies/jonvi.png"
-  }
+  // {
+  //   title: "Marketing Team Lead and Project Manager",
+  //   company: "Capital Link International Holdings",
+  //   companyUrl: "",
+  //   location: "Colombo, Western Province, Sri Lanka",
+  //   type: "Full-time",
+  //   startDate: "2025-04-01",
+  //   endDate: null,
+  //   description: "Leading marketing initiatives and project coordination for Capital Link International Holdings.",
+  //   responsibilities: [
+  //     "Led the marketing team and managed projects to meet business goals.",
+  //     "Coordinated cross-functional tasks and ensured timely project delivery.",
+  //     "Oversaw planning and execution of marketing campaigns and strategies."
+  //   ],
+  //   skills: ["Team Leadership", "Project Management", "Marketing Strategy", "Agile Workflow"],
+  //   logo: "",
+  //   projects: []
+  // },
+  
 ];
 
+
 export const personalInfo = {
-  name: "Kelvin You",
+  name: "M.F. Abdulla ",
   title: "Software Engineer",
-  fullname: "Kelvin You Kok Eng",
+  fullname: "Fayyaz Abdullah",
   contact: {
-    email: "ykekelvin0220@gmail.com",
-    phone: "+60183732752",
-    linkedin: "https://www.linkedin.com/in/kelvinyou2001",
-    github: "https://github.com/KelvinYou",
+    email: "abdullahfy28@gmail.com",
+    phone: "+94 77 520 6851",
+    linkedin: "https://www.linkedin.com/in/fayyazabdulla/",
+    github: "https://github.com/FayyazAbdulla",
     personalWebsite: domainPath,
-    location: "Kuala Lumpur, Malaysia",
+    location: "23/1 Alles road, Negombo - 11500, Sri Lanka",
   },
-  profilePicture: "/images/profile-picture.jpg",
+  profilePicture: "/images/Abd-profile-picture1.jpeg",
   summary:
     `Experienced software engineer with ${getTotalWorkingExperiences(experiences)} of experience in developing and maintaining web applications (includes all internships). Skilled in agile methodologies and CI/CD. I'm an INTP-T, nerd. I'm also passionate about blockchain, investing and chess.`,
 };
+
 
 // Example education data
 export const educations = [
   {
     degree: "Bachelor of Software Engineering (Honours)",
-    institution: "Tunku Abdul Rahman University of Management and Technology",
-    location: "Kuala Lumpur, Malaysia",
-    startDate: "2021-6-20",
-    endDate: "2023-7-31",
+    institution: "University of Bedfordshire",
+    location: "United Kingdom",
+    startDate: "2024-1-8",
+    endDate: "2024-9-31",
     description: "Taken core courses for software development such as Data Structure and Algorithm in Java, Human-Computer Interaction, Graphics Programming, Distributed System and Parallel Computing. Exposed to technologies such as Mobile App Development, Blockchain App Development, Data Science through elective courses.",
     achievements: [
-      "Dean's List", 
+      // "Dean's List", 
       // "Best Graduate Research Award", 
       // "AI Research Scholarship"
     ],
-    logo: "/images/institutions/tarumt.png",
-    cgpa: "3.72",
-    institutionUrl: "https://tarc.edu.my/",
+    logo: "/images/institutions/UOB2.png",
+    cgpa: "#",
+    institutionUrl: "https://www.beds.ac.uk/",
     documents: [
       {
         name: "Transcript",
@@ -189,29 +146,29 @@ export const educations = [
       }
     ],
     techStacks: [
-      "Java",
+      "JavaScript",
       "Flutter",
       "C++",
       "TypeScript",
       "ReactJS",
-      "Linux",
+      "NextJS",
       "Python",
       "Git",
     ],
   },
   {
     degree: "Diploma in Computer Science",
-    institution: "Tunku Abdul Rahman University of Management and Technology",
-    location: "Kuala Lumpur, Malaysia",
-    startDate: "2019-5-28",
-    endDate: "2021-5-31",
+    institution: "Sri Lanka Institute of Information Technology (SLIIT)",
+    location: "New Kandy Road, Malabe, Sri Lanka",
+    startDate: "2021-6-10",
+    endDate: "2023-12-10",
     description: "Basic Programming Concepts through various languages such as Object-Oriented Programming in Java, C, and Assembly Language. Mathematics courses included Algebra, Calculus, Statistics, Discrete Math.",
     achievements: [
       // "Graduated Summa Cum Laude", 
       // "Innovation Award for Senior Project", 
       // "Coding Competition Winner (2017)"
     ],
-    logo: "/images/institutions/tarumt.png",
+    logo: "/images/institutions/UOB2.png",
     cgpa: "3.7439",
     institutionUrl: "https://tarc.edu.my/",
     documents: [
@@ -235,108 +192,157 @@ export const educations = [
 
 export const projects: Project[] = [
   {
-    title: "Personal Website",
+    title: "Personal Website (Portfolio)",
     description: "A personal website built with Next.js, TailwindCSS, and Vercel",
-    image: "/images/projects/portfolio.jpg",
-    github: "https://github.com/KelvinYou/portfolio-website",
-    demo: "https://kelvinyou.vercel.app/",
+    image: "/images/projects/M-F-Abdulla-Portfolio.png",
+    github: "#",
+    demo: "#",
+    status: "In Progress",
+    techStacks: ["Next.js", "TailwindCSS", "Shadcn", "React"],
+    date: "2025-3-3",
+    blogSlugs: ['personal-website']
+  },
+  {
+    title: "Personal Website (Portfolio - 1)",
+    description: "A personal website built with React.js, CSS, and Vercel",
+    image: "/images/projects/Abdulla-Portfolio.png",
+    github: "https://github.com/FayyazAbdulla/MyPortfolio.git",
+    demo: "https://my-portfolio-chi-tawny-44.vercel.app/",
     status: "Maintaining",
     techStacks: ["Next.js", "TailwindCSS", "Shadcn", "React"],
     date: "2025-3-3",
     blogSlugs: ['personal-website']
   },
   {
-    title: "Tuition Management System (PTIB)",
-    description: "Real world app for a local tuition center with Next.js, TailwindCSS, PostgreSQL, Stripe, and more",
-    image: "/images/projects/tms.png",
-    demo: "https://ptib.vercel.app/",
+    title: "FortGrandJewels",
+    description: "Real world web app for a Billing Management with Next.js, TailwindCSS, Firebase Admin SDK, NodeJs and more",
+    image: "/images/projects/F-G-J-Your-Trusted-Jeweler.png",
+    demo: "https://fgj-billing-app.vercel.app/",
     status: "In Progress",
-    techStacks: ["Next.js", "TailwindCSS", "Supabase", "PostgreSQL", "Stripe", "Shadcn", "React"],
-    date: "2025-3-3"
+    techStacks: ["Next.js", "TailwindCSS", "React"],
+    date: "2025-3-10"
   },
   {
-    title: "Travel Guide: Tourist App",
-    description: "Mobile application created using Flutter with dart as programming language",
-    // image: "/project3.jpg",
-    github: "https://github.com/KelvinYou/fyp_tour_guide_app",
+    title: "Zenith Rent Car Billing Management System",
+    description: "Real world web app for a Billing Management with React+vite, TailwindCSS, Firebase Admin SDK and more",
+    image: "/images/projects/Zenith-Car-Rental-System.png",
+    github: "https://github.com/FayyazAbdulla/ZRC.git",
     status: "Completed",
-    techStacks: ["Flutter", "Dart", "Firebase"],
-    date: "2023-11-14"
+    techStacks: ["Next.js", "TailwindCSS", "React"],
+    date: "2024-11-14"
   },
   {
-    title: "Restaurant Landing",
-    description: "Build the landing page UI using ReactJS and Bootstrap",
-    image: "/images/projects/restaurant-landing.png",
-    github: "https://github.com/KelvinYou/react-selflearn/tree/main/react-restaurant-landing",
-    demo: "https://restaurant-landing-kelvinyou.vercel.app/",
-    status: "Completed",
-    techStacks: ["React", "Bootstrap"],
-    date: "2023-2-21"
-  },
-  {
-    title: "Automated Market-Making System",
-    description: "An assignment from Blockchain course which to build a liquidity pool using smart contract",
-    demo: "https://github.com/KelvinYou/amm-assignment",
+    title: "OMAC Groups Ticketing Agency Website UK ( flyomac.uk )",
+    description: "A sleek React and Bootstrap site for OMAC Groups, integrating Firebase and EmailJS for secure ticket booking, inquiries, and instant user support.",
+    image: "/images/projects/OMAC-GROUPS-UK.png",
+    github: "https://github.com/FayyazAbdulla/flyomac.uk.git",
     status: "Completed",
     techStacks: ["React", "Solidity", "Ethereum"],
-    date: "2023-1-5"
+    date: "2024-10-5"
   },
   {
-    title: "Edge Detection System",
-    description: "An assignment for the Distributed Systems and Parallel Computing course, Detecting edges in images. We also use tools like Threading, Dask, Classified, etc. to speed up the process",
-    // image: "/images/projects/ecommerce.jpg",
-    github: "https://github.com/KelvinYou/react-selflearn/tree/main/react-restaurant-landing",
-    demo: "https://restaurant-landing-kelvinyou.vercel.app/",
+    title: "OMAC Groups Ticketing Agency Website",
+    description: "A modern React-based website for OMAC Groups with Firebase and EmailJS integration, enabling secure ticket booking, user support, and real-time notifications.",
+    image: "/images/projects/OMAC-GROUPS-SL.png",
+    github: "https://github.com/FayyazAbdulla/flyomac.lk.git",
+    demo: "https://flyomaclk.vercel.app/",
     status: "Completed",
-    techStacks: ["Python", "Dask", "Threading", "Classified"],
-    date: "2022-9-23"
+    techStacks: ["React", "Bootstrap", "Firebase", "EmailJS"],
+    date: "2024-9-23"
   },
   {
-    title: "Donation System",
-    description: "An assignment for the Data Structures and Algorithms course, create adt using doubly linked list",
-    github: "https://github.com/KelvinYou/dsa-assignment",
+    title: "OMAC Groups CRM System",
+    description: "A React+Vite and Firebase-powered CRM for OMAC Groups, streamlining inquiries, client data, and bookings with a secure, responsive interface.",
+    image: "/images/projects/OMAC-CRM.png",
+    github: "https://github.com/FayyazAbdulla/omacgroups.git",
+    demo: "https://omacgroups.vercel.app/",
     status: "Completed",
-    techStacks: ["Java"],
-    date: "2023-2-21"
+    techStacks: ["React", "Bootstrap", "Firebase", "EmailJS"],
+    date: "2024-8-23"
   },
   {
-    title: "Travel Guide: Admin App",
-    description: "Mobile application created using Flutter with dart as programming language",
-    // image: "/images/projects/ecommerce.jpg",
-    github: "https://github.com/KelvinYou/fyp_admin_app",
+    title: "Visual Salah Monitor",
+    description: "A real-time Salah posture monitoring tool using TensorFlow.js and React, offering instant feedback, posture guides, and Dua explanations to help Muslims, especially new converts, improve their prayers.",
+    image: "/images/projects/Visual-Salah-Moniter.png",
+    demo: "https://youtu.be/NhK-wT5DTH0?si=diYdkr2w537zpn7v",
     status: "Completed",
-    techStacks: ["Flutter", "Dart", "Firebase"],
-    date: "2022-12-17"
-  }
+    techStacks: ["Python", "TensorFlow", "React.js", "Node.js", "Express.js", "Flask", "Computer Vision"],
+    date: "2024-2-21"
+  },
+  {
+    title: "Cineplex",
+    description: "A web-based Cineplex Management System built with PHP and MySQL, featuring user, movie, and booking management with role-based admin and customer access.",
+    image: "/images/projects/CineplexC.png",
+    github: "https://github.com/FayyazAbdulla/Cineplex.git",
+    status: "Completed",
+    techStacks: ["HTML", "CSS", "PHP", "MySQL"],
+    date: "2024-5-17"
+  },
 ];
+
 
 export const certifications = [
   {
-    name: 'CCNA: Introduction to Networks',
-    link: 'https://www.credly.com/badges/fa38eb0b-43b0-4a2a-bdc0-da2a334c8738?source=linked_in_profile',
-    issuingOrganization: 'CISCO',
-    issueDate: '2021-6-20',
+    name: 'Front-End Development with React.js & JavaScript July 2023',
+    link: '#',
+    issuingOrganization: 'dewTown',
+    issueDate: '2023-6-20',
+    pdf: `${domainPath}assets/pdf/#`
   },
   {
-    name: 'HTML, CSS, and Javascript for Web Developers',
-    link: `${domainPath}pdf/TDA-html_css_js.pdf`,
+    name: '7-day Bootcamp on Python & Artificial Intelligence',
+    link: `#`,
     issuingOrganization: 'The Digital Adda',
     issueDate: '2023-12-11',
+    pdf: `${domainPath}assets/pdf/#`
   },
   {
-    name: 'ReactJS',
-    link: `${domainPath}pdf/TDA-reactjs.pdf`,
+    name: 'Back-End Development with JavaScript, Node.js & Express.js June 2023',
+    link: `#`,
     issuingOrganization: 'The Digital Adda',
     issueDate: '2023-12-12',
+    pdf: `${domainPath}assets/pdf/#`
   },
   {
-    name: 'Rust Workshop 2024 - Parallel Programming',
-    link: 'https://credsverse.com/credentials/af37b752-6f6d-4f6d-9368-34f56c1242e5',
-    issuingOrganization: '',
-    issueDate: '2024-4-25',
-    pdf: `${domainPath}assets/pdf/rust-workshop-2024-parallel-programming.pdf`
-  }
+    name: 'Google Certification for Git, GitHub & Version Control',
+    link: `#`,
+    issuingOrganization: 'The Digital Adda',
+    issueDate: '2023-12-12',
+    pdf: `${domainPath}assets/pdf/#`
+  },
+  {
+    name: 'Microsoft Certification for Web Development using JavaScript, Node.js & Express Bootcamp',
+    link: `#`,
+    issuingOrganization: 'The Digital Adda',
+    issueDate: '2023-12-12',
+    pdf: `${domainPath}assets/pdf/#`
+  },
+  
+  {
+    name: 'DevTown Certification for Python',
+    link: `#`,
+    issuingOrganization: 'The Digital Adda',
+    issueDate: '2023-12-12',
+    pdf: `${domainPath}assets/pdf/#`
+  },
+  {
+    name: 'Certification for completing 7-day Bootcamp with DevTown on HotStar Clone using HTML, CSS, and JavaScript',
+    link: `#`,
+    issuingOrganization: 'The Digital Adda',
+    issueDate: '2023-12-12',
+    pdf: `${domainPath}assets/pdf/#`
+  },
+
+  // {
+  //   name: 'Rust Workshop 2024 - Parallel Programming',
+  //   link: 'https://credsverse.com/credentials/af37b752-6f6d-4f6d-9368-34f56c1242e5',
+  //   issuingOrganization: '',
+  //   issueDate: '2024-4-25',
+  //   pdf: `${domainPath}assets/pdf/rust-workshop-2024-parallel-programming.pdf`
+  // }
 ]
+
+
 
 export const skills = {
   "languages": ["TypeScript", "JavaScript", "Java", "Go"],

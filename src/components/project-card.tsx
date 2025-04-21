@@ -19,9 +19,25 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Project } from "@/types";
 
-export function ProjectCard({ project, index = 0 }: { project: Project, index?: number }) {
+export interface Project {
+  title: string;
+  description: string;
+  techStacks: string[];
+  status: 'Completed' | 'In Progress' | 'Maintaining' | string;
+  image?: string;
+  github?: string;
+  demo?: string;
+  date?: string;
+  blogSlugs?: string[];
+}
+
+export interface ProjectCardProps {
+  project: Project;
+  index?: number;
+}
+
+export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const fadeIn = {
@@ -245,4 +261,4 @@ export function ProjectCard({ project, index = 0 }: { project: Project, index?: 
       </Card>
     </motion.div>
   );
-} 
+}

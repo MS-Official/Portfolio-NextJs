@@ -28,9 +28,8 @@ const staggerContainer = {
   }
 };
 
-
-export default function ProjectsClient({ initialProjects }: { initialProjects: ProjectCardProps[] }) {
-  const [projects, setProjects] = useState<ProjectCardProps[]>(initialProjects);
+export default function ProjectsClient({ initialProjects }: { initialProjects: ProjectCardProps['project'][] }) {
+  const [projects, setProjects] = useState<ProjectCardProps['project'][]>(initialProjects);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
@@ -91,9 +90,9 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
     filteredProjects.sort((a, b) => {
       switch (sortOption) {
         case "newest":
-          return new Date(b.date).getTime() - new Date(a.date).getTime();
+          return new Date(b.date || '').getTime() - new Date(a.date || '').getTime();
         case "oldest":
-          return new Date(a.date).getTime() - new Date(b.date).getTime();
+          return new Date(a.date || '').getTime() - new Date(b.date || '').getTime();
         case "az":
           return a.title.localeCompare(b.title);
         case "za":
@@ -141,12 +140,12 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
       y: 0,
       transition: { 
         duration: 0.4,
-        ease: [0.22, 1, 0.36, 1] // Custom easing for subtle, elegant animation
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   };
   
-  // Filter panel animation (unchanged)
+  // Filter panel animation
   const filterPanelVariants = {
     hidden: { 
       opacity: 0, 
@@ -268,7 +267,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
           )}
         </div>
         
-        {/* Filter panel (unchanged) */}
+        {/* Filter panel */}
         <AnimatePresence>
           {showFilters && (
             <motion.div
@@ -339,7 +338,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
           )}
         </AnimatePresence>
         
-        {/* Active filters (unchanged) */}
+        {/* Active filters */}
         <AnimatePresence>
           {(selectedTechs.length > 0 || selectedStatus) && (
             <div className="flex flex-wrap items-center gap-2 mt-2">
@@ -391,7 +390,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
         Showing {projects.length} {projects.length === 1 ? 'project' : 'projects'}
       </motion.div>
       
-      {/* Projects grid (unchanged) */}
+      {/* Projects grid */}
       <motion.div
         className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         variants={staggerContainer}
@@ -412,4 +411,4 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
       </motion.div>
     </div>
   );
-} 
+}

@@ -11,7 +11,7 @@ export const experiences: Experience[] = [
     location: "Remote",
     type: "Freelance",
     startDate: "2024-08-28",
-    endDate: null,
+    endDate: undefined,
     description: "Designed and developed dynamic, scalable web applications and backend services for various clients.",
     responsibilities: [
       "Designed and developed dynamic, scalable web applications using React.js, Next.js, and Node.js.",
@@ -33,7 +33,7 @@ export const experiences: Experience[] = [
     location: "Colombo, Western Province, Sri Lanka",
     type: "Full-time",
     startDate: "2025-02-26",
-    endDate: null,
+    endDate: undefined,
     description: "Managed digital branding and social media content to boost company presence online.",
     responsibilities: [
       "Handled brand marketing and digital strategy.",

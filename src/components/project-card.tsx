@@ -19,18 +19,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-
-export interface Project {
-  title: string;
-  description: string;
-  techStacks: string[];
-  status: 'Completed' | 'In Progress' | 'Maintaining' | string;
-  image?: string;
-  github?: string;
-  demo?: string;
-  date?: string;
-  blogSlugs?: string[];
-}
+import { Project } from "@/types";
 
 export interface ProjectCardProps {
   project: Project;
@@ -85,7 +74,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               project.status === 'Maintaining' ? 'bg-purple-500/20 text-purple-500 group-hover:bg-purple-500/30' :
               'bg-gray-500/20 text-gray-500 group-hover:bg-gray-500/30'
             }`}>
-              {project.status}
+              {project.status || 'Unknown'}
             </span>
           </div>
         </div>
@@ -169,7 +158,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                       project.status === 'Maintaining' ? 'bg-purple-500/20 text-purple-500' :
                       'bg-gray-500/20 text-gray-500'
                     }`}>
-                      {project.status}
+                      {project.status || 'Unknown'}
                     </Badge>
                   </DialogTitle>
                   <DialogDescription className="text-base mt-2">

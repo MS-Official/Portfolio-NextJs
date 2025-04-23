@@ -25,11 +25,11 @@ export interface Experience {
 export interface Project {
   title: string;
   description: string;
+  techStacks: string[];
+  status: 'Completed' | 'In Progress' | 'Maintaining' | string;
   image?: string;
   github?: string;
   demo?: string;
-  status?: string;
-  techStacks: string[];
   date?: string;
   blogSlugs?: string[];
 }

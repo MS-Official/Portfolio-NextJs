@@ -169,11 +169,18 @@ export function EducationsSection() {
                           <span>View certificate</span>
                           <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                         </a>
-                      </Button>
+                        </Button>
+                        <Button variant="ghost" size="sm" className="text-xs h-8 px-2" asChild>
+                        <a href={edu.documents[0].Turl} target="_blank" className="flex items-center group">
+                          <span>View Transcript</span>
+                          <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                        </a>
+                        </Button>
+                      
                     </div>
                     
                     {/* Visual highlight effect */}
-                    {/* <div className={`absolute ${index % 2 === 0 ? '-right-1 md:-right-3' : '-right-1 md:-left-3'} top-8 transform translate-x-1/2 md:translate-x-0 w-2 h-16 bg-gradient-to-b from-primary/80 to-transparent rounded-full blur-sm opacity-60`}></div> */}
+                    <div className={`absolute ${index % 2 === 0 ? '-right-1 md:-right-3' : '-right-1 md:-left-3'} top-8 transform translate-x-1/2 md:translate-x-0 w-2 h-16 bg-gradient-to-b from-primary/80 to-transparent rounded-full blur-sm opacity-60`}></div>
                   </motion.div>
                 </div>
               </motion.div>

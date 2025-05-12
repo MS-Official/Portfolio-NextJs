@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   authors: [{ name: personalInfo.name, url: domainPath }],
   creator: personalInfo.name,
   icons: {
-    icon: '/logo.png',
+    icon: '/Abdlogo.png',
   },
   openGraph: {
     ...basicInfo,

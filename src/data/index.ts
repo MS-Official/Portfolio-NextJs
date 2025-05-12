@@ -1,7 +1,7 @@
 import { getTotalWorkingExperiences } from "@/lib/utils";
 import { Experience, Project } from "@/types";
 
-export const domainPath = "https://kelvinyou.vercel.app";
+export const domainPath = "https://abd-portfolio-two.vercel.app/";
 
 export const experiences: Experience[] = [
   {
@@ -100,7 +100,7 @@ export const experiences: Experience[] = [
   //   logo: "",
   //   projects: []
   // },
-  
+
 ];
 
 
@@ -142,7 +142,8 @@ export const educations = [
     documents: [
       {
         name: "Transcript",
-        url: "/pdf/educations/degree-transcript.pdf"
+        url: "/pdf/educations/bsc_degree_certificate.pdf",
+        Turl: "/pdf/educations/bsc_degree_transcript.pdf"
       }
     ],
     techStacks: [
@@ -157,7 +158,7 @@ export const educations = [
     ],
   },
   {
-    degree: "Diploma in Computer Science",
+    degree: "Higher National Diploma in Computer Science and Software Engineering",
     institution: "Sri Lanka Institute of Information Technology (SLIIT)",
     location: "New Kandy Road, Malabe, Sri Lanka",
     startDate: "2021-6-10",
@@ -168,13 +169,14 @@ export const educations = [
       // "Innovation Award for Senior Project", 
       // "Coding Competition Winner (2017)"
     ],
-    logo: "/images/institutions/UOB2.png",
+    logo: "/images/institutions/New_SCU_Logo.png",
     cgpa: "3.7439",
-    institutionUrl: "https://tarc.edu.my/",
+    institutionUrl: "https://www.sliit.lk/",
     documents: [
       {
         name: "Transcript",
-        url: "/pdf/educations/diploma-transcript.pdf"
+        url: "/pdf/educations/HND_certificate .pdf",
+        Turl: "/pdf/educations/hnd transcript.pdf"
       }
     ],
     techStacks: [
@@ -192,6 +194,17 @@ export const educations = [
 
 export const projects: Project[] = [
   {
+    title: "Image Caption Generator",
+    description: "An AI-powered image captioning tool built using Python, Hugging Face Transformers, and Google Colab. It uses a ViT-GPT2 model to generate human-like captions from images.",
+    image: "/images/projects/ImageCaptionGenerator.jpeg",
+    github: "https://github.com/teamcodemelk/Image_Caption-_Generator.git",  
+    demo: "https://colab.research.google.com/drive/1zJFjUUF40BLiLcDjAZGmnWlK7gIMtyM_?usp=sharing",       
+    status: "Completed",
+    techStacks: ["Python", "Transformers", "Hugging Face", "Google Colab"],
+    date: "2025-05-11",
+    blogSlugs: ['image-caption-generator']
+  },
+  {
     title: "Personal Website (Portfolio)",
     description: "A personal website built with Next.js, TailwindCSS, and Vercel",
     image: "/images/projects/M-F-Abdulla-Portfolio.png",
@@ -199,7 +212,7 @@ export const projects: Project[] = [
     demo: "#",
     status: "In Progress",
     techStacks: ["Next.js", "TailwindCSS", "Shadcn", "React"],
-    date: "2025-3-3",
+    date: "2025-5-12",
     blogSlugs: ['personal-website']
   },
   {
@@ -317,7 +330,7 @@ export const certifications = [
     issueDate: '2023-12-12',
     pdf: `${domainPath}assets/pdf/#`
   },
-  
+
   {
     name: 'DevTown Certification for Python',
     link: `#`,
@@ -345,8 +358,8 @@ export const certifications = [
 
 
 export const skills = {
-  "languages": ["TypeScript", "JavaScript", "Java", "Go"],
-  "frameworks": ["Next.js", "React", "Express", "Node.js", "React Native", "Flutter"],
-  "databases": ["PostgreSQL", "MySQL"],
-  "tools": ["Git", "Docker", "Postman", "Supabase"],
-}
+  languages: ["TypeScript", "JavaScript", "Java", "Go", "Python"],
+  frameworks: ["Next.js", "React", "Express", "Node.js", "React Native", "Flutter"],
+  databases: ["PostgreSQL", "MySQL"],
+  tools: ["Git", "Docker", "Postman", "Supabase", "Google Colab", "Hugging Face Transformers", "PyTorch"]
+};

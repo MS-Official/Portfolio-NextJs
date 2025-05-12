@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Github, Mail, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data";
+import { useState } from "react";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -11,8 +12,50 @@ const fadeIn = {
 };
 
 export function ContactSection() {
-  const handleSubmit = () => {
-    console.log("Form submitted");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+  
+    try {
+      const response = await fetch("/api/notify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to send message');
+      }
+  
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Submission error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -99,12 +142,15 @@ export function ContactSection() {
             <div className="absolute -inset-0.5 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-lg blur-sm opacity-50" />
             <div className="relative bg-background border border-border/40 p-8 rounded-lg">
               <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
                   <input
                     type="text"
                     id="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 bg-muted/30 border border-border/40 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
                   />
                 </div>
@@ -113,6 +159,9 @@ export function ContactSection() {
                   <input
                     type="email"
                     id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 bg-muted/30 border border-border/40 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
                   />
                 </div>
@@ -121,10 +170,29 @@ export function ContactSection() {
                   <textarea
                     id="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 bg-muted/30 border border-border/40 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
                   />
                 </div>
-                <Button className="w-full" onClick={handleSubmit}>Send Message</Button>
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+                {submitStatus === "success" && (
+                  <p className="text-green-500 text-sm text-center">
+                    Message sent successfully!
+                  </p>
+                )}
+                {submitStatus === "error" && (
+                  <p className="text-red-500 text-sm text-center">
+                    Failed to send message. Please try again.
+                  </p>
+                )}
               </form>
             </div>
           </motion.div>
@@ -132,4 +200,4 @@ export function ContactSection() {
       </div>
     </section>
   );
-} 
+}

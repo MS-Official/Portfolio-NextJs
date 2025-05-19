@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "development",
     "ideas",
     "thoughts",
-    "Kelvin You",
+    "MMM Shurafa",
     "tech blog",
     "coding",
     "software engineering"
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: '/images/projects/portfolio.jpg',
         width: 1200,
         height: 630,
-        alt: 'Blog | Kelvin You',
+        alt: 'Blog | MMM Shurafa',
       }
     ],
     type: "article",

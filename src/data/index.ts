@@ -5,165 +5,193 @@ export const domainPath = "https://abd-portfolio-two.vercel.app/";
 
 export const experiences: Experience[] = [
   {
-    title: "Freelance Software Engineer | Full-Stack Web Developer",
+    title: "Software Engineer | Full-Stack Developer",
     company: "Self-Employed",
     companyUrl: "",
     location: "Remote",
     type: "Freelance",
     startDate: "2024-08-28",
     endDate: undefined,
-    description: "Designed and developed dynamic, scalable web applications and backend services for various clients.",
+    description: "Designed and developed full-stack web applications using modern technologies and best practices.",
     responsibilities: [
-      "Designed and developed dynamic, scalable web applications using React.js, Next.js, and Node.js.",
-      "Built and optimized RESTful APIs and backend services with Node.js, Express.js, and MongoDB.",
-      "Integrated Firebase for real-time database management, authentication, and cloud storage solutions.",
-      "Created responsive, user-friendly interfaces with Tailwind CSS, Bootstrap, and modern UI/UX practices.",
-      "Deployed and maintained full-stack applications, ensuring high performance, security, and scalability.",
-      "Worked with clients to understand project requirements, provide technical solutions, and deliver high-quality products.",
-      "Managed project timelines, version control (Git), and collaborated in agile development environments."
+      "Built scalable applications using Java, JavaScript (ES6), Node.js, HTML5, CSS3, React.js, and PHP.",
+      "Developed RESTful APIs and backend systems with Node.js, Firebase, MongoDB, and MySQL.",
+      "Created responsive front-end designs with Bootstrap, jQuery, and reusable UI components.",
+      "Deployed apps via Firebase Hosting and managed version control with Git and GitHub.",
+      "Managed tasks using Agile/Scrum with Trello, Asana, and Microsoft Project.",
+      "Delivered projects like SLIIT Cinema, ShoeLand E-Commerce, Hospital Management System, and more."
     ],
-    skills: ["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "Firebase", "Tailwind CSS", "Bootstrap", "Git"],
+    skills: ["Java", "JavaScript", "Node.js", "PHP", "React.js", "Firebase", "MongoDB", "MySQL", "HTML", "CSS", "Git", "Agile", "REST APIs"],
     logo: "",
-    projects: []
+    projects: ["SLIIT Cinema", "ShoeLand E-Commerce", "Hospital Management System", "Student Record Management System", "QR-Barcode Generator"]
   },
   {
-    title: "Digital Marketing and Content Creator",
+    title: "Marketing Team Lead & Project Manager | Digital Content Specialist",
     company: "Capital Link International Holdings",
-    companyUrl: "",
+    companyUrl: "https://www.capitallinkintl.com/",
     location: "Colombo, Western Province, Sri Lanka",
     type: "Full-time",
-    startDate: "2025-02-26",
+    startDate: "2025-02-01",
     endDate: undefined,
-    description: "Managed digital branding and social media content to boost company presence online.",
+    description: "Led digital marketing initiatives and managed project execution to enhance the company’s online presence and branding.",
     responsibilities: [
-      "Handled brand marketing and digital strategy.",
-      "Created and posted engaging content on social media platforms.",
-      "Contributed to digital campaigns and performance tracking."
+      "Directed and executed multiple marketing campaigns across digital platforms.",
+      "Created engaging content to improve user interaction and brand awareness.",
+      "Managed team workflows using Asana, Notion, and Microsoft Project.",
+      "Analyzed campaign performance and adjusted strategies to meet KPIs."
     ],
-    skills: ["Digital Marketing", "Content Creation", "Social Media", "Branding"],
+    skills: ["Digital Marketing", "Content Creation", "Marketing Strategy", "Project Management", "Social Media Advertising"],
     logo: "",
     projects: []
   },
   {
-    title: "Software Engineer Intern",
-    company: "CDAZZDEV (Ceylon Dazzling Dev Holding PVT LTD)",
-    companyUrl: "",
-    location: "Remote",
+    title: "Marketing Trainee - Digital Marketing",
+    company: "Institute of Certified Management Accountants of Sri Lanka (CMA)",
+    companyUrl: "https://www.cma-srilanka.org/",
+    location: "Colombo, Sri Lanka",
     type: "Internship",
-    startDate: "2023-09-28",
-    endDate: "2024-03-28",
-    description: "Contributed to software development and data extraction solutions while collaborating with a dynamic engineering team.",
+    startDate: "2024-12-01",
+    endDate: "2025-01-31",
+    description: "Worked on digital branding and social media strategies to support CMA Sri Lanka's engagement and visibility goals.",
     responsibilities: [
-      "Gained hands-on experience in designing and developing innovative software solutions.",
-      "Developed and implemented web scraping solutions using Python to extract and analyze data efficiently.",
-      "Collaborated with a dynamic team to solve real-world technical challenges and enhance system performance.",
-      "Worked on coding, debugging, and optimizing applications to improve efficiency and scalability.",
-      "Contributed to various projects, applying problem-solving skills and modern development practices.",
-      "Strengthened expertise in software engineering principles, agile methodologies, and industry best practices."
+      "Managed and scheduled content across social platforms.",
+      "Contributed to digital campaign planning and performance analysis."
     ],
-    skills: ["Python", "Web Scraping", "Problem Solving", "Agile Development", "Software Engineering"],
+    skills: ["Social Media Marketing", "Content Strategy", "Campaign Optimization"],
     logo: "",
     projects: []
   },
   {
-    title: "Direct Shipping - self-employed",
+    title: "Digital Outreach Executive",
+    company: "LimitOne Lanka (Pvt) Ltd.",
+    companyUrl: "https://limitone.io/",
+    location: "Sri Lanka",
+    type: "Contract",
+    startDate: "2024-08-01",
+    endDate: "2025-03-31",
+    description: "Executed digital marketing strategies to grow audience reach and increase customer interaction.",
+    responsibilities: [
+      "Implemented social engagement strategies and improved brand visibility.",
+      "Used digital tools to track and enhance marketing performance."
+    ],
+    skills: ["Digital Outreach", "Marketing Tools", "Brand Engagement"],
+    logo: "",
+    projects: []
+  },
+  {
+    title: "Senior Recruitment Officer",
+    company: "Rogers International (Pvt) Limited",
+    companyUrl: "https://www.rogers-group.org/",
+    location: "Sri Lanka",
+    type: "Full-time",
+    startDate: "2022-11-01",
+    endDate: "2023-01-31",
+    description: "Led end-to-end recruitment operations and collaborated with internal teams to meet staffing needs.",
+    responsibilities: [
+      "Managed job postings, candidate screening, and interview scheduling.",
+      "Improved onboarding experience and collaborated with stakeholders."
+    ],
+    skills: ["Recruitment", "Onboarding", "Talent Acquisition", "Communication"],
+    logo: "",
+    projects: []
+  },
+  {
+    title: "Direct Shipping - Self-Employed",
     company: "Daraz.lk",
     companyUrl: "https://www.daraz.lk/",
     location: "Sri Lanka",
     type: "Part-time",
     startDate: "2022-12-10",
     endDate: "2025-03-10",
-    description: "Managing Daraz direct shipping part-time, overseeing order processing, packaging, and timely dispatch.",
+    description: "Managed order fulfillment and logistics operations for Daraz.lk’s direct shipping services.",
     responsibilities: [
-      "Oversaw order processing, packaging, and timely dispatch for Daraz.lk's direct shipping service.",
-      "Ensured efficient logistics and excellent customer service to maintain a smooth delivery experience."
+      "Processed and packaged customer orders with accuracy and timeliness.",
+      "Ensured high customer satisfaction through efficient communication and delivery tracking."
     ],
-    skills: ["Logistics", "Customer Service", "Time Management", "Order Management"],
+    skills: ["Logistics", "Order Management", "Customer Service", "Time Management"],
     logo: "",
     projects: []
   },
-  // {
-  //   title: "Marketing Team Lead and Project Manager",
-  //   company: "Capital Link International Holdings",
-  //   companyUrl: "",
-  //   location: "Colombo, Western Province, Sri Lanka",
-  //   type: "Full-time",
-  //   startDate: "2025-04-01",
-  //   endDate: null,
-  //   description: "Leading marketing initiatives and project coordination for Capital Link International Holdings.",
-  //   responsibilities: [
-  //     "Led the marketing team and managed projects to meet business goals.",
-  //     "Coordinated cross-functional tasks and ensured timely project delivery.",
-  //     "Oversaw planning and execution of marketing campaigns and strategies."
-  //   ],
-  //   skills: ["Team Leadership", "Project Management", "Marketing Strategy", "Agile Workflow"],
-  //   logo: "",
-  //   projects: []
-  // },
-
+  {
+    title: "Team Member | Brand Marketing (Back Office)",
+    company: "AIESEC in SLIIT",
+    companyUrl: "https://aiesec.lk/",
+    location: "Sri Lanka",
+    type: "Volunteer",
+    startDate: "2021-12-01",
+    endDate: "2022-04-30",
+    description: "Supported AIESEC's marketing campaigns with design and coordination tasks.",
+    responsibilities: [
+      "Created promotional content aligned with brand strategy.",
+      "Assisted in organizing and managing marketing campaign resources."
+    ],
+    skills: ["Design", "Marketing Coordination", "Team Collaboration"],
+    logo: "",
+    projects: []
+  }
 ];
 
 
 export const personalInfo = {
-  name: "M.F. Abdulla ",
+  name: "M.M.M. Shurafa ",
   title: "Software Engineer",
-  fullname: "Fayyaz Abdullah",
+  fullname: "Mahdiya Shurafa",
   contact: {
-    email: "abdullahfy28@gmail.com",
-    phone: "+94 77 520 6851",
-    linkedin: "https://www.linkedin.com/in/fayyazabdulla/",
-    github: "https://github.com/FayyazAbdulla",
+    email: "smahdiya.official@gmail.com",
+    phone: "+94 74 047 2228",
+    linkedin: "https://www.linkedin.com/in/mahdiya-shurafa/",
+    github: "https://github.com/MS-Official/",
     personalWebsite: domainPath,
-    location: "23/1 Alles road, Negombo - 11500, Sri Lanka",
+    location: "41/6 Perakumba Mawatha, Kolonnawa - 10600, Sri Lanka",
   },
-  profilePicture: "/images/Abd-profile-picture1.jpeg",
+  profilePicture: "/images/MS-headshot-b.png",
   summary:
-    `Experienced software engineer with ${getTotalWorkingExperiences(experiences)} of experience in developing and maintaining web applications (includes all internships). Skilled in agile methodologies and CI/CD. I'm an INTP-T, nerd. I'm also passionate about blockchain, investing and chess.`,
+    `Motivated and detail-oriented Software Engineer (Undergraduate) with ${getTotalWorkingExperiences(experiences)} of experience in developing full-stack web applications, including internships, trainings and project-based work. Proficient in modern technologies such as Java, JavaScript, Node.js, HTML/CSS, and MongoDB. Experienced in agile development, software architecture, UI/UX design, and cloud-based solutions. Proven ability to manage digital projects, lead marketing initiatives, and create technical content. Passionate about building scalable applications, delivering meaningful user experiences, and continuously learning—I'm a fast learner who thrives in dynamic environments. Also deeply interested in blockchain, investing, and chess. ⁠`,
 };
 
 
 // Example education data
 export const educations = [
-  {
-    degree: "Bachelor of Software Engineering (Honours)",
-    institution: "University of Bedfordshire",
-    location: "United Kingdom",
-    startDate: "2024-1-8",
-    endDate: "2024-9-31",
-    description: "Taken core courses for software development such as Data Structure and Algorithm in Java, Human-Computer Interaction, Graphics Programming, Distributed System and Parallel Computing. Exposed to technologies such as Mobile App Development, Blockchain App Development, Data Science through elective courses.",
-    achievements: [
-      // "Dean's List", 
-      // "Best Graduate Research Award", 
-      // "AI Research Scholarship"
-    ],
-    logo: "/images/institutions/UOB2.png",
-    cgpa: "#",
-    institutionUrl: "https://www.beds.ac.uk/",
-    documents: [
-      {
-        name: "Transcript",
-        url: "/pdf/educations/bsc_degree_certificate.pdf",
-        Turl: "/pdf/educations/bsc_degree_transcript.pdf"
-      }
-    ],
-    techStacks: [
-      "JavaScript",
-      "Flutter",
-      "C++",
-      "TypeScript",
-      "ReactJS",
-      "NextJS",
-      "Python",
-      "Git",
-    ],
-  },
+  // {
+  //   degree: "Bachelor of Science in Software Engineering & Computer Science",
+  //   institution: "University of Bedfordshire",
+  //   location: "United Kingdom",
+  //   startDate: "2026-1-8",
+  //   endDate: "2027-1-8",
+  //   description: "Taken core courses for software development such as Data Structure and Algorithm in Java, Human-Computer Interaction, Graphics Programming, Distributed System and Parallel Computing. Exposed to technologies such as Mobile App Development, Blockchain App Development, Data Science through elective courses.",
+  //   achievements: [
+  //     // "Dean's List", 
+  //     // "Best Graduate Research Award", 
+  //     // "AI Research Scholarship"
+  //   ],
+  //   logo: "/images/institutions/UOB2.png",
+  //   cgpa: "#",
+  //   institutionUrl: "https://www.beds.ac.uk/",
+  //   documents: [
+  //     {
+  //       name: "Transcript",
+  //       url: "/pdf/educations/bsc_degree_certificate.pdf",
+  //       Turl: "/pdf/educations/bsc_degree_transcript.pdf"
+  //     }
+  //   ],
+  //   techStacks: [
+  //     "JavaScript",
+  //     "Flutter",
+  //     "C++",
+  //     "TypeScript",
+  //     "ReactJS",
+  //     "NextJS",
+  //     "Python",
+  //     "Git",
+  //   ],
+  // },
   {
     degree: "Higher National Diploma in Computer Science and Software Engineering",
     institution: "Sri Lanka Institute of Information Technology (SLIIT)",
     location: "New Kandy Road, Malabe, Sri Lanka",
-    startDate: "2021-6-10",
-    endDate: "2023-12-10",
-    description: "Basic Programming Concepts through various languages such as Object-Oriented Programming in Java, C, and Assembly Language. Mathematics courses included Algebra, Calculus, Statistics, Discrete Math.",
+    startDate: "2024-1-10",
+    endDate: "2025-12-10",
+    description: "Basic Programming Concepts through various languages such as Object-Oriented Programming in Java, C++, and C Language. Mathematics courses included Algebra, Calculus, Statistics, Discrete Math.",
     achievements: [
       // "Graduated Summa Cum Laude", 
       // "Innovation Award for Senior Project", 
@@ -189,110 +217,156 @@ export const educations = [
       "Linux",
       "Git"
     ],
+  },
+  {
+    degree: "Foundation Certificate in Information Technology",
+    institution: "Sri Lanka Institute of Information Technology (SLIIT)",
+    location: "New Kandy Road, Malabe, Sri Lanka",
+    startDate: "2023-01-01",
+    endDate: "2023-12-31",
+    description: "Completed foundation program covering essential topics in IT and software engineering, laying the groundwork for higher education in computing and programming",
+    achievements: [
+      // "Graduated Summa Cum Laude", 
+      // "Innovation Award for Senior Project", 
+      // "Coding Competition Winner (2017)"
+    ],
+    logo: "/images/institutions/New_SCU_Logo.png",
+    cgpa: "#",
+    institutionUrl: "https://www.sliit.lk/",
+    documents: [
+      {
+        name: "Transcript",
+        // url: "/pdf/educations/HND_certificate .pdf", // *** certificate pending
+        Turl: "/pdf/educations/Foundation Transcript.pdf"
+      }
+    ],
+     techStacks: ["C++", "Java", "HTML", "CSS", "JavaScript", "Git"],
   }
 ];
 
 export const projects: Project[] = [
   {
-    title: "Image Caption Generator",
-    description: "An AI-powered image captioning tool built using Python, Hugging Face Transformers, and Google Colab. It uses a ViT-GPT2 model to generate human-like captions from images.",
-    image: "/images/projects/ImageCaptionGenerator.jpeg",
-    github: "https://github.com/teamcodemelk/Image_Caption-_Generator.git",  
-    demo: "https://colab.research.google.com/drive/1zJFjUUF40BLiLcDjAZGmnWlK7gIMtyM_?usp=sharing",       
+    title: "ShoeLand E-Commerce",
+    description: "A full-stack responsive e-commerce website featuring product listings, dynamic cart, user authentication, and responsive design. Built with PHP, JavaScript, and MySQL.",
+    image: "/images/projects/ShoeLand.jpeg",
+    github: "https://github.com/MS-Official/ShoeLand-eCommerce",
+    demo: "",
     status: "Completed",
-    techStacks: ["Python", "Transformers", "Hugging Face", "Google Colab"],
-    date: "2025-05-11",
-    blogSlugs: ['image-caption-generator']
+    techStacks: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
+    date: "2024-04-01",
+    blogSlugs: ["shoeland-ecommerce"]
   },
   {
-    title: "Personal Website (Portfolio)",
-    description: "A personal website built with Next.js, TailwindCSS, and Vercel",
-    image: "/images/projects/M-F-Abdulla-Portfolio.png",
-    github: "#",
-    demo: "#",
+    title: "Hospital Management System (Visionary Vibes)",
+    description: "Group project by Visionary Vibes: A Java-based desktop application aimed at digitizing MediCare Plus's hospital operations. Features include appointment scheduling, outpatient service management, and pharmacy handling. Developed using Swing UI and MySQL with CRUD operations, SMS/email notifications, and a responsive workflow to streamline administration.",
+    image: "/images/projects/hospital-management.jpeg",
+    github: "https://github.com/MS-Official/Visionary-Vibes",
+    demo: "",
+    status: "Completed",
+    techStacks: ["Java", "Swing", "MySQL", "HTML", "CSS", "JavaScript"],
+    date: "2023-11-01",
+    blogSlugs: ["hospital-management-system"]
+  },
+  {
+    title: "Student Record Management System (SRMS)",
+    description: "Web-based app using Firebase and REST APIs to automate student record handling. Features a responsive UI and real-time database updates for efficient administration.",
+    image: "/images/projects/SRMS.jpeg",
+    github: "https://github.com/MS-Official/SRM-System-ETF-G1",
+    demo: "",
+    status: "Completed",
+    techStacks: ["Firebase", "REST API", "JavaScript", "HTML", "CSS"],
+    date: "2024-02-01",
+    blogSlugs: ["student-record-management"]
+  },
+  {
+    title: "SLIIT Cinema",
+    description: "Homepage for a fictional movie platform showcasing dynamic front-end features built with HTML, CSS, JavaScript, and jQuery. Demonstrates teamwork and front-end design skills.",
+    image: "/images/projects/SLIITCinema.jpeg",
+    github: "https://github.com/MS-Official/SLIIT-Cinema",
+    demo: "",
+    status: "Completed",
+    techStacks: ["HTML", "CSS", "JavaScript", "jQuery"],
+    date: "2023-10-01",
+    blogSlugs: ["sliit-cinema"]
+  },
+  {
+    title: "QR-Barcode Generator",
+    description: "A Next.js application that lets users create and download QR codes and digital business cards. Links can include websites, contact info, and social profiles.",
+    image: "/images/projects/QR-Barcode-Generator.png",
+    github: "https://github.com/MS-Official/qr-br-generator",
+    demo: "",
+    status: "Completed",
+    techStacks: ["Next.js", "React.js", "JavaScript", "HTML", "CSS"],
+    date: "2025-01-15",
+    blogSlugs: ["qr-barcode-generator"]
+  },
+  {
+    title: "Team Codeme Platform",
+    description: "Community platform by and for tech enthusiasts. Encourages collaboration, project building, innovation, and technical growth. Core values include creativity, code sharing, and empowerment.",
+    image: "/images/projects/Team-CodeMe.png",
+    github: "https://github.com/MS-Official/team-codeme",
+    demo: "",
     status: "In Progress",
-    techStacks: ["Next.js", "TailwindCSS", "Shadcn", "React"],
-    date: "2025-5-12",
-    blogSlugs: ['personal-website']
+    techStacks: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+    date: "2025-04-01",
+    blogSlugs: ["team-codeme"]
   },
   {
-    title: "Personal Website (Portfolio - 1)",
-    description: "A personal website built with React.js, CSS, and Vercel",
-    image: "/images/projects/Abdulla-Portfolio.png",
-    github: "https://github.com/FayyazAbdulla/MyPortfolio.git",
-    demo: "https://my-portfolio-chi-tawny-44.vercel.app/",
-    status: "Maintaining",
-    techStacks: ["Next.js", "TailwindCSS", "Shadcn", "React"],
-    date: "2025-3-3",
-    blogSlugs: ['personal-website']
-  },
-  {
-    title: "FortGrandJewels",
-    description: "Real world web app for a Billing Management with Next.js, TailwindCSS, Firebase Admin SDK, NodeJs and more",
-    image: "/images/projects/F-G-J-Your-Trusted-Jeweler.png",
-    demo: "https://fgj-billing-app.vercel.app/",
-    status: "In Progress",
-    techStacks: ["Next.js", "TailwindCSS", "React"],
-    date: "2025-3-10"
-  },
-  {
-    title: "Zenith Rent Car Billing Management System",
-    description: "Real world web app for a Billing Management with React+vite, TailwindCSS, Firebase Admin SDK and more",
-    image: "/images/projects/Zenith-Car-Rental-System.png",
-    github: "https://github.com/FayyazAbdulla/ZRC.git",
+    title: "Barcode Generator",
+    description: "A Python-based desktop app using PyQt5 for generating Code128 barcodes. Includes live preview and export options. Ideal for inventory and product tagging.",
+    image: "/images/projects/BarCode_Gen.jpeg",
+    github: "https://github.com/MS-Official/barcode-generator",
+    demo: "",
     status: "Completed",
-    techStacks: ["Next.js", "TailwindCSS", "React"],
-    date: "2024-11-14"
+    techStacks: ["Python", "PyQt5"],
+    date: "2025-03-20",
+    blogSlugs: ["barcode-generator"]
   },
   {
-    title: "OMAC Groups Ticketing Agency Website UK ( flyomac.uk )",
-    description: "A sleek React and Bootstrap site for OMAC Groups, integrating Firebase and EmailJS for secure ticket booking, inquiries, and instant user support.",
-    image: "/images/projects/OMAC-GROUPS-UK.png",
-    github: "https://github.com/FayyazAbdulla/flyomac.uk.git",
+    title: "QR Code Generator",
+    description: "Customizable QR code generator using Python and the `qrcode` library. Supports encoding URLs, text, and contact info with styling and error correction.",
+    image: "/images/projects/placeholder.png",
+    github: "https://github.com/MS-Official/qr-code-generator",
+    demo: "",
     status: "Completed",
-    techStacks: ["React", "Solidity", "Ethereum"],
-    date: "2024-10-5"
+    techStacks: ["Python", "qrcode", "Pillow"],
+    date: "2025-03-22",
+    blogSlugs: ["qr-code-generator"]
   },
   {
-    title: "OMAC Groups Ticketing Agency Website",
-    description: "A modern React-based website for OMAC Groups with Firebase and EmailJS integration, enabling secure ticket booking, user support, and real-time notifications.",
-    image: "/images/projects/OMAC-GROUPS-SL.png",
-    github: "https://github.com/FayyazAbdulla/flyomac.lk.git",
-    demo: "https://flyomaclk.vercel.app/",
+    title: "ClassTask7_Nature",
+    description: "Implements a web app where data is stored in a JSON file and managed using PHP. The interface, built with HTML, CSS, Bootstrap, and jQuery, supports viewing, fetching, and adding records via AJAX. Demonstrates client-server communication and JSON-based data handling.",
+    image: "/images/projects/ClassTask7_Nature.jpeg",
+    github: "https://github.com/MS-Official/ClassTask7_Nature",
+    demo: "",
     status: "Completed",
-    techStacks: ["React", "Bootstrap", "Firebase", "EmailJS"],
-    date: "2024-9-23"
+    techStacks: ["PHP", "JSON", "HTML", "CSS", "Bootstrap", "jQuery", "AJAX"],
+    date: "2024-03-01",
+    blogSlugs: ["class-task7-nature"]
   },
   {
-    title: "OMAC Groups CRM System",
-    description: "A React+Vite and Firebase-powered CRM for OMAC Groups, streamlining inquiries, client data, and bookings with a secure, responsive interface.",
-    image: "/images/projects/OMAC-CRM.png",
-    github: "https://github.com/FayyazAbdulla/omacgroups.git",
-    demo: "https://omacgroups.vercel.app/",
+    title: "2D Mario Game (Mini Project)",
+    description: "A fun 2D Mario-style game built to demonstrate object-oriented programming and interactive graphics using Java.",
+    image: "/images/projects/placeholder.png",
+    github: "https://github.com/MS-Official/2D-mario-game",
+    demo: "",
     status: "Completed",
-    techStacks: ["React", "Bootstrap", "Firebase", "EmailJS"],
-    date: "2024-8-23"
+    techStacks: ["Java"],
+    date: "2023-09-01",
+    blogSlugs: ["2d-mario-game"]
   },
   {
-    title: "Visual Salah Monitor",
-    description: "A real-time Salah posture monitoring tool using TensorFlow.js and React, offering instant feedback, posture guides, and Dua explanations to help Muslims, especially new converts, improve their prayers.",
-    image: "/images/projects/Visual-Salah-Moniter.png",
-    demo: "https://youtu.be/NhK-wT5DTH0?si=diYdkr2w537zpn7v",
+    title: "First Portfolio Website",
+    description: "A simple, clean portfolio site to showcase early projects and learning journey. Built using HTML, CSS, and a touch of JavaScript.",
+    image: "/images/projects/placeholder.png",
+    github: "https://github.com/MS-Official/first-portfolio",
+    demo: "",
     status: "Completed",
-    techStacks: ["Python", "TensorFlow", "React.js", "Node.js", "Express.js", "Flask", "Computer Vision"],
-    date: "2024-2-21"
-  },
-  {
-    title: "Cineplex",
-    description: "A web-based Cineplex Management System built with PHP and MySQL, featuring user, movie, and booking management with role-based admin and customer access.",
-    image: "/images/projects/CineplexC.png",
-    github: "https://github.com/FayyazAbdulla/Cineplex.git",
-    status: "Completed",
-    techStacks: ["HTML", "CSS", "PHP", "MySQL"],
-    date: "2024-5-17"
-  },
+    techStacks: ["HTML", "CSS", "JavaScript"],
+    date: "2023-06-01",
+    blogSlugs: ["first-portfolio"]
+  }
 ];
-
 
 export const certifications = [
   {

@@ -94,11 +94,11 @@ export default function ResumeViewerWithFallback({ document }: ResumeViewerProps
     return (
       <>
         <div className="flex justify-between items-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold">Resume</h1>
+          <h1 className="text-3xl md:text-4xl font-bold">MMM Shurafa Resume</h1>
 
           <PDFDownloadLink 
             document={document} 
-            fileName="KelvinYou-Resume.pdf"
+            fileName="MMM_Shurafa-Resume.pdf"
             className="inline-flex"
           >
             {({ loading }) => (
@@ -123,7 +123,7 @@ export default function ResumeViewerWithFallback({ document }: ResumeViewerProps
   return (
     <>
       <div className="flex justify-between items-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold">Resume</h1>
+        <h1 className="text-3xl md:text-4xl font-bold">MMM Shurafa Resume</h1>
       </div>
 
       <div className="bg-background border border-border/40 rounded-xl shadow-sm p-8 mb-8 flex items-center justify-center">
@@ -149,7 +149,7 @@ export default function ResumeViewerWithFallback({ document }: ResumeViewerProps
           <div className="flex justify-center items-center">
             <PDFDownloadLink 
               document={document} 
-              fileName="KelvinYou-Resume.pdf"
+              fileName="MMM_Shurafa-Resume.pdf"
               className="inline-flex"
             >
               {({ loading }) => (

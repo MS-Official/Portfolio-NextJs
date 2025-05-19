@@ -19,23 +19,53 @@ const staggerContainer = {
 };
 
 const skills = [
-  { name: "TypeScript", level: 90 },
-  { name: "Next.js (React)", level: 90 },
-  { name: "Gin (Go)", level: 80 },
-  { name: "Flutter", level: 0 },
-  { name: "Python", level: 70 },
-  { name: "Java", level: 70 },
-  { name: "C++", level: 60 },
-  { name: "Linux", level: 60 },
-  { name: "Git", level: 80 },
-].sort((a, b) => b.level - a.level).slice(0, 5);
+  { name: "Java", level: 85 },              // Used in hospital system, 2D game
+  { name: "JavaScript", level: 85 },        // Used in most web projects
+  { name: "Next.js (React)", level: 80 },   // Used in QR-Barcode Generator, Team Codeme
+  { name: "Python", level: 75 },            // Used in QR Code & Barcode Generators
+  { name: "Git", level: 75 },               // Used consistently across all dev work
+  { name: "PHP", level: 70 },               // Used in ShoeLand and ClassTask7_Nature
+  { name: "MySQL", level: 70 },             // Used in hospital and SRMS systems
+  { name: "C++", level: 60 },               // Coursework and possible mini projects
+  { name: "Linux", level: 60 },             // Academic and development environment
+  { name: "TypeScript", level: 50 },        // Not clearly reflected in your repos
+  { name: "Gin (Go)", level: 30 },          // Not used in your current projects
+  { name: "Flutter", level: 20 }            // Mentioned in studies, but no direct projects
+]
+.sort((a, b) => b.level - a.level)
+.slice(0, 5); // Top 5 most proficient
 
 const softSkills = [
   "Team Collaboration",
   "Problem Solving",
   "Time Management",
   "Adaptability",
-  "Leadership"
+  "Leadership",
+  "Fast Learner",
+  "Effective Communication",
+  "Curiosity & Continuous Learning",
+  "Critical Thinking",
+  "Attention to Detail",
+  "Accountability & Ownership",
+  "Creativity & Innovation",
+  "Emotional Intelligence",
+  "Self-Motivation",
+  "Resilience in High-Pressure Environments",
+  "Conflict Resolution",
+  "Decision Making",
+  "Strategic Thinking",
+  "Goal-Oriented Mindset",
+  "Organizational Skills",
+  "Presentation Skills",
+  "Client & Stakeholder Management",
+  "Cross-Cultural Communication",
+  "Growth Mindset",
+  "Empathy & Active Listening",
+  "Initiative & Proactiveness",
+  "Flexibility to Change",
+  "Open-Mindedness",
+  "Prioritization",
+  "Mentoring & Coaching"
 ];
 
 export function SkillsSection() {

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Professional resume of Kelvin You, showcasing experience, skills, and education.",
   keywords: [
     "resume",
-    "Kelvin You",
+    "MMM Shurafa",
     "software engineer",
     "professional resume",
     "experience",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: '/images/projects/portfolio.jpg',
         width: 1200,
         height: 630,
-        alt: 'Resume | Kelvin You',
+        alt: 'Resume | MMM Shurafa',
       }
     ],
     type: "website"

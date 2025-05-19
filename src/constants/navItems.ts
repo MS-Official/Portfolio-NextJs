@@ -9,5 +9,5 @@ export const navItems: NavItem[] = [
   { name: "Projects", href: "/#projects", icon: "code" },
   { name: "Skills", href: "/#skills", icon: "sparkles" },
   { name: "Contact", href: "/#contact", icon: "send" },
-  { name: "Blog", href: "/blog", icon: "bookmark" },
+  // { name: "Blog", href: "/blog", icon: "bookmark" },
 ];

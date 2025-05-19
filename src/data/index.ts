@@ -23,7 +23,7 @@ export const experiences: Experience[] = [
     ],
     skills: ["Java", "JavaScript", "Node.js", "PHP", "React.js", "Firebase", "MongoDB", "MySQL", "HTML", "CSS", "Git", "Agile", "REST APIs"],
     logo: "",
-    projects: ["SLIIT Cinema", "ShoeLand E-Commerce", "Hospital Management System", "Student Record Management System", "QR-Barcode Generator"]
+    projects: []
   },
   {
     title: "Marketing Team Lead & Project Manager | Digital Content Specialist",
@@ -243,8 +243,8 @@ export const educations = [
      techStacks: ["C++", "Java", "HTML", "CSS", "JavaScript", "Git"],
   }
 ];
-
-export const projects: Project[] = [
+ 
+export const projects: Project[] = [ 
   {
     title: "ShoeLand E-Commerce",
     description: "A full-stack responsive e-commerce website featuring product listings, dynamic cart, user authentication, and responsive design. Built with PHP, JavaScript, and MySQL.",

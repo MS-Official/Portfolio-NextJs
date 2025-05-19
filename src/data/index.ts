@@ -203,8 +203,8 @@ export const educations = [
     documents: [
       {
         name: "Transcript",
-        url: "/pdf/educations/HND_certificate .pdf",
-        Turl: "/pdf/educations/hnd transcript.pdf"
+        url: "#",
+        Turl: "#"
       }
     ],
     techStacks: [
@@ -236,7 +236,7 @@ export const educations = [
     documents: [
       {
         name: "Transcript",
-        // url: "/pdf/educations/HND_certificate .pdf", // *** certificate pending
+        url: "#", // *** certificate pending
         Turl: "/pdf/educations/Foundation Transcript.pdf"
       }
     ],

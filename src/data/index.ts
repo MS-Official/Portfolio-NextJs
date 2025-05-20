@@ -1,7 +1,7 @@
 import { getTotalWorkingExperiences } from "@/lib/utils";
 import { Experience, Project } from "@/types";
 
-export const domainPath = "https://abd-portfolio-two.vercel.app/";
+export const domainPath = "https://portfolio-ms-lac.vercel.app/p/";
 
 export const experiences: Experience[] = [
   {

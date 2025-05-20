@@ -24,7 +24,7 @@ export default function ResumeViewerWithFallback({ document }: ResumeViewerProps
 
   const detectDevice = () => {
     // Check if we're on the client side
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return; 
 
     // Detect mobile devices
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -43,6 +43,8 @@ export default function ResumeViewerWithFallback({ document }: ResumeViewerProps
   };
 
   const checkPdfSupport = () => {
+    if (typeof window === 'undefined') return;
+    
     try {
       // Various checks for PDF support
       const hasAcrobat = 

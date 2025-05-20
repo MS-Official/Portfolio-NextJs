@@ -2,7 +2,7 @@ import ProductsServicesClient from "@/components/products-services/products-serv
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Products & Services | Your Name",
+  title: "Products & Services | MMM Shurafa",
   description: "Explore our premium templates and subscription-based SaaS solutions. From ready-to-use web templates to powerful tuition management software.",
   openGraph: {
     title: "Products & Services | Your Name",

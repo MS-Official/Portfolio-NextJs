@@ -50,7 +50,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     const { data, content } = matter(fileContents);
 
     const mdxSource = await serialize(content, {
-      mdxOptions: {
+      mdxOptions: { 
         remarkPlugins: [remarkSlug],
         rehypePlugins: [[rehypeExternalLinks, { target: '_blank' }]],
       },

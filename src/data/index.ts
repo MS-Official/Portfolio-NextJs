@@ -5,7 +5,7 @@ export const domainPath = "https://portfolio-ms-lac.vercel.app/p/";
 
 export const experiences: Experience[] = [
   {
-    title: "Software Engineer | Full-Stack Developer",
+    title: "Software Engineer | Full-Stack Developer ( Acadamic Projects )",
     company: "Self-Employed",
     companyUrl: "",
     location: "Remote",
@@ -32,7 +32,7 @@ export const experiences: Experience[] = [
     location: "Colombo, Western Province, Sri Lanka",
     type: "Full-time",
     startDate: "2025-02-01",
-    endDate: undefined,
+    endDate: "2025-05-31",
     description: "Led digital marketing initiatives and managed project execution to enhance the company’s online presence and branding.",
     responsibilities: [
       "Directed and executed multiple marketing campaigns across digital platforms.",

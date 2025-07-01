@@ -146,7 +146,7 @@ export const personalInfo = {
   },
   profilePicture: "/images/MS-headshot-b.png",
   summary:
-    `Motivated and detail-oriented Software Engineer (Undergraduate) with ${getTotalWorkingExperiences(experiences)} of experience in developing full-stack web applications, including internships, trainings and project-based work. Proficient in modern technologies such as Java, JavaScript, Node.js, HTML/CSS, and MongoDB. Experienced in agile development, software architecture, UI/UX design, and cloud-based solutions. Proven ability to manage digital projects, lead marketing initiatives, and create technical content. Passionate about building scalable applications, delivering meaningful user experiences, and continuously learning—I'm a fast learner who thrives in dynamic environments. Also deeply interested in blockchain, investing, and chess. ⁠`,
+    `Motivated and detail-oriented Software Engineer (Undergraduate) with ${getTotalWorkingExperiences(experiences)} of experience in Working, including internships, trainings and project-based work. Proficient in modern technologies such as Java, JavaScript, Node.js, HTML/CSS, and MongoDB. Experienced in agile development, software architecture, UI/UX design, and cloud-based solutions. Proven ability to manage digital projects, lead marketing initiatives, and create technical content. Passionate about building scalable applications, delivering meaningful user experiences, and continuously learning—I'm a fast learner who thrives in dynamic environments. Also deeply interested in blockchain, investing, and chess. ⁠`,
 };
 
 

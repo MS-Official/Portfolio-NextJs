@@ -5,14 +5,36 @@ export const domainPath = "https://portfolio-ms-lac.vercel.app/p/";
 
 export const experiences: Experience[] = [
   {
+  title: "Intern | Software Developer | Frontend & Backend Engineer",
+  company: "Heaven'sCode (PVT) LTD",
+  companyUrl: "https://theheavenscode.com/",
+  location: "Hybrid (Sri Lanka)",
+  type: "Internship",
+  startDate: "2025-10-06",
+  endDate: undefined,
+  description: "Contributed to multiple client and internal software projects under Heaven’sCode, focusing on performance, scalability, and modern web design.",
+  responsibilities: [
+    "Developed responsive and SEO-optimized websites using Angular and Tailwind CSS.",
+    "Built RESTful APIs and integrated backend logic using Node.js, SpringBoot, and Postgresql using Docker.",
+    "Implemented CI/CD pipelines using Azure Devops and deployed projects on Firebase, Vercel, and cPanel servers.",
+    "Collaborated closely with UI/UX designers to ensure visually appealing and user-friendly interfaces.",
+    "Worked on real estate, e-commerce, and portfolio-based projects with optimized page load speeds and high Lighthouse scores."
+  ],
+  skills: [
+    "Angular", "Node.js", "SpringBoot", "Docker", "JHipster", "Postgresql", "Azure Devops",
+    "Tailwind CSS", "Bootstrap", "Git", "CI/CD", "GitHub", "FHipster"
+  ],
+  logo: "data:image/jpeg;base64,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"
+  },
+  {
     title: "Software Engineer | Full-Stack Developer ( Acadamic Projects )",
-    company: "Self-Employed",
+    company: "Team CodeMe",
     companyUrl: "",
     location: "Remote",
-    type: "Freelance",
+    type: "Project-Based",
     startDate: "2024-08-28",
     endDate: undefined,
-    description: "Designed and developed full-stack web applications using modern technologies and best practices.",
+    description: "Designed and developed full-stack web applications using modern technologies and best practices for Academic projects.",
     responsibilities: [
       "Built scalable applications using Java, JavaScript (ES6), Node.js, HTML5, CSS3, React.js, and PHP.",
       "Developed RESTful APIs and backend systems with Node.js, Firebase, MongoDB, and MySQL.",

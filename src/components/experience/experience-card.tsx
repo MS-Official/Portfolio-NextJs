@@ -158,12 +158,12 @@ export function ExperienceCard({ experience: exp, index }: ExperienceCardProps) 
                             <h5 className="font-medium">{project.title}</h5>
                             <div className="flex gap-2">
                               {project.github && (
-                                <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                                <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary" aria-label="View GitHub repository">
                                   <Github className="h-4 w-4" />
                                 </a>
                               )}
                               {project.demo && (
-                                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary" aria-label="View live demo">
                                   <ExternalLink className="h-4 w-4" />
                                 </a>
                               )}
@@ -186,7 +186,7 @@ export function ExperienceCard({ experience: exp, index }: ExperienceCardProps) 
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 pt-4 border-t border-border/10">
                   {exp.companyUrl && (
                     <Button variant="outline" size="sm" className="text-xs rounded-full group w-fit" asChild>
-                      <a href={exp.companyUrl} target="_blank" className="flex items-center gap-1.5">
+                      <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5" aria-label="Visit company website">
                         <LinkIcon className="h-3 w-3" />
                         <span>Company website</span>
                         <ExternalLink className="ml-0.5 h-3 w-3 transition-transform group-hover:translate-x-0.5" />

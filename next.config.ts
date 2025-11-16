@@ -31,8 +31,17 @@ const nextConfig: NextConfig = {
 
   // ✅ Standard Next.js Config
   images: {
-    formats: ["image/avif", "image/webp"],
-    domains: ["localhost", "res.cloudinary.com"],
+    // formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+    ],
   },
 
   reactStrictMode: true,

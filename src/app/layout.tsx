@@ -23,6 +23,7 @@ const basicInfo = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(domainPath),
   ...basicInfo,
   keywords: [
     'portfolio',
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   authors: [{ name: personalInfo.name, url: domainPath }],
   creator: personalInfo.name,
   icons: {
-    icon: '/Abdlogo.png',
+    icon: '/favicon.ico',
   },
   openGraph: {
     ...basicInfo,

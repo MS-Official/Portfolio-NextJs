@@ -71,7 +71,7 @@ export async function generateMetadata(props: PageProps) {
     console.error("Error generating metadata:", error);
 
     const basicInfo = {
-      title: "Blog Post Not Found | Kelvin You",
+      title: "Blog Post Not Found | M.M.M.Shurafa",
       description: "The requested blog post could not be found.",
     };
 

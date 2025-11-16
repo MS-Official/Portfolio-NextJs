@@ -6,6 +6,7 @@ import { Download, FileSearch, Smartphone, Laptop } from "lucide-react";
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { DocumentProps } from '@react-pdf/renderer';
 import { PdfViewer } from '../../components/pdf-renderer';
+import { personalInfo, experiences, projects, certifications, educations } from '@/data';
 
 interface ResumeViewerProps {
   document: React.ReactElement<DocumentProps>;
@@ -15,6 +16,7 @@ export default function ResumeViewerWithFallback({ document }: ResumeViewerProps
   const [hasPdfSupport, setHasPdfSupport] = useState<boolean | null>(null);
   const [isClient, setIsClient] = useState(false);
   const [deviceType, setDeviceType] = useState<'desktop' | 'mobile' | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -95,27 +97,67 @@ export default function ResumeViewerWithFallback({ document }: ResumeViewerProps
   if (deviceType === 'desktop' && hasPdfSupport) {
     return (
       <>
-        <div className="flex justify-between items-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold">MMM Shurafa Resume</h1>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
+              Professional Resume
+            </h1>
+            <p className="text-muted-foreground mt-1">
+              {personalInfo.name} - {personalInfo.title}
+            </p>
+          </div>
 
-          <PDFDownloadLink 
-            document={document} 
-            fileName="MMM_Shurafa-Resume.pdf"
-            className="inline-flex"
-          >
-            {({ loading }) => (
-              <Button disabled={loading} size="lg" className="gap-2">
-                <Download className="h-4 w-4" />
-                {loading ? "Preparing PDF..." : "Download Resume"}
-              </Button>
+          <div className="flex gap-3">
+            <PDFDownloadLink
+              document={document}
+              fileName={`${personalInfo.name.replace(' ', '_')}_Resume.pdf`}
+              className="inline-flex"
+              onClick={() => setError(null)}
+            >
+              {({ loading, error: pdfError }) => {
+                if (pdfError) {
+                  setError("Failed to generate PDF. Please try again.");
+                }
+                return (
+                  <Button disabled={loading} size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-shadow">
+                    <Download className="h-4 w-4" />
+                    {loading ? "Preparing PDF..." : "Download Resume"}
+                  </Button>
+                );
+              }}
+            </PDFDownloadLink>
+            {error && (
+              <div className="text-red-500 text-sm mt-2">{error}</div>
             )}
-          </PDFDownloadLink>
+          </div>
         </div>
 
-        <div className="bg-background border border-border/40 rounded-xl shadow-sm p-8 mb-8 h-[80vh]">
-          <PdfViewer>
-            {document}
-          </PdfViewer>
+        <div className="bg-gradient-to-br from-background to-muted/20 border border-border/40 rounded-2xl shadow-xl p-4 sm:p-6 mb-8 h-[75vh] sm:h-[85vh] overflow-hidden">
+          <div className="w-full h-full rounded-xl overflow-hidden shadow-inner">
+            <PdfViewer>
+              {document}
+            </PdfViewer>
+          </div>
+        </div>
+
+        {/* Quick stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div className="bg-card border border-border/40 rounded-lg p-4 text-center">
+            <div className="text-2xl font-bold text-primary">{experiences.length}</div>
+            <div className="text-sm text-muted-foreground">Experiences</div>
+          </div>
+          <div className="bg-card border border-border/40 rounded-lg p-4 text-center">
+            <div className="text-2xl font-bold text-primary">{projects.length}</div>
+            <div className="text-sm text-muted-foreground">Projects</div>
+          </div>
+          <div className="bg-card border border-border/40 rounded-lg p-4 text-center">
+            <div className="text-2xl font-bold text-primary">{certifications.length}</div>
+            <div className="text-sm text-muted-foreground">Certifications</div>
+          </div>
+          <div className="bg-card border border-border/40 rounded-lg p-4 text-center">
+            <div className="text-2xl font-bold text-primary">{educations.length}</div>
+            <div className="text-sm text-muted-foreground">Education</div>
+          </div>
         </div>
       </>
     );
@@ -124,47 +166,111 @@ export default function ResumeViewerWithFallback({ document }: ResumeViewerProps
   // Mobile device or desktop without PDF support
   return (
     <>
-      <div className="flex justify-between items-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold">MMM Shurafa Resume</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
+            Professional Resume
+          </h1>
+          <p className="text-muted-foreground mt-1">
+            {personalInfo.name} - {personalInfo.title}
+          </p>
+        </div>
       </div>
 
-      <div className="bg-background border border-border/40 rounded-xl shadow-sm p-8 mb-8 flex items-center justify-center">
-        <div className="text-center max-w-md">
+      <div className="bg-gradient-to-br from-background to-muted/20 border border-border/40 rounded-2xl shadow-xl p-8 mb-8">
+        <div className="text-center max-w-lg mx-auto">
           {deviceType === 'mobile' ? (
-            <Smartphone className="w-16 h-16 mx-auto mb-6 text-primary/70" />
+            <div className="relative">
+              <Smartphone className="w-20 h-20 mx-auto mb-6 text-primary/70" />
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full animate-pulse"></div>
+            </div>
           ) : (
-            <Laptop className="w-16 h-16 mx-auto mb-6 text-muted-foreground" />
+            <Laptop className="w-20 h-20 mx-auto mb-6 text-muted-foreground" />
           )}
-          
-          <h2 className="text-2xl font-bold mb-3">
-            {deviceType === 'mobile' 
-              ? "Mobile Device Detected" 
-              : "PDF Viewer Not Available"}
+
+          <h2 className="text-2xl font-bold mb-4">
+            {deviceType === 'mobile'
+              ? "Mobile-Optimized Experience"
+              : "Enhanced PDF Download"}
           </h2>
-          
-          <p className="text-muted-foreground mb-6">
-            {deviceType === 'mobile' 
-              ? "For the best experience on mobile devices, please download the resume to view it in your device's PDF reader." 
-              : "Your browser doesn't support viewing PDFs directly. You can download the resume to view it in your preferred PDF reader."}
+
+          <p className="text-muted-foreground mb-8 leading-relaxed">
+            {deviceType === 'mobile'
+              ? "Download the resume to view it in your device's native PDF reader for the best experience with full formatting and interactive features."
+              : "Your browser doesn't support inline PDF viewing. Download the resume to open it in your preferred PDF reader with full functionality."}
           </p>
-          
-          <div className="flex justify-center items-center">
-            <PDFDownloadLink 
-              document={document} 
-              fileName="MMM_Shurafa-Resume.pdf"
-              className="inline-flex"
+
+          <div className="space-y-4">
+            <PDFDownloadLink
+              document={document}
+              fileName={`${personalInfo.name.replace(' ', '_')}_Resume.pdf`}
+              className="inline-flex w-full sm:w-auto"
             >
               {({ loading }) => (
-                <Button disabled={loading} size="lg" className="gap-2">
-                  <Download className="h-4 w-4" />
+                <Button disabled={loading} size="lg" className="gap-2 w-full shadow-lg hover:shadow-xl transition-all">
+                  <Download className="h-5 w-5" />
                   {loading ? "Preparing PDF..." : "Download Resume"}
                 </Button>
               )}
             </PDFDownloadLink>
+
+            <p className="text-xs text-muted-foreground">
+              PDF format • {experiences.length} experiences • {projects.length} projects • {certifications.length} certifications
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick preview cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div className="bg-card border border-border/40 rounded-lg p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+              <span className="text-lg">💼</span>
+            </div>
+            <div>
+              <div className="text-xl font-bold text-primary">{experiences.length}</div>
+              <div className="text-sm text-muted-foreground">Experiences</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-card border border-border/40 rounded-lg p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+              <span className="text-lg">🚀</span>
+            </div>
+            <div>
+              <div className="text-xl font-bold text-primary">{projects.length}</div>
+              <div className="text-sm text-muted-foreground">Projects</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-card border border-border/40 rounded-lg p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center">
+              <span className="text-lg">🏆</span>
+            </div>
+            <div>
+              <div className="text-xl font-bold text-primary">{certifications.length}</div>
+              <div className="text-sm text-muted-foreground">Certifications</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-card border border-border/40 rounded-lg p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center">
+              <span className="text-lg">🎓</span>
+            </div>
+            <div>
+              <div className="text-xl font-bold text-primary">{educations.length}</div>
+              <div className="text-sm text-muted-foreground">Education</div>
+            </div>
           </div>
         </div>
       </div>
     </>
-
   );
 } 

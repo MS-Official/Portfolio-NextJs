@@ -135,12 +135,12 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
   // Control item animation (subtle fade up for search, sort, filter)
   const controlItem = {
     hidden: { opacity: 0, y: 10 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.4,
-        ease: [0.22, 1, 0.36, 1]
+        ease: [0.22, 1, 0.36, 1] as const
       }
     }
   };

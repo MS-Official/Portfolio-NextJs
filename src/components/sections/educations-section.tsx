@@ -24,10 +24,10 @@ const staggerContainer = {
 
 const timelineVariants = {
   hidden: { opacity: 0, height: 0 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     height: '100%',
-    transition: { duration: 1.5, ease: "easeInOut" } 
+    transition: { duration: 1.5, ease: "easeInOut" as const }
   }
 };
 

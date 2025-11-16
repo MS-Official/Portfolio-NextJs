@@ -4,8 +4,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-interface MdxImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface MdxImageProps {
+  src?: string;
   alt: string;
+  className?: string;
+  width?: string | number;
+  height?: string | number;
 }
 
 export function MdxImage({ src, alt, className, width, height, ...props }: MdxImageProps) {

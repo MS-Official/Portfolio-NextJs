@@ -18,8 +18,8 @@ const item = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: { 
-      type: "spring", 
+    transition: {
+      type: "spring" as const,
       stiffness: 100,
       damping: 12
     }

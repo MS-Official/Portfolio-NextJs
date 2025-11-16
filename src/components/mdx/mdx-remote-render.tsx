@@ -65,9 +65,9 @@ const components = {
     return <h6 id={id} className="group flex mt-2 mb-1 scroll-mt-24" {...props}>{children}</h6>;
   },
   img: (props: React.ComponentPropsWithoutRef<'img'>) => (
-    <Image 
-      src={props.src || ''} 
-      alt={props.alt || ''} 
+    <Image
+      src={props.src as string || ''}
+      alt={props.alt || ''}
       width={0}
       height={0}
       sizes="100vw"

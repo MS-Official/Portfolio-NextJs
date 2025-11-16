@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
 
   // ✅ Standard Next.js Config
   images: {
-    // formats: ["image/avif", "image/webp"],
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",

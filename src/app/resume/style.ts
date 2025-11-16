@@ -126,6 +126,8 @@ export const styles = StyleSheet.create({
     fontSize: 11,
     color: '#1a202c',
     flex: 1,
+    marginBottom: 4,
+    marginTop: 1,
   },
   itemCompany: {
     fontSize: 11,
@@ -144,7 +146,8 @@ export const styles = StyleSheet.create({
   itemLocation: {
     fontSize: 9,
     color: '#718096',
-    marginBottom: 6,
+    marginBottom: 5,
+    marginTop: 8,
     fontStyle: 'italic',
   },
   companyLogo: {

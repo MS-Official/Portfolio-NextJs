@@ -115,13 +115,37 @@ export default function BlogClient({ posts: initialPosts }: { posts: Post[] }) {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Page Header Section */}
-      <motion.div 
+      <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
-        className="text-center mb-16"
+        className="text-center mb-16 relative min-h-[70vh] flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/blogs/blog2.avif')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
       >
+        {/* Enhanced overlay with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
+
+        {/* Animated background particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white/30 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-white/25 rounded-full animate-pulse delay-500"></div>
+          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-white/20 rounded-full animate-pulse delay-1500"></div>
+        </div>
+
+        {/* Content container with glassmorphism effect */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4">
+          {/* Glassmorphism background */}
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 shadow-2xl"></div>
+
+          <div className="relative p-8 md:p-12">
         <motion.div variants={fadeInUp}>
           <div className="inline-block p-1.5 px-3 mb-4 rounded-full bg-primary/10 border border-primary/20">
             <Sparkles className="h-4 w-4 text-primary inline mr-1" />
@@ -142,151 +166,216 @@ export default function BlogClient({ posts: initialPosts }: { posts: Post[] }) {
           variants={fadeInUp}
         >
           <div className="w-full flex flex-col gap-4">
-            {/* Search input - full width on all screens */}
-            <motion.div 
-              className="relative w-full"
-              animate={searchFocused ? { 
-                scale: 1.01,
-                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)" 
+            {/* Enhanced search input with glassmorphism */}
+            <motion.div
+              className="relative w-full max-w-md mx-auto"
+              animate={searchFocused ? {
+                scale: 1.02,
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)"
               } : {}}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 ${searchFocused ? 'text-primary' : 'text-muted-foreground'} h-4 w-4 transition-colors`} />
-              <Input
-                type="text"
-                placeholder="Search articles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 bg-card"
-                onFocus={() => setSearchFocused(true)}
-                onBlur={() => setSearchFocused(false)}
-              />
-              {searchQuery && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-1 top-1/2 transform -translate-y-1/2 h-7 w-7"
-                  onClick={() => setSearchQuery('')}
-                >
-                  <X className="h-3.5 w-3.5 text-muted-foreground" />
-                </Button>
-              )}
-            </motion.div>
-
-            {/* Control buttons - responsive layout */}
-            <div className="flex flex-wrap gap-2 justify-between">
-              {/* Filter controls - grow to use available space */}
-              <div className="flex flex-wrap items-center gap-2">
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                  className={`flex items-center gap-1.5 transition-colors ${isFiltersOpen ? 'bg-muted border-primary/40' : ''}`}
-                >
-                  <Filter className={`h-4 w-4 ${isFiltersOpen ? 'text-primary' : ''}`} />
-                  <span className="hidden sm:inline">Filters</span> 
-                  {selectedTags.length > 0 && <span className="ml-1 text-xs py-0.5 px-1.5 rounded-full bg-primary/10">{selectedTags.length}</span>}
-                </Button>
-                
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="outline" size="sm" className="flex items-center gap-1.5">
-                      <SlidersHorizontal className="h-4 w-4" />
-                      <span className="hidden sm:inline">Sort</span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="min-w-[160px]">
-                    <DropdownMenuItem 
-                      onClick={() => setSortOption("newest")}
-                      className={sortOption === "newest" ? "bg-muted font-medium" : ""}
-                    >
-                      Newest first
-                    </DropdownMenuItem>
-                    <DropdownMenuItem 
-                      onClick={() => setSortOption("oldest")}
-                      className={sortOption === "oldest" ? "bg-muted font-medium" : ""}
-                    >
-                      Oldest first
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem 
-                      onClick={() => setSortOption("az")}
-                      className={sortOption === "az" ? "bg-muted font-medium" : ""}
-                    >
-                      A-Z
-                    </DropdownMenuItem>
-                    <DropdownMenuItem 
-                      onClick={() => setSortOption("za")}
-                      className={sortOption === "za" ? "bg-muted font-medium" : ""}
-                    >
-                      Z-A
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                
-                {selectedTags.length > 0 && (
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    onClick={clearFilters}
-                    className="text-muted-foreground text-sm"
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-xl border border-white/20"></div>
+              <div className="relative flex items-center">
+                <Search className={`absolute left-4 transition-all duration-300 ${searchFocused ? 'text-primary scale-110' : 'text-white/70'} h-5 w-5`} />
+                <Input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-12 pr-12 bg-transparent border-0 text-white placeholder:text-white/60 focus-visible:ring-0 focus-visible:ring-offset-0 h-12 text-lg"
+                  onFocus={() => setSearchFocused(true)}
+                  onBlur={() => setSearchFocused(false)}
+                />
+                {searchQuery && (
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
                   >
-                    Clear
-                  </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 w-8 text-white/70 hover:text-white hover:bg-white/20"
+                      onClick={() => setSearchQuery('')}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </motion.div>
                 )}
               </div>
-              
-              {/* View mode buttons */}
-              <div className="flex items-center rounded-md border border-border/40 overflow-hidden h-9">
-                <Button 
-                  variant={viewMode === "grid" ? "default" : "ghost"}
-                  size="icon"
-                  className="h-full w-9 rounded-none"
-                  onClick={() => setViewMode("grid")}
-                >
-                  <LayoutGrid className="h-4 w-4" />
-                </Button>
-                <Button 
-                  variant={viewMode === "list" ? "default" : "ghost"}
-                  size="icon"
-                  className="h-full w-9 rounded-none"
-                  onClick={() => setViewMode("list")}
-                >
-                  <ListIcon className="h-4 w-4" />
-                </Button>
+            </motion.div>
+
+            {/* Enhanced control buttons with glassmorphism */}
+            <div className="flex flex-wrap gap-3 justify-center items-center">
+              {/* Filter controls */}
+              <div className="flex flex-wrap items-center gap-2">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+                    className={`flex items-center gap-2 transition-all duration-300 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:border-white/40 ${isFiltersOpen ? 'bg-white/20 border-white/40 shadow-lg' : ''}`}
+                  >
+                    <Filter className={`h-4 w-4 transition-transform ${isFiltersOpen ? 'rotate-180' : ''}`} />
+                    <span className="hidden sm:inline font-medium">Filters</span>
+                    {selectedTags.length > 0 && (
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="ml-1 text-xs py-0.5 px-2 rounded-full bg-primary text-primary-foreground font-bold"
+                      >
+                        {selectedTags.length}
+                      </motion.span>
+                    )}
+                  </Button>
+                </motion.div>
+
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" size="sm" className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300">
+                        <SlidersHorizontal className="h-4 w-4" />
+                        <span className="hidden sm:inline font-medium">Sort</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="min-w-[160px] bg-card/95 backdrop-blur-sm border-white/20">
+                      <DropdownMenuItem
+                        onClick={() => setSortOption("newest")}
+                        className={`cursor-pointer ${sortOption === "newest" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
+                      >
+                        Newest first
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        onClick={() => setSortOption("oldest")}
+                        className={`cursor-pointer ${sortOption === "oldest" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
+                      >
+                        Oldest first
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        onClick={() => setSortOption("az")}
+                        className={`cursor-pointer ${sortOption === "az" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
+                      >
+                        A-Z
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        onClick={() => setSortOption("za")}
+                        className={`cursor-pointer ${sortOption === "za" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
+                      >
+                        Z-A
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </motion.div>
+
+                {selectedTags.length > 0 && (
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={clearFilters}
+                      className="text-white/80 hover:text-white hover:bg-white/20 transition-all duration-300 bg-white/10 backdrop-blur-sm border border-white/20"
+                    >
+                      Clear all
+                    </Button>
+                  </motion.div>
+                )}
+              </div>
+
+              {/* Enhanced view mode buttons */}
+              <div className="flex items-center rounded-xl border border-white/20 overflow-hidden bg-white/10 backdrop-blur-sm p-1 shadow-lg">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    variant={viewMode === "grid" ? "default" : "ghost"}
+                    size="icon"
+                    className={`h-10 w-10 rounded-lg transition-all duration-300 ${viewMode === "grid" ? 'bg-primary text-primary-foreground shadow-md' : 'text-white/70 hover:text-white hover:bg-white/20'}`}
+                    onClick={() => setViewMode("grid")}
+                  >
+                    <LayoutGrid className="h-5 w-5" />
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    variant={viewMode === "list" ? "default" : "ghost"}
+                    size="icon"
+                    className={`h-10 w-10 rounded-lg transition-all duration-300 ${viewMode === "list" ? 'bg-primary text-primary-foreground shadow-md' : 'text-white/70 hover:text-white hover:bg-white/20'}`}
+                    onClick={() => setViewMode("list")}
+                  >
+                    <ListIcon className="h-5 w-5" />
+                  </Button>
+                </motion.div>
               </div>
             </div>
           </div>
           
-          {/* Tag filters */}
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ 
-              opacity: isFiltersOpen ? 1 : 0, 
+          {/* Enhanced tag filters with glassmorphism */}
+          <motion.div
+            initial={{ opacity: 0, height: 0, scale: 0.95 }}
+            animate={{
+              opacity: isFiltersOpen ? 1 : 0,
               height: isFiltersOpen ? "auto" : 0,
-              marginTop: isFiltersOpen ? 8 : 0
+              scale: isFiltersOpen ? 1 : 0.95,
+              marginTop: isFiltersOpen ? 12 : 0
             }}
-            transition={{ duration: 0.3 }}
-            className="flex flex-wrap gap-2 overflow-hidden"
+            transition={{
+              duration: 0.4,
+              ease: "easeOut",
+              staggerChildren: 0.05,
+              delayChildren: 0.1
+            }}
+            className="overflow-hidden"
           >
-            {allTags.map((tag, index) => (
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-4 shadow-xl">
               <motion.div
-                key={tag}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.03 }}
+                className="flex flex-wrap gap-3 justify-center"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.03 }
+                  }
+                }}
               >
-                <Badge 
-                  variant={selectedTags.includes(tag) ? "default" : "outline"}
-                  className="cursor-pointer hover:bg-muted/50 transition-colors"
-                  onClick={() => toggleTag(tag)}
-                >
-                  {tag}
-                </Badge>
+                {allTags.map((tag, index) => (
+                  <motion.div
+                    key={tag}
+                    variants={{
+                      hidden: { opacity: 0, y: 20, scale: 0.8 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        transition: {
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                          delay: index * 0.02
+                        }
+                      }
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Badge
+                      variant={selectedTags.includes(tag) ? "default" : "outline"}
+                      className={`cursor-pointer transition-all duration-300 px-4 py-2 text-sm font-medium ${
+                        selectedTags.includes(tag)
+                          ? 'bg-primary text-primary-foreground shadow-lg border-primary/50'
+                          : 'bg-white/10 text-white border-white/30 hover:bg-white/20 hover:border-white/50 backdrop-blur-sm'
+                      }`}
+                      onClick={() => toggleTag(tag)}
+                    >
+                      {tag}
+                    </Badge>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
+            </div>
           </motion.div>
         </motion.div>
+          </div>
+        </div>
       </motion.div>
       
       {/* Results summary */}

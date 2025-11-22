@@ -10,6 +10,8 @@ import {
   Share2,
   Check,
   List,
+  ChevronRight,
+  BookOpen,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -157,156 +159,261 @@ export default function BlogPostClient({ post }: { post: Post }) {
               </Button>
             </motion.div>
 
-            {/* Header section with animation */}
-            <motion.div variants={fadeInUp} className="mb-8">
-              <motion.h1
-                className="text-3xl md:text-4xl font-bold mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-              >
-                {post.frontmatter.title}
-              </motion.h1>
-
-              {/* Tags with staggered animation */}
-              <motion.div
-                className="flex flex-wrap gap-2 mb-4"
-                variants={{
-                  hidden: {},
-                  visible: { transition: { staggerChildren: 0.05 } },
-                }}
-              >
-                {post.frontmatter.tags.map((tag: string) => (
-                  <motion.div
-                    key={tag}
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.8 },
-                      visible: {
-                        opacity: 1,
-                        scale: 1,
-                        transition: { duration: 0.3 },
-                      },
-                    }}
-                    whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            {/* Enhanced Header section with animation */}
+            <motion.div variants={fadeInUp} className="mb-12">
+              <div className="relative">
+                {/* Enhanced backdrop */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background/60 to-background/90 backdrop-blur-sm rounded-3xl border border-border/20 shadow-xl"></div>
+                
+                <div className="relative p-8 md:p-10">
+                  <motion.h1
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    <Badge
-                      variant="outline"
-                      className="bg-muted/30 hover:bg-muted/50 transition-colors"
-                    >
-                      {tag}
-                    </Badge>
-                  </motion.div>
-                ))}
-              </motion.div>
+                    <span className="bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent">
+                      {post.frontmatter.title}
+                    </span>
+                  </motion.h1>
 
-              {/* Meta information with icons */}
-              <motion.div
-                className="flex flex-wrap items-center gap-6 text-muted-foreground"
-                variants={fadeInUp}
-              >
-                <div className="flex items-center gap-1.5">
-                  <Calendar className="h-4 w-4 text-primary/70" />
-                  <span>{formatDate(post.frontmatter.date)}</span>
+                  {/* Enhanced Tags with staggered animation */}
+                  <motion.div
+                    className="flex flex-wrap gap-3 mb-6"
+                    variants={{
+                      hidden: {},
+                      visible: { transition: { staggerChildren: 0.05 } },
+                    }}
+                  >
+                    {post.frontmatter.tags.map((tag: string) => (
+                      <motion.div
+                        key={tag}
+                        variants={{
+                          hidden: { opacity: 0, scale: 0.8, y: 10 },
+                          visible: {
+                            opacity: 1,
+                            scale: 1,
+                            y: 0,
+                            transition: { duration: 0.3 },
+                          },
+                        }}
+                        whileHover={{ y: -2, scale: 1.05, transition: { duration: 0.2 } }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Badge
+                          variant="outline"
+                          className="bg-background/60 backdrop-blur-sm border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 px-4 py-2 text-sm font-medium shadow-sm"
+                        >
+                          <span className="w-2 h-2 rounded-full bg-primary/60 mr-2"></span>
+                          {tag}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+
+                  {/* Enhanced Meta information with icons */}
+                  <motion.div
+                    className="flex flex-wrap items-center gap-8 text-muted-foreground"
+                    variants={fadeInUp}
+                  >
+                    <motion.div 
+                      className="flex items-center gap-3 px-4 py-2 bg-background/40 rounded-full backdrop-blur-sm border border-border/20"
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(var(--background), 0.6)" }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Calendar className="h-4 w-4 text-primary/80" />
+                      <span className="font-medium">{formatDate(post.frontmatter.date)}</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-3 px-4 py-2 bg-background/40 rounded-full backdrop-blur-sm border border-border/20"
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(var(--background), 0.6)" }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <User className="h-4 w-4 text-primary/80" />
+                      <span className="font-medium">{post.frontmatter.author}</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-3 px-4 py-2 bg-background/40 rounded-full backdrop-blur-sm border border-border/20"
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(var(--background), 0.6)" }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Clock className="h-4 w-4 text-primary/80" />
+                      <span className="font-medium">{readingTime}</span>
+                    </motion.div>
+                  </motion.div>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <User className="h-4 w-4 text-primary/70" />
-                  <span>{post.frontmatter.author}</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Clock className="h-4 w-4 text-primary/70" />
-                  <span>{readingTime}</span>
-                </div>
-              </motion.div>
+              </div>
             </motion.div>
 
             {post.frontmatter.image && (
               <motion.div
-                className="mb-8 rounded-lg overflow-hidden shadow-lg"
+                className="mb-12"
                 variants={fadeInUp}
-                whileInView={{ scale: 1 }}
-                initial={{ scale: 0.98 }}
-                transition={{ duration: 0.5 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                initial={{ scale: 0.95, opacity: 0.8 }}
+                transition={{ duration: 0.6 }}
               >
-                <Image
-                  src={post.frontmatter.image}
-                  alt={post.frontmatter.title}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="w-full h-auto"
-                />
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/20">
+                  {/* Enhanced image backdrop */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-20"></div>
+                  
+                  <Image
+                    src={post.frontmatter.image}
+                    alt={post.frontmatter.title}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full h-auto relative z-10 transition-transform duration-700 hover:scale-105"
+                  />
+                  
+                  {/* Enhanced overlay effects */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-30"></div>
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-40"></div>
+                </div>
+                
+                {/* Image caption area */}
+                <div className="mt-4 text-center">
+                  <p className="text-sm text-muted-foreground italic">
+                    Featured image for &ldquo;{post.frontmatter.title}&rdquo;
+                  </p>
+                </div>
               </motion.div>
             )}
 
-            {/* Table of Contents (mobile only) */}
+            {/* Enhanced Table of Contents (mobile only) */}
             <motion.div
               variants={fadeInUp}
               className="lg:hidden mb-8"
               ref={tocRef}
             >
-              <div className="p-4 bg-muted/10 rounded-lg border border-border/20 shadow-sm">
-                <Button
-                  variant="outline"
-                  className="w-full flex justify-between items-center mb-2"
-                  onClick={() => setShowToc(!showToc)}
-                >
-                  <span className="flex items-center gap-2">
-                    <List className="h-4 w-4" />
-                    Table of Contents
-                  </span>
-                  <span className="text-xs">{showToc ? "Hide" : "Show"}</span>
-                </Button>
+              <div className="relative">
+                {/* Enhanced backdrop with blur effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background/80 to-background/95 backdrop-blur-xl rounded-2xl border border-border/30 shadow-xl"></div>
+                
+                <div className="relative p-6">
+                  <Button
+                    variant="outline"
+                    className="w-full flex justify-between items-center bg-background/80 backdrop-blur-sm border-border/40 hover:bg-background/90 transition-all duration-300 shadow-sm"
+                    onClick={() => setShowToc(!showToc)}
+                  >
+                    <span className="flex items-center gap-3">
+                      <div className="p-1.5 rounded-lg bg-primary/10">
+                        <List className="h-4 w-4 text-primary" />
+                      </div>
+                      <span className="font-medium">Table of Contents</span>
+                      <Badge variant="secondary" className="ml-2 px-2 py-0.5 text-xs">
+                        {toc.length}
+                      </Badge>
+                    </span>
+                    <motion.div
+                      animate={{ rotate: showToc ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </motion.div>
+                  </Button>
 
-                {showToc && toc.length > 0 && (
-                  <div className="mt-3">
-                    <ul className="space-y-2 text-sm">
-                      {toc.map(({ text, id, level }) => (
-                        <li
-                          key={id}
-                          className={`
-                            transition-all duration-200
-                            ${
-                              level === 2
-                                ? "ml-3"
-                                : level === 3
-                                ? "ml-6"
-                                : level >= 4
-                                ? "ml-9"
-                                : ""
-                            }
-                          `}
-                        >
-                          <button
-                            onClick={() => handleTocItemClick(id)}
-                            className={`
-                              text-left block w-full px-2 py-1 rounded hover:bg-muted/50 
-                              transition-colors duration-200 border-l-2
-                              ${
-                                activeId === id
-                                  ? "border-primary text-primary font-medium"
-                                  : "border-transparent text-muted-foreground hover:text-foreground"
-                              }
-                            `}
-                          >
-                            {text}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                  {showToc && toc.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="mt-4 overflow-hidden"
+                    >
+                      <div className="bg-background/60 backdrop-blur-sm rounded-xl border border-border/20 p-4">
+                        <ul className="space-y-1.5 text-sm max-h-80 overflow-y-auto custom-scrollbar">
+                          {toc.map(({ text, id, level }, index) => (
+                            <motion.li
+                              key={id}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.3, delay: index * 0.05 }}
+                              className={`
+                                transition-all duration-200 rounded-lg
+                                ${
+                                  level === 1
+                                    ? "font-semibold text-foreground"
+                                    : level === 2
+                                    ? "ml-0"
+                                    : level === 3
+                                    ? "ml-3"
+                                    : level >= 4
+                                    ? "ml-6"
+                                    : ""
+                                }
+                              `}
+                            >
+                              <button
+                                onClick={() => handleTocItemClick(id)}
+                                className={`
+                                  w-full text-left block px-3 py-2 rounded-lg transition-all duration-200 
+                                  hover:bg-primary/10 group relative overflow-hidden
+                                  ${
+                                    activeId === id
+                                      ? "bg-primary/15 text-primary font-medium shadow-sm"
+                                      : "text-muted-foreground hover:text-foreground"
+                                  }
+                                `}
+                              >
+                                {/* Animated background indicator */}
+                                <div className={`
+                                  absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 
+                                  transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300
+                                  ${activeId === id ? 'translate-x-0' : ''}
+                                `} />
+                                
+                                <div className="relative flex items-center gap-2">
+                                  <span className={`
+                                    flex-shrink-0 transition-colors duration-200
+                                    ${activeId === id ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'}
+                                  `}>
+                                    {level === 1 ? '●' : level === 2 ? '○' : '▪'}
+                                  </span>
+                                  <span className="line-clamp-2">{text}</span>
+                                </div>
+                              </button>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
               </div>
             </motion.div>
 
-            {/* Article content */}
+            {/* Enhanced Article content */}
             <motion.article
-              className="prose prose-lg dark:prose-invert max-w-none"
+              className="relative"
               variants={fadeInUp}
             >
-              <MdxRemoteRender
-                mdxSource={post.serializedContent}
-                mdxScope={{}}
-              />
+              {/* Enhanced backdrop for article content */}
+              <div className="absolute inset-0 bg-gradient-to-br from-background/50 via-background/80 to-background/95 backdrop-blur-sm rounded-3xl border border-border/20 shadow-xl"></div>
+              
+              <div className="relative p-8 md:p-12">
+                <div className="prose prose-lg prose-slate dark:prose-invert max-w-none 
+                  prose-headings:font-bold prose-headings:tracking-tight
+                  prose-h1:text-3xl prose-h1:mb-8 prose-h1:text-foreground
+                  prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:text-foreground
+                  prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-foreground
+                  prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-3 prose-h4:text-foreground
+                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
+                  prose-strong:text-foreground prose-strong:font-semibold
+                  prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+                  prose-pre:bg-slate-900 prose-pre:border prose-pre:border-border/20 prose-pre:rounded-xl
+                  prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-xl
+                  prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:transition-colors
+                  prose-ul:my-6 prose-ol:my-6 prose-li:my-2
+                  prose-img:rounded-xl prose-img:shadow-lg prose-img:border prose-img:border-border/20
+                ">
+                  <MdxRemoteRender
+                    mdxSource={post.serializedContent}
+                    mdxScope={{}}
+                  />
+                </div>
+              </div>
             </motion.article>
 
             {/* Share and comment section */}
@@ -411,65 +518,121 @@ export default function BlogPostClient({ post }: { post: Post }) {
             </motion.div>
           </motion.div>
 
-          {/* TOC Sidebar (desktop) */}
+          {/* Enhanced TOC Sidebar (desktop) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="hidden lg:block lg:col-span-1"
           >
-            <div className="sticky top-24 max-h-[calc(100vh-96px)] overflow-auto">
-              <div className="p-5 bg-muted/10 rounded-lg border border-border/20 shadow-sm">
-                <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                  <List className="h-4 w-4" />
-                  Table of Contents
-                  <span className="text-xs text-muted-foreground ml-auto">
-                    {toc.length} items
-                  </span>
-                </h2>
+            <div className="sticky top-24 max-h-[calc(100vh-6rem)] overflow-hidden">
+              <div className="relative h-full">
+                {/* Enhanced backdrop with multiple layers */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-background/90 to-background/95 backdrop-blur-xl rounded-2xl border border-border/30 shadow-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-background/10 rounded-2xl"></div>
+                
+                <div className="relative p-6 h-full flex flex-col">
+                  {/* Header with enhanced styling */}
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-lg font-semibold flex items-center gap-3">
+                      <div className="p-2 rounded-xl bg-primary/10">
+                        <BookOpen className="h-4 w-4 text-primary" />
+                      </div>
+                      Contents
+                    </h2>
+                    <Badge variant="secondary" className="px-3 py-1 text-xs font-medium bg-background/80 backdrop-blur-sm">
+                      {toc.length} sections
+                    </Badge>
+                  </div>
 
-                {toc.length > 0 ? (
-                  <nav className="toc-nav">
-                    <ul className="space-y-2 text-sm">
-                      {toc.map(({ text, id, level }) => (
-                        <li
-                          key={id}
-                          className={`
-                            transition-all duration-200
-                            ${
-                              level === 2
-                                ? "ml-3"
-                                : level === 3
-                                ? "ml-6"
-                                : level >= 4
-                                ? "ml-9"
-                                : ""
-                            }
-                          `}
-                        >
-                          <button
-                            onClick={() => handleTocItemClick(id)}
-                            className={`
-                              text-left block w-full px-2 py-1 rounded hover:bg-muted/50 
-                              transition-colors duration-200 border-l-2
-                              ${
-                                activeId === id
-                                  ? "border-primary text-primary font-medium"
-                                  : "border-transparent text-muted-foreground hover:text-foreground"
-                              }
-                            `}
-                          >
-                            {text}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                ) : (
-                  <p className="text-muted-foreground text-sm">
-                    No headings found in this article.
-                  </p>
-                )}
+                  {toc.length > 0 ? (
+                    <nav className="flex-1 overflow-hidden">
+                      <div className="h-full overflow-y-auto custom-scrollbar pr-2">
+                        <ul className="space-y-1.5 text-sm">
+                          {toc.map(({ text, id, level }, index) => (
+                            <motion.li
+                              key={id}
+                              initial={{ opacity: 0, x: 10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.3, delay: index * 0.03 }}
+                              className={`
+                                transition-all duration-200 rounded-xl overflow-hidden
+                                ${
+                                  level === 1
+                                    ? "font-bold text-foreground"
+                                    : level === 2
+                                    ? "ml-0"
+                                    : level === 3
+                                    ? "ml-2"
+                                    : level >= 4
+                                    ? "ml-4"
+                                    : ""
+                                }
+                              `}
+                            >
+                              <button
+                                onClick={() => handleTocItemClick(id)}
+                                className={`
+                                  w-full text-left block px-4 py-3 rounded-xl transition-all duration-300 
+                                  hover:bg-primary/10 group relative overflow-hidden
+                                  ${
+                                    activeId === id
+                                      ? "bg-primary/20 text-primary font-semibold shadow-sm border border-primary/20"
+                                      : "text-muted-foreground hover:text-foreground"
+                                  }
+                                `}
+                              >
+                                {/* Enhanced active indicator */}
+                                {activeId === id && (
+                                  <motion.div
+                                    layoutId="activeSection"
+                                    className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-xl"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                  />
+                                )}
+                                
+                                {/* Hover animation */}
+                                <motion.div
+                                  className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/8 to-primary/0 rounded-xl"
+                                  initial={{ x: "-100%" }}
+                                  whileHover={{ x: "100%" }}
+                                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                                />
+                                
+                                <div className="relative flex items-start gap-3">
+                                  <div className={`
+                                    flex-shrink-0 mt-1 transition-colors duration-200
+                                    ${activeId === id ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'}
+                                  `}>
+                                    {level === 1 ? (
+                                      <div className="w-2 h-2 rounded-full bg-current" />
+                                    ) : level === 2 ? (
+                                      <div className="w-1.5 h-1.5 rounded-full bg-current" />
+                                    ) : (
+                                      <div className="w-1 h-1 rounded-full bg-current" />
+                                    )}
+                                  </div>
+                                  <span className="line-clamp-3 leading-relaxed">{text}</span>
+                                </div>
+                              </button>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    </nav>
+                  ) : (
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="text-center p-6">
+                        <div className="w-12 h-12 rounded-full bg-muted/20 flex items-center justify-center mx-auto mb-3">
+                          <List className="h-6 w-6 text-muted-foreground" />
+                        </div>
+                        <p className="text-muted-foreground text-sm">
+                          No headings found in this article.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </motion.div>

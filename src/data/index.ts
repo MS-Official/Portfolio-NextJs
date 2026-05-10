@@ -5,16 +5,16 @@ export const domainPath = "https://portfolio-ms-lac.vercel.app/p/";
 
 export const experiences: Experience[] = [
   {
-    title: "Intern | Software Developer | Frontend & Backend Engineer",
-    company: "Heaven'sCode (PVT) LTD",
-    companyUrl: "https://theheavenscode.com/",
+    title: "Software Developer | BA Analyst",
+    company: "GeoEDGE (PVT) LTD",
+    companyUrl: "https://geoedge.lk/",
     location: "Hybrid (Sri Lanka)",
     type: "Internship",
     startDate: "2025-10-06",
     endDate: undefined,
     description: "Contributed to multiple client and internal software projects under Heaven’sCode, focusing on performance, scalability, and modern web design.",
     responsibilities: [
-      "Developed responsive and SEO-optimized websites using Angular and Tailwind CSS.",
+      "Developed responsive and SEO-optimised websites using Angular and Tailwind CSS.",
       "Built RESTful APIs and integrated backend logic using Node.js, SpringBoot, and Postgresql using Docker.",
       "Implemented CI/CD pipelines using Azure Devops and deployed projects on Firebase, Vercel, and cPanel servers.",
       "Collaborated closely with UI/UX designers to ensure visually appealing and user-friendly interfaces.",
@@ -24,14 +24,14 @@ export const experiences: Experience[] = [
       "Angular", "Node.js", "SpringBoot", "Docker", "JHipster", "Postgresql", "Azure Devops",
       "Tailwind CSS", "Bootstrap", "Git", "CI/CD", "GitHub", "FHipster"
     ],
-    logo: "/images/companies/hc-logo.png",
+    logo: "/images/companies/geoedge.png",
     projects: []
   },
   {
   title: "Intern | Software Developer | Frontend & Backend Engineer",
   company: "Heaven'sCode (PVT) LTD",
   companyUrl: "https://theheavenscode.com/",
-  location: "Hybrid (Sri Lanka)",
+  location: "Remote",
   type: "Internship",
   startDate: "2025-10-06",
   endDate: undefined,
@@ -53,7 +53,7 @@ export const experiences: Experience[] = [
   {
     title: "Software Engineer | Full-Stack Developer ( Acadamic Projects )",
     company: "Team CodeMe",
-    companyUrl: "",
+    companyUrl: "https://www.teamcodeme.com/",
     location: "Remote",
     type: "Project-Based",
     startDate: "2024-08-28",
@@ -68,7 +68,7 @@ export const experiences: Experience[] = [
       "Delivered projects like SLIIT Cinema, ShoeLand E-Commerce, Hospital Management System, and more."
     ],
     skills: ["Java", "JavaScript", "Node.js", "PHP", "React.js", "Firebase", "MongoDB", "MySQL", "HTML", "CSS", "Git", "Agile", "REST APIs"],
-    logo: "",
+    logo: "/images/companies/teamcodeme.png",
     projects: []
   },
   {

@@ -5,10 +5,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: `${personalInfo.name} | Resume`,
-  description: "Professional resume of M.M.M.Shurafa, showcasing experience, skills, and education.",
+  description: `Professional resume of ${personalInfo.fullname}, showcasing experience, skills, and education.`,
   keywords: [
     "resume",
-    "MMM Shurafa",
+    "Mahdiya Shurafa",
     "software engineer",
     "professional resume",
     "experience",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   creator: personalInfo.name,
   openGraph: {
     title: `${personalInfo.name} | Resume`,
-    description: "Professional resume of M.M.M.Shurafa, showcasing experience, skills, and education.",
+    description: `Professional resume of ${personalInfo.fullname}, showcasing experience, skills, and education.`,
     url: `${domainPath}/resume`,
     siteName: `${personalInfo.name}'s Resume`,
     images: [
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
         url: '/images/projects/portfolio.jpg',
         width: 1200,
         height: 630,
-        alt: 'Resume | MMM Shurafa',
+        alt: `Resume | ${personalInfo.fullname}`,
       }
     ],
     type: "website"
   },
   twitter: {
     title: `${personalInfo.name} | Resume`,
-    description: "Professional resume of M.M.M.Shurafa, showcasing experience, skills, and education.",
+    description: `Professional resume of ${personalInfo.fullname}, showcasing experience, skills, and education.`,
     images: ['/images/projects/portfolio.jpg'],
     card: "summary_large_image",
     creator: personalInfo.name,

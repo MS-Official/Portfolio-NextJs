@@ -56,9 +56,7 @@ export function AboutSection() {
               {personalInfo.summary}
             </p>
             <p className="text-muted-foreground mb-6">
-              I specialize in front-end development with React and TypeScript, but I&apos;m also proficient 
-              with back-end technologies like Node.js and databases. I believe in writing clean, maintainable 
-              code and creating intuitive user experiences.
+              I work across software engineering and business analysis—building features end-to-end while keeping requirements, stakeholders, and delivery aligned. I care about clean, maintainable code, strong communication, and shipping outcomes that are measurable and user-focused.
             </p>
             <div className="flex gap-2">
               <Link href="/resume" className={cn(buttonVariants({ variant: "outline" }), "rounded-full px-6")}>

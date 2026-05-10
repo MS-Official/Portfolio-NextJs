@@ -5,6 +5,29 @@ export const domainPath = "https://portfolio-ms-lac.vercel.app/p/";
 
 export const experiences: Experience[] = [
   {
+    title: "Intern | Software Developer | Frontend & Backend Engineer",
+    company: "Heaven'sCode (PVT) LTD",
+    companyUrl: "https://theheavenscode.com/",
+    location: "Hybrid (Sri Lanka)",
+    type: "Internship",
+    startDate: "2025-10-06",
+    endDate: undefined,
+    description: "Contributed to multiple client and internal software projects under Heaven’sCode, focusing on performance, scalability, and modern web design.",
+    responsibilities: [
+      "Developed responsive and SEO-optimized websites using Angular and Tailwind CSS.",
+      "Built RESTful APIs and integrated backend logic using Node.js, SpringBoot, and Postgresql using Docker.",
+      "Implemented CI/CD pipelines using Azure Devops and deployed projects on Firebase, Vercel, and cPanel servers.",
+      "Collaborated closely with UI/UX designers to ensure visually appealing and user-friendly interfaces.",
+      "Worked on real estate, e-commerce, and portfolio-based projects with optimized page load speeds and high Lighthouse scores."
+    ],
+    skills: [
+      "Angular", "Node.js", "SpringBoot", "Docker", "JHipster", "Postgresql", "Azure Devops",
+      "Tailwind CSS", "Bootstrap", "Git", "CI/CD", "GitHub", "FHipster"
+    ],
+    logo: "/images/companies/hc-logo.png",
+    projects: []
+  },
+  {
   title: "Intern | Software Developer | Frontend & Backend Engineer",
   company: "Heaven'sCode (PVT) LTD",
   companyUrl: "https://theheavenscode.com/",
@@ -462,8 +485,9 @@ export const certifications = [
 
 
 export const skills = {
-  languages: ["TypeScript", "JavaScript", "Java", "R", "Python"],
-  frameworks: ["Next.js", "React", "Express", "Node.js", "React Native", "Flutter"],
+  spokenLanguages: ["English", "Hindi", "Sinhala", "Tamil"],
+  languages: ["Java", "Python", "JavaScript", "PHP", "Go", "TypeScript"],
+  frameworks: ["Next.js", "React", "Express", "Node.js", "Spring Boot", "Flutter"],
   databases: ["PostgreSQL", "MySQL"],
   tools: ["Git", "Docker", "Postman", "Supabase", "Google Colab", "Hugging Face Transformers", "PyTorch"]
 };

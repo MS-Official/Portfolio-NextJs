@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { skills as skillsData } from "@/data";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -18,22 +19,15 @@ const staggerContainer = {
   }
 };
 
-const skills = [
-  { name: "Java", level: 85 },              // Used in hospital system, 2D game
-  { name: "JavaScript", level: 85 },        // Used in most web projects
-  { name: "Next.js (React)", level: 80 },   // Used in QR-Barcode Generator, Team Codeme
-  { name: "Python", level: 75 },            // Used in QR Code & Barcode Generators
-  { name: "Git", level: 75 },               // Used consistently across all dev work
-  { name: "PHP", level: 70 },               // Used in ShoeLand and ClassTask7_Nature
-  { name: "MySQL", level: 70 },             // Used in hospital and SRMS systems
-  { name: "C++", level: 60 },               // Coursework and possible mini projects
-  { name: "Linux", level: 60 },             // Academic and development environment
-  { name: "TypeScript", level: 50 },        // Not clearly reflected in your repos
-  { name: "Gin (Go)", level: 30 },          // Not used in your current projects
-  { name: "Flutter", level: 20 }            // Mentioned in studies, but no direct projects
-]
-.sort((a, b) => b.level - a.level)
-.slice(0, 5); // Top 5 most proficient
+const technicalSkills = [
+  { name: "Java", level: 85 },
+  { name: "Python", level: 78 },
+  { name: "JavaScript", level: 82 },
+  { name: "PHP", level: 70 },
+  { name: "Go", level: 55 },
+  { name: "TypeScript", level: 72 },
+  { name: "Flutter", level: 55 },
+];
 
 const softSkills = [
   "Team Collaboration",
@@ -86,8 +80,9 @@ export function SkillsSection() {
         </motion.div>
         
         <Tabs defaultValue="technical" className="max-w-3xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="technical" className="text-foreground cursor-pointer">Technical Skills</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsTrigger value="technical" className="text-foreground cursor-pointer">Top Skills</TabsTrigger>
+            <TabsTrigger value="languages" className="text-foreground cursor-pointer">Languages</TabsTrigger>
             <TabsTrigger value="soft" className="text-foreground cursor-pointer">Soft Skills</TabsTrigger>
           </TabsList>
           
@@ -99,7 +94,7 @@ export function SkillsSection() {
               viewport={{ once: true, margin: "-100px" }}
               className="grid gap-4"
             >
-              {skills.map((skill, index) => (
+              {technicalSkills.map((skill, index) => (
                 <motion.div key={index} variants={fadeIn} className="mb-4">
                   <div className="flex justify-between mb-1">
                     <span className="font-medium">{skill.name}</span>
@@ -114,6 +109,23 @@ export function SkillsSection() {
                       viewport={{ once: true }}
                     />
                   </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="languages">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid gap-6 sm:grid-cols-2"
+            >
+              {(skillsData.spokenLanguages ?? []).map((lang, index) => (
+                <motion.div key={index} variants={fadeIn} className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-primary"></div>
+                  <span>{lang}</span>
                 </motion.div>
               ))}
             </motion.div>

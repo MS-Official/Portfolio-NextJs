@@ -164,18 +164,24 @@ export function EducationsSection() {
                           <Image src={edu.logo} alt={edu.institution} className="h-6 opacity-70" width={42} height={24} />
                         )}
                       </div>
-                      <Button variant="ghost" size="sm" className="text-xs h-8 px-2" asChild>
-                        <a href={edu.documents[0].url} target="_blank" className="flex items-center group">
-                          <span>View certificate</span>
-                          <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                        </a>
-                        </Button>
-                        <Button variant="ghost" size="sm" className="text-xs h-8 px-2" asChild>
-                        <a href={edu.documents[0].Turl} target="_blank" className="flex items-center group">
-                          <span>View Transcript</span>
-                          <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                        </a>
-                        </Button>
+                      <div className="flex items-center gap-2">
+                        {edu.documents?.[0]?.url && edu.documents[0].url !== "#" && (
+                          <Button variant="ghost" size="sm" className="text-xs h-8 px-2" asChild>
+                            <a href={edu.documents[0].url} target="_blank" rel="noopener noreferrer" className="flex items-center group">
+                              <span>View certificate</span>
+                              <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                            </a>
+                          </Button>
+                        )}
+                        {edu.documents?.[0]?.Turl && edu.documents[0].Turl !== "#" && (
+                          <Button variant="ghost" size="sm" className="text-xs h-8 px-2" asChild>
+                            <a href={edu.documents[0].Turl} target="_blank" rel="noopener noreferrer" className="flex items-center group">
+                              <span>View transcript</span>
+                              <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                            </a>
+                          </Button>
+                        )}
+                      </div>
                       
                     </div>
                     

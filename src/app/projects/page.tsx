@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Explore my portfolio of software development projects, from web applications to mobile apps and more.",
   keywords: [
     "projects",
-    "M.M.M.Shurafa",
+    "Mahdiya Shurafa",
     "software engineer",
     "portfolio",
     "web development",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         url: '/images/projects/portfolio.jpg',
         width: 1200,
         height: 630,
-        alt: 'Projects | M.M.M.Shurafa',
+        alt: `Projects | ${personalInfo.fullname}`,
       }
     ],
     type: "website",

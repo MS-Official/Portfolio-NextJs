@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Mail, Linkedin } from "lucide-react";
+import { Github, Mail, Linkedin, Phone, MapPin, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data";
 import { useState } from "react";
@@ -97,6 +97,31 @@ export function ContactSection() {
                   </a>
                 </div>
               </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-muted/30 p-3 rounded-full">
+                  <Phone className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Phone</h4>
+                  <a
+                    href={`tel:${personalInfo.contact.phone}`}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {personalInfo.contact.phone}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-muted/30 p-3 rounded-full">
+                  <MapPin className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Location</h4>
+                  <p className="text-muted-foreground">{personalInfo.contact.location}</p>
+                </div>
+              </div>
               
               <div className="flex items-start gap-4">
                 <div className="bg-muted/30 p-3 rounded-full">
@@ -110,6 +135,23 @@ export function ContactSection() {
                     className="text-muted-foreground hover:text-primary transition-colors break-all"
                   >
                     {personalInfo.contact.linkedin}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-muted/30 p-3 rounded-full">
+                  <Globe className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Portfolio</h4>
+                  <a
+                    href={`${personalInfo.contact.personalWebsite}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors break-all"
+                  >
+                    {personalInfo.contact.personalWebsite}
                   </a>
                 </div>
               </div>

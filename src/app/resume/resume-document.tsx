@@ -144,9 +144,13 @@ END:VCARD`;
         {experiences.map((job, index) => (
           <View key={index} style={styles.itemContainer}>
             <View style={styles.itemHeader}>
-              <Link src={job.companyUrl}>
+              {job.companyUrl ? (
+                <Link src={job.companyUrl}>
+                  <Text style={styles.itemCompany}>{job.company}</Text>
+                </Link>
+              ) : (
                 <Text style={styles.itemCompany}>{job.company}</Text>
-              </Link>
+              )}
               <Text style={styles.itemDate}>
                 {formatStartEndDate(job.startDate, job.endDate)}
               </Text>
@@ -220,7 +224,7 @@ END:VCARD`;
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Education</Text>
         
-        {educations.slice(0, 1).map((edu, index) => (
+        {educations.map((edu, index) => (
           <View key={index} style={styles.itemContainer}>
             <View style={styles.itemHeader}>
               <Text style={styles.itemCompany}>{edu.institution}</Text>
@@ -230,7 +234,10 @@ END:VCARD`;
             </View>
             
             <Text style={styles.itemTitle}>{edu.degree}</Text>
-            <Text style={styles.itemLocation}>{edu.location} • CGPA: {edu.cgpa}</Text>
+            <Text style={styles.itemLocation}>
+              {edu.location}
+              {edu.cgpa && edu.cgpa !== "N/A" ? ` • CGPA: ${edu.cgpa}` : ""}
+            </Text>
             
             {edu.techStacks && (
               <View style={styles.bulletItem}>
@@ -250,11 +257,15 @@ END:VCARD`;
         <Text style={styles.sectionTitle}>Certifications</Text>
 
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-          {certifications.sort((a, b) => b.issueDate.localeCompare(a.issueDate)).slice(0, 6).map((cert, index) => (
-            <Link key={index} src={cert.link} style={styles.certContainer}>
+          {certifications
+            .slice()
+            .sort((a, b) => (b.issueDate ?? "").localeCompare(a.issueDate ?? ""))
+            .slice(0, 6)
+            .map((cert, index) => (
+            <Link key={index} src={cert.link || "#"} style={styles.certContainer}>
               <Text style={styles.certName}>{cert.name}</Text>
               <Text style={styles.certDetails}>
-                {cert.issuingOrganization} • {formatDate(cert.issueDate, 'short')}
+                {[cert.issuingOrganization, cert.issueDate ? formatDate(cert.issueDate, "short") : undefined].filter(Boolean).join(" • ") || "—"}
               </Text>
             </Link>
           ))}

@@ -20,7 +20,7 @@ export function GameHero() {
       className="relative min-h-[calc(100svh-96px)] overflow-hidden py-8 sm:py-10 lg:py-12"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid items-start gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
+        <div className="grid items-start gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-center xl:gap-10">
           <div className="max-w-[46rem]">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
@@ -36,7 +36,7 @@ export function GameHero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 text-balance text-3xl font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl"
+              className="mt-5 text-balance text-3xl font-semibold leading-[1.08] tracking-tight sm:text-5xl xl:text-6xl"
             >
               <span className="text-foreground/90">Profile:</span>{" "}
               <span className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-violet-300 bg-clip-text text-transparent">
@@ -101,7 +101,7 @@ export function GameHero() {
             </motion.div>
           </div>
 
-          <div className="lg:justify-self-end">
+          <div className="xl:justify-self-end">
             <PlayerProfileCard className="w-full max-w-[520px]" />
           </div>
         </div>

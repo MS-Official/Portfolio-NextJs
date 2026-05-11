@@ -12,13 +12,7 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Icons } from "@/components/icons";
 import { MobilePauseMenu } from "@/components/game/mobile-pause-menu";
-
-const getIcon = (iconName: string, className: string = "h-4 w-4") => {
-  const IconComponent = Icons[iconName as keyof typeof Icons];
-  return IconComponent ? <IconComponent className={className} /> : null;
-};
 
 export function GameNavbar() {
   const router = useRouter();
@@ -143,7 +137,7 @@ export function GameNavbar() {
                 </div>
               </Link>
 
-              <nav className="relative hidden min-w-0 flex-1 items-center justify-center gap-1 px-1 md:flex">
+              <nav className="relative hidden min-w-0 flex-1 items-center justify-center gap-1 px-1 xl:flex">
                 {navItems.map((item) => {
                   const active = isActive(item.href);
                   return (
@@ -152,7 +146,7 @@ export function GameNavbar() {
                       type="button"
                       onClick={() => onNav(item.href)}
                       className={cn(
-                        "relative inline-flex shrink-0 items-center gap-1.5 rounded-full px-2 py-2 text-[11px] transition-colors 2xl:gap-2 2xl:px-3 2xl:text-xs",
+                        "relative inline-flex shrink-0 items-center rounded-full px-2.5 py-2 text-[11px] transition-colors 2xl:px-3 2xl:text-xs",
                         "border border-transparent",
                         active
                           ? "bg-white/8 text-foreground border-white/18"
@@ -166,14 +160,6 @@ export function GameNavbar() {
                           transition={{ type: "spring", stiffness: 320, damping: 30 }}
                         />
                       ) : null}
-                      <span
-                        className={cn(
-                          "relative hidden h-6 w-6 items-center justify-center rounded-full border border-white/12 bg-white/5 2xl:inline-flex",
-                          active ? "text-primary" : "text-muted-foreground",
-                        )}
-                      >
-                        {getIcon(item.icon, "h-4 w-4")}
-                      </span>
                       <span className="relative font-medium">{item.name}</span>
                     </button>
                   );
@@ -201,7 +187,7 @@ export function GameNavbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-9 w-9 rounded-full md:hidden hover:bg-white/6"
+                  className="h-9 w-9 rounded-full xl:hidden hover:bg-white/6"
                   onClick={() => setMobileOpen(true)}
                   aria-label="Open menu"
                 >

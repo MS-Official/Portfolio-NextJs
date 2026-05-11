@@ -92,7 +92,10 @@ export function GameNavbar() {
   return (
     <>
       <motion.header
-        className={cn("fixed left-0 right-0 top-0 z-50", "px-3 pt-3 sm:px-6 sm:pt-4")}
+        className={cn(
+          "fixed left-0 right-0 top-0 z-[80]",
+          "px-3 py-3 sm:px-6 sm:py-4",
+        )}
         initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25 }}
@@ -100,9 +103,11 @@ export function GameNavbar() {
         <HudPanel
           glow={false}
           className={cn(
-            "mx-auto max-w-6xl",
-            "border-border/55",
-            scrolled ? "bg-background/36" : "bg-background/18",
+            "mx-auto max-w-7xl",
+            "border-border/70",
+            "bg-black/55 text-foreground",
+            "shadow-[0_1px_0_hsl(var(--border)/0.35),0_28px_90px_rgba(0,0,0,0.65),0_0_0_1px_rgba(56,189,248,0.10)]",
+            scrolled ? "backdrop-blur-2xl" : "backdrop-blur-xl",
           )}
         >
           <div className="relative">
@@ -151,20 +156,20 @@ export function GameNavbar() {
                         "relative inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs transition-colors",
                         "border border-transparent",
                         active
-                          ? "bg-background/25 text-foreground border-border/60"
-                          : "text-muted-foreground hover:bg-background/15 hover:text-foreground",
+                          ? "bg-white/8 text-foreground border-white/18"
+                          : "text-muted-foreground hover:bg-white/6 hover:text-foreground",
                       )}
                     >
                       {active ? (
                         <motion.span
                           layoutId="nav-active-indicator"
-                          className="pointer-events-none absolute inset-0 rounded-full border border-primary/30 bg-primary/10"
+                          className="pointer-events-none absolute inset-0 rounded-full border border-primary/40 bg-primary/12"
                           transition={{ type: "spring", stiffness: 320, damping: 30 }}
                         />
                       ) : null}
                       <span
                         className={cn(
-                          "relative inline-flex h-6 w-6 items-center justify-center rounded-full border border-border/40 bg-background/10",
+                          "relative inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/12 bg-white/5",
                           active ? "text-primary" : "text-muted-foreground",
                         )}
                       >
@@ -184,7 +189,7 @@ export function GameNavbar() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="h-9 rounded-full border-border/55 bg-background/10 backdrop-blur hover:bg-background/20"
+                    className="h-9 rounded-full border-white/16 bg-white/5 backdrop-blur hover:bg-white/8"
                     asChild
                   >
                     <Link href="/resume">
@@ -197,7 +202,7 @@ export function GameNavbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-9 w-9 rounded-full lg:hidden hover:bg-background/15"
+                  className="h-9 w-9 rounded-full lg:hidden hover:bg-white/6"
                   onClick={() => setMobileOpen(true)}
                   aria-label="Open menu"
                 >
@@ -218,4 +223,3 @@ export function GameNavbar() {
     </>
   );
 }
-

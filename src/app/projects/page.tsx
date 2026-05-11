@@ -58,7 +58,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   // This is a server component that passes data to the client component
   return (
-    <div className="pt-24 pb-16 min-h-screen">
+    <div className="py-10 sm:py-12 min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Animated header component */}

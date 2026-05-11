@@ -23,7 +23,7 @@ export function MobilePauseMenu({
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-[60] lg:hidden"
+          className="fixed inset-0 z-[90] lg:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -51,7 +51,7 @@ export function MobilePauseMenu({
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-9 w-9 rounded-full hover:bg-background/15"
+                      className="h-9 w-9 rounded-full hover:bg-white/6"
                       onClick={onClose}
                       aria-label="Close menu"
                     >
@@ -66,15 +66,15 @@ export function MobilePauseMenu({
                         type="button"
                         onClick={() => onNavigate(item.href)}
                         className={cn(
-                          "group flex w-full items-center justify-between gap-3 rounded-2xl px-4 py-3 text-left",
+                          "group flex w-full items-center justify-between gap-3 rounded-2xl px-4 py-3.5 text-left",
                           "border border-transparent transition-colors",
                           isActive(item.href)
-                            ? "border-border/60 bg-background/25"
-                            : "hover:bg-background/15",
+                            ? "border-white/18 bg-white/7"
+                            : "hover:bg-white/6",
                         )}
                       >
                         <div className="min-w-0">
-                          <div className="truncate text-sm font-medium text-foreground/90">
+                          <div className="truncate text-[15px] font-medium text-foreground/90">
                             {item.name}
                           </div>
                           <div className="mt-0.5 truncate text-[11px] text-muted-foreground">
@@ -102,4 +102,3 @@ export function MobilePauseMenu({
     </AnimatePresence>
   );
 }
-

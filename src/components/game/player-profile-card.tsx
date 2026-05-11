@@ -14,7 +14,7 @@ export function PlayerProfileCard({ className }: { className?: string }) {
       initial={{ opacity: 0, y: 22, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.12, ease: "easeOut" }}
-      className={cn("relative", className)}
+      className={cn("relative w-full", className)}
     >
       <HudPanel className="p-6 sm:p-7">
         <div className="flex items-center justify-between gap-3">
@@ -104,4 +104,3 @@ export function PlayerProfileCard({ className }: { className?: string }) {
     </motion.div>
   );
 }
-

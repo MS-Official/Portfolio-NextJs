@@ -15,10 +15,13 @@ export function GameHero() {
   ];
 
   return (
-    <section id="home" className="relative flex min-h-[92vh] items-center overflow-hidden pt-20">
+    <section
+      id="home"
+      className="relative flex min-h-[calc(100svh-96px)] items-center overflow-hidden py-10 sm:py-14"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="max-w-2xl">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+          <div className="max-w-[46rem]">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -57,7 +60,7 @@ export function GameHero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+              className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             >
               <GameButton href="#about" variant="primary">
                 <Sparkles className="h-4 w-4" />
@@ -81,7 +84,7 @@ export function GameHero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.28 }}
-              className="mt-6 flex items-center gap-3"
+              className="mt-6 flex flex-wrap items-center gap-3"
             >
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
@@ -98,10 +101,11 @@ export function GameHero() {
             </motion.div>
           </div>
 
-          <PlayerProfileCard />
+          <div className="lg:justify-self-end">
+            <PlayerProfileCard className="w-full max-w-[520px]" />
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

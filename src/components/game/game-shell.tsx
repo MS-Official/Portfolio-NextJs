@@ -10,9 +10,8 @@ export function GameShell({ children }: { children: ReactNode }) {
       <GameHudBackground />
       <GameBootOverlay />
       <Navbar />
-      <main className="relative">{children}</main>
+      <main className="relative pt-[88px] sm:pt-[96px]">{children}</main>
       <Footer />
     </div>
   );
 }
-

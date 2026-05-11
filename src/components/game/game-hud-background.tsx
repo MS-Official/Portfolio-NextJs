@@ -4,6 +4,7 @@ export function GameHudBackground() {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
+      <div className="absolute inset-0 bg-hud-base" />
       <div className="absolute inset-0 bg-hud-space" />
       <div className="absolute inset-0 bg-hud-stars opacity-[0.55]" />
       <div className="absolute inset-0 bg-hud-grid opacity-[0.30] dark:opacity-[0.26]" />

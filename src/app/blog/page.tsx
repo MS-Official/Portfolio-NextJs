@@ -64,7 +64,7 @@ export default async function BlogPage() {
   const posts = await getAllPosts();
   
   return (
-    <div className="pt-24 pb-16 min-h-screen">
+    <div className="py-10 sm:py-12 min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <BlogClient posts={posts} />
       </div>

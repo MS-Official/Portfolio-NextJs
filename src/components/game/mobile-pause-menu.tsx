@@ -23,7 +23,7 @@ export function MobilePauseMenu({
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-[90] lg:hidden"
+          className="fixed inset-0 z-[1000] md:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

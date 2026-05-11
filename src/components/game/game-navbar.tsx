@@ -12,7 +12,6 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { HudPanel } from "@/components/game/hud-panel";
 import { Icons } from "@/components/icons";
 import { MobilePauseMenu } from "@/components/game/mobile-pause-menu";
 
@@ -93,33 +92,33 @@ export function GameNavbar() {
     <>
       <motion.header
         className={cn(
-          "fixed left-0 right-0 top-0 z-[80]",
-          "px-3 py-3 sm:px-6 sm:py-4",
+          "fixed left-0 right-0 top-0 z-[999]",
+          "px-3 py-3 sm:px-5",
         )}
         initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25 }}
       >
-        <HudPanel
-          glow={false}
+        <div
           className={cn(
-            "mx-auto max-w-7xl",
-            "border-border/70",
-            "bg-black/55 text-foreground",
-            "shadow-[0_1px_0_hsl(var(--border)/0.35),0_28px_90px_rgba(0,0,0,0.65),0_0_0_1px_rgba(56,189,248,0.10)]",
+            "relative mx-auto w-full max-w-7xl overflow-hidden rounded-2xl",
+            "border border-cyan-200/20 bg-black/88 text-foreground",
+            "shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_18px_70px_rgba(0,0,0,0.75),0_0_45px_rgba(56,189,248,0.10)]",
             scrolled ? "backdrop-blur-2xl" : "backdrop-blur-xl",
           )}
         >
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-hud-panel-lines opacity-[0.18]" />
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent" />
           <div className="relative">
             <div
               className="absolute left-0 top-0 h-[2px] bg-gradient-to-r from-cyan-300/70 via-indigo-300/70 to-violet-300/70"
               style={{ width: `${Math.min(1, Math.max(0, scrollProgress)) * 100}%` }}
             />
 
-            <div className="flex h-14 items-center justify-between gap-3 px-3 sm:h-16 sm:px-4">
+            <div className="flex min-h-14 items-center justify-between gap-3 px-3 py-2 sm:min-h-16 sm:px-4">
               <Link
                 href="/"
-                className="flex min-w-0 items-center gap-2"
+                className="flex min-w-0 shrink-0 items-center gap-2"
                 onClick={() => setMobileOpen(false)}
               >
                 <div className="relative">
@@ -144,7 +143,7 @@ export function GameNavbar() {
                 </div>
               </Link>
 
-              <nav className="relative hidden items-center gap-1 lg:flex">
+              <nav className="relative hidden min-w-0 flex-1 items-center justify-center gap-1 px-1 md:flex">
                 {navItems.map((item) => {
                   const active = isActive(item.href);
                   return (
@@ -153,7 +152,7 @@ export function GameNavbar() {
                       type="button"
                       onClick={() => onNav(item.href)}
                       className={cn(
-                        "relative inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs transition-colors",
+                        "relative inline-flex shrink-0 items-center gap-1.5 rounded-full px-2 py-2 text-[11px] transition-colors 2xl:gap-2 2xl:px-3 2xl:text-xs",
                         "border border-transparent",
                         active
                           ? "bg-white/8 text-foreground border-white/18"
@@ -169,7 +168,7 @@ export function GameNavbar() {
                       ) : null}
                       <span
                         className={cn(
-                          "relative inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/12 bg-white/5",
+                          "relative hidden h-6 w-6 items-center justify-center rounded-full border border-white/12 bg-white/5 2xl:inline-flex",
                           active ? "text-primary" : "text-muted-foreground",
                         )}
                       >
@@ -202,7 +201,7 @@ export function GameNavbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-9 w-9 rounded-full lg:hidden hover:bg-white/6"
+                  className="h-9 w-9 rounded-full md:hidden hover:bg-white/6"
                   onClick={() => setMobileOpen(true)}
                   aria-label="Open menu"
                 >
@@ -211,7 +210,7 @@ export function GameNavbar() {
               </div>
             </div>
           </div>
-        </HudPanel>
+        </div>
       </motion.header>
 
       <MobilePauseMenu

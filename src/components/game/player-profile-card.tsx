@@ -32,7 +32,7 @@ export function PlayerProfileCard({ className }: { className?: string }) {
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-[120px_1fr]">
-          <div className="relative h-[120px] w-[120px] overflow-hidden rounded-2xl border border-border/55 bg-background/10">
+          <div className="relative mx-auto h-[120px] w-[120px] overflow-hidden rounded-2xl border border-border/55 bg-background/10 sm:mx-0">
             <Image
               src={personalInfo.profilePicture}
               alt={`${personalInfo.name} profile`}
@@ -51,12 +51,12 @@ export function PlayerProfileCard({ className }: { className?: string }) {
             ].map((row) => (
               <div
                 key={row.k}
-                className="flex items-start justify-between gap-4 rounded-xl border border-border/55 bg-background/10 px-4 py-3"
+                className="flex flex-col gap-1 rounded-xl border border-border/55 bg-background/10 px-4 py-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
               >
                 <span className="text-xs font-semibold tracking-wide text-muted-foreground">
                   {row.k.toUpperCase()}
                 </span>
-                <span className="text-right text-xs text-foreground/90">
+                <span className="break-words text-xs text-foreground/90 sm:text-right">
                   {row.v}
                 </span>
               </div>

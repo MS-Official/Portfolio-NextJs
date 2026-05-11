@@ -17,10 +17,10 @@ export function GameHero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[calc(100svh-96px)] items-center overflow-hidden py-10 sm:py-14"
+      className="relative min-h-[calc(100svh-96px)] overflow-hidden py-8 sm:py-10 lg:py-12"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+        <div className="grid items-start gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
           <div className="max-w-[46rem]">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
@@ -36,7 +36,7 @@ export function GameHero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl"
+              className="mt-5 text-balance text-3xl font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl"
             >
               <span className="text-foreground/90">Profile:</span>{" "}
               <span className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-violet-300 bg-clip-text text-transparent">
@@ -60,7 +60,7 @@ export function GameHero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+              className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 2xl:flex 2xl:flex-wrap 2xl:items-center [&>a]:w-full 2xl:[&>a]:w-auto"
             >
               <GameButton href="#about" variant="primary">
                 <Sparkles className="h-4 w-4" />

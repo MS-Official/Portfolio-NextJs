@@ -14,7 +14,7 @@ export function GameButton({
   className?: string;
 }) {
   const base =
-    "relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-5 py-3 text-sm font-medium " +
+    "relative inline-flex min-h-12 items-center justify-center overflow-hidden rounded-full px-5 py-3 text-sm font-medium " +
     "transition-[transform,background-color,border-color,color,box-shadow] active:scale-[0.98] " +
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30";
   const v =
@@ -34,7 +34,9 @@ export function GameButton({
         )}
       />
       <span aria-hidden className="pointer-events-none absolute inset-0 bg-hud-scanlines opacity-0 transition-opacity duration-300 group-hover:opacity-[0.12]" />
-      <span className="relative">{children}</span>
+      <span className="relative inline-flex items-center justify-center gap-2 whitespace-nowrap">
+        {children}
+      </span>
     </Link>
   );
 }

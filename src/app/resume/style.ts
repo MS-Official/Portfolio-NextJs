@@ -117,8 +117,10 @@ export const styles = StyleSheet.create({
   },
   itemHeader: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    gap: 6,
     marginBottom: 4,
   },
   itemTitle: {
@@ -128,12 +130,15 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 4,
     marginTop: 1,
+    minWidth: 0,
   },
   itemCompany: {
     fontSize: 11,
     fontWeight: 'bold',
     color: '#3182ce',
     textDecoration: 'none',
+    minWidth: 0,
+    flexShrink: 1,
   },
   itemDate: {
     fontSize: 9,
@@ -142,6 +147,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#e2e8f0',
     padding: '2 6',
     borderRadius: 3,
+    flexShrink: 0,
   },
   itemLocation: {
     fontSize: 9,
@@ -165,17 +171,20 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   bulletPoint: {
-    width: 6,
-    fontSize: 8,
+    width: 16,
+    minWidth: 16,
+    fontSize: 10,
     color: '#3182ce',
     marginTop: 1,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   bulletText: {
     flex: 1,
     fontSize: 9,
     color: '#4a5568',
     lineHeight: 1.4,
+    marginLeft: 4,
   },
   
   // Enhanced skills section with modern design
@@ -210,13 +219,15 @@ export const styles = StyleSheet.create({
     color: '#4a5568',
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     marginBottom: 6,
     fontFamily: 'Open Sans',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   skillTitle: {
     fontWeight: 'bold',
     width: 80,
+    minWidth: 80,
     color: '#1a202c',
     fontSize: 10,
   },

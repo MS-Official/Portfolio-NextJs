@@ -10,7 +10,7 @@ export const experiences: Experience[] = [
     companyUrl: "https://geoedge.lk/",
     location: "Hybrid (Sri Lanka)",
     type: "Full-Time",
-    startDate: "2025-10-06",
+    startDate: "2026-01-01",
     endDate: undefined,
     description: "Contributed to multiple client and internal software projects under Heaven’sCode, focusing on performance, scalability, and modern web design.",
     responsibilities: [

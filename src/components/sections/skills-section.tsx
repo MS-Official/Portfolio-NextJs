@@ -1,23 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Cpu, Hexagon, Layers3, Wand2 } from "lucide-react";
+
 import { skills as skillsData } from "@/data";
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
+import { SectionWrapper } from "@/components/ux/section-wrapper";
+import { HudPanel } from "@/components/game/hud-panel";
 
 const technicalSkills = [
   { name: "Java", level: 85 },
@@ -59,96 +47,159 @@ const softSkills = [
   "Flexibility to Change",
   "Open-Mindedness",
   "Prioritization",
-  "Mentoring & Coaching"
+  "Mentoring & Coaching",
+];
+
+const groups = [
+  { title: "Languages", items: skillsData.languages },
+  { title: "Frameworks", items: skillsData.frameworks },
+  { title: "Databases", items: skillsData.databases },
+  { title: "Tools", items: skillsData.tools },
 ];
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-24 bg-muted/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionWrapper
+      id="skills"
+      eyebrow={
+        <>
+          <Layers3 className="h-3.5 w-3.5 text-primary" />
+          <span className="font-medium text-foreground/80">Ability System</span>
+        </>
+      }
+      title="Ability Tree + Power Stats"
+      description="A game-style view of technical abilities, tools, and soft-skill modifiers."
+    >
+      <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-2 space-y-6"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Expertise</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Technologies and tools I&apos;ve mastered throughout my professional journey.
-          </p>
-        </motion.div>
-        
-        <Tabs defaultValue="technical" className="max-w-3xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="technical" className="text-foreground cursor-pointer">Top Skills</TabsTrigger>
-            <TabsTrigger value="languages" className="text-foreground cursor-pointer">Languages</TabsTrigger>
-            <TabsTrigger value="soft" className="text-foreground cursor-pointer">Soft Skills</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="technical">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="grid gap-4"
-            >
-              {technicalSkills.map((skill, index) => (
-                <motion.div key={index} variants={fadeIn} className="mb-4">
-                  <div className="flex justify-between mb-1">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-muted-foreground">{skill.level}%</span>
+          <HudPanel className="p-6 sm:p-7">
+            <div className="flex items-center gap-2">
+              <Hexagon className="h-4 w-4 text-primary" />
+              <h3 className="text-sm font-semibold tracking-[0.18em] text-muted-foreground">
+                ABILITY TREE
+              </h3>
+            </div>
+
+            <div className="mt-6 grid gap-5 md:grid-cols-2">
+              {groups.map((g) => (
+                <div key={g.title} className="rounded-2xl border border-border/50 bg-background/10 p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-xs font-semibold tracking-[0.18em] text-muted-foreground">
+                      {g.title.toUpperCase()}
+                    </div>
+                    <div className="text-[11px] text-muted-foreground">
+                      {g.items.length} unlocked
+                    </div>
                   </div>
-                  <div className="h-2.5 bg-muted/50 rounded-full overflow-hidden">
-                    <motion.div 
-                      className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full"
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {g.items.map((x) => (
+                      <span
+                        key={x}
+                        className="relative rounded-2xl border border-border/50 bg-background/10 px-3 py-1.5 text-[11px] text-foreground/90 backdrop-blur transition-transform hover:-translate-y-0.5"
+                      >
+                        <span className="absolute -left-1 top-1/2 h-2 w-2 -translate-y-1/2 rounded-sm border border-border/60 bg-primary/20" />
+                        <span className="pl-2">{x}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </HudPanel>
+
+          <HudPanel className="p-6 sm:p-7">
+            <div className="flex items-center gap-2">
+              <Cpu className="h-4 w-4 text-primary" />
+              <h3 className="text-sm font-semibold tracking-[0.18em] text-muted-foreground">
+                POWER STATS
+              </h3>
+            </div>
+
+            <div className="mt-6 grid gap-4">
+              {technicalSkills.map((s, idx) => (
+                <div key={s.name} className="rounded-2xl border border-border/50 bg-background/10 px-4 py-3">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="text-sm font-medium text-foreground/90">
+                      {s.name}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {s.level}%
+                    </div>
+                  </div>
+                  <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-muted/20">
+                    <motion.div
+                      className="h-full rounded-full bg-gradient-to-r from-cyan-300/80 via-indigo-300/80 to-violet-300/80"
                       initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
+                      whileInView={{ width: `${s.level}%` }}
                       viewport={{ once: true }}
+                      transition={{
+                        duration: 0.9,
+                        delay: idx * 0.05,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                     />
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
-          </TabsContent>
+            </div>
+          </HudPanel>
+        </motion.div>
 
-          <TabsContent value="languages">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="grid gap-6 sm:grid-cols-2"
-            >
-              {(skillsData.spokenLanguages ?? []).map((lang, index) => (
-                <motion.div key={index} variants={fadeIn} className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-primary"></div>
-                  <span>{lang}</span>
-                </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="space-y-6"
+        >
+          <HudPanel className="p-6 sm:p-7">
+            <div className="flex items-center gap-2">
+              <Wand2 className="h-4 w-4 text-primary" />
+              <h3 className="text-sm font-semibold tracking-[0.18em] text-muted-foreground">
+                MODIFIERS (SOFT SKILLS)
+              </h3>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {softSkills.map((s, i) => (
+                <span
+                  key={`${s}-${i}`}
+                  className="rounded-full border border-border/50 bg-background/10 px-3 py-1 text-[11px] text-muted-foreground backdrop-blur transition-colors hover:bg-background/20 hover:text-foreground"
+                >
+                  {s}
+                </span>
               ))}
-            </motion.div>
-          </TabsContent>
-          
-          <TabsContent value="soft">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="grid gap-6 sm:grid-cols-2"
-            >
-              {softSkills.map((skill, index) => (
-                <motion.div key={index} variants={fadeIn} className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-primary"></div>
-                  <span>{skill}</span>
-                </motion.div>
+            </div>
+          </HudPanel>
+
+          <HudPanel className="p-6 sm:p-7">
+            <div className="text-xs font-semibold tracking-[0.18em] text-muted-foreground">
+              COMMS (LANGUAGES)
+            </div>
+            <div className="mt-5 grid gap-3">
+              {(skillsData.spokenLanguages ?? []).map((lang) => (
+                <div
+                  key={lang}
+                  className="flex items-center justify-between gap-3 rounded-2xl border border-border/50 bg-background/10 px-4 py-3"
+                >
+                  <span className="text-sm font-medium text-foreground/90">
+                    {lang}
+                  </span>
+                  <span className="rounded-full border border-border/50 bg-background/10 px-3 py-1 text-[11px] text-muted-foreground">
+                    Enabled
+                  </span>
+                </div>
               ))}
-            </motion.div>
-          </TabsContent>
-        </Tabs>
+            </div>
+          </HudPanel>
+        </motion.div>
       </div>
-    </section>
+    </SectionWrapper>
   );
-} 
+}
+

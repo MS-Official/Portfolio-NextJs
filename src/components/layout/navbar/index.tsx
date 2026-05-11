@@ -1,616 +1,303 @@
 "use client";
 
-import { Icons } from "@/components/icons";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { FileText, Menu, X } from "lucide-react";
+
 import { navItems } from "@/constants/navItems";
 import { personalInfo } from "@/data";
 import { cn } from "@/lib/utils";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-} from "framer-motion";
-import { ChevronRight, FileText, Menu, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { HudPanel } from "@/components/game/hud-panel";
+import { Icons } from "@/components/icons";
 
-// Function to get Icon component from icon name
 const getIcon = (iconName: string, className: string = "h-4 w-4") => {
   const IconComponent = Icons[iconName as keyof typeof Icons];
   return IconComponent ? <IconComponent className={className} /> : null;
 };
 
-// Navigation menu component for large screens
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className,
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";
-
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const [scrolled, setScrolled] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [isClient, setIsClient] = useState(false);
-  const prevScrollY = useRef(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [activeRoute, setActiveRoute] = useState("/");
-  const [isNavigating, setIsNavigating] = useState(false);
-
-  const { scrollY } = useScroll();
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
+  const { scrollY } = useScroll();
 
-  // Track if we're on the client side
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Track window size for responsive adjustments
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      // Close mobile menu if screen becomes large
-      if (window.innerWidth >= 768) {
-        setMobileMenuOpen(false);
-      }
-    };
+  const isHome = pathname === "/";
+  const hashSections = useMemo(
+    () =>
+      navItems
+        .filter((x) => x.href.includes("#"))
+        .map((x) => x.href.split("#")[1]),
+    [],
+  );
 
-    // Set initial width
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Track scroll position for navbar styling and detect scroll direction
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const threshold = isClient && windowWidth < 640 ? 30 : 50;
-    setScrolled(latest > threshold);
-
-    // Detect scroll direction
-    if (isClient) {
-      prevScrollY.current = latest;
-    }
+    setScrolled(latest > 24);
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollableHeight = Math.max(1, scrollHeight - clientHeight);
+    setScrollProgress(scrollTop / scrollableHeight);
   });
 
-  // Track active section based on scroll position
   useEffect(() => {
-    if (!isClient) return; // Skip if not client-side
+    if (!isHome) return;
 
-    const sections = navItems.map((item) => item.href.replace("/#", ""));
+    const onScroll = () => {
+      let current = "home";
+      let maxScore = 0;
 
-    const handleScroll = () => {
-      // Find the section that's most visible in the viewport
-      let currentSection = "";
-      let maxVisibility = 0;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const elementTop = rect.top + window.scrollY;
-          const elementBottom = elementTop + rect.height;
-
-          // Calculate how much of the section is visible
-          const visibleTop = Math.max(elementTop, window.scrollY);
-          const visibleBottom = Math.min(
-            elementBottom,
-            window.scrollY + window.innerHeight,
-          );
-          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-
-          // Weight by position (sections at the top of the viewport get priority)
-          const viewportCenter = window.scrollY + window.innerHeight / 2;
-          const distanceFromCenter = Math.abs(
-            elementTop + rect.height / 2 - viewportCenter,
-          );
-          const normalizedDistance =
-            1 - Math.min(distanceFromCenter / (window.innerHeight / 2), 1);
-
-          // Combine visibility and position for final score
-          const visibilityScore = visibleHeight * normalizedDistance;
-
-          if (visibilityScore > maxVisibility) {
-            maxVisibility = visibilityScore;
-            currentSection = section;
-          }
+      for (const id of hashSections) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        const visible = Math.max(
+          0,
+          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0),
+        );
+        const score = visible - Math.abs(rect.top) * 0.25;
+        if (score > maxScore) {
+          maxScore = score;
+          current = id;
         }
       }
 
-      if (currentSection && currentSection !== activeSection) {
-        setActiveSection(currentSection);
-      }
+      setActiveSection(current);
     };
 
-    // Use passive: true for better scrolling performance
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    // Trigger once to set initial active section
-    handleScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [hashSections, isHome]);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [windowWidth, isClient, activeSection]);
-
-  // Calculate how many menu items to show based on screen width
-  const getVisibleNavItems = () => {
-    if (!isClient) return navItems.slice(0, 3); // Default for SSR
-    if (windowWidth < 1024) return navItems.slice(0, 3);
-    if (windowWidth < 1280) return navItems.slice(0, 5);
-    return navItems;
+  const isActive = (href: string) => {
+    if (href.includes("#")) {
+      return isHome && activeSection === href.split("#")[1];
+    }
+    return pathname === href || pathname.startsWith(href);
   };
 
-  // Items to show in the "More" dropdown on larger screens
-  const moreItems = () => {
-    if (!isClient) return navItems.slice(3); // Default for SSR
-    if (windowWidth < 1024) return navItems.slice(3);
-    if (windowWidth < 1280) return navItems.slice(5);
-    return [];
-  };
-
-  const hasMoreItems = moreItems().length > 0;
-
-  // Safe access to windowWidth
-  const isMobile = isClient && windowWidth < 640;
-  const isSmallScreen = isClient && windowWidth < 1024;
-  const isTinyScreen = isClient && windowWidth < 400;
-  const isVeryTinyScreen = isClient && windowWidth < 350;
-
-  // Update active route when pathname changes
-  useEffect(() => {
-    // Reset scroll progress on page change
-    setScrollProgress(0);
-    setIsNavigating(false);
-
-    // Find the matching route based on pathname
-    const matchedRoute = navItems.find((item) => {
-      // Exact match for home
-      if (item.href === "/" && pathname === "/") {
-        return true;
-      }
-      // Prefix match for other routes (handles nested routes better)
-      if (item.href !== "/" && pathname.startsWith(item.href)) {
-        return true;
-      }
-      return false;
-    });
-
-    setActiveRoute(matchedRoute?.href || pathname);
-  }, [pathname]);
-
-  // Calculate scroll progress
-  useEffect(() => {
-    if (isNavigating) {
-      return;
-    }
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
-      const scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop;
-
-      // Calculate scroll progress (0 to 1)
-      const scrollableHeight = scrollHeight - clientHeight;
-      const progress = scrollableHeight > 0 ? scrollTop / scrollableHeight : 0;
-
-      setScrollProgress(progress);
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY, isNavigating]);
-
-  // Set navigation state when links are clicked
-  const handleLinkClick = (href?: string) => {
-    setIsNavigating(true);
-    setScrollProgress(0);
-
-    if (href) {
-      router.push(href);
-    }
+  const onNav = (href: string) => {
+    setMobileOpen(false);
+    router.push(href);
   };
 
   return (
     <>
       <motion.header
         className={cn(
-          "fixed left-0 right-0 z-50 transition-all duration-300",
-          scrolled
-            ? "bg-background/90 backdrop-blur-lg shadow-md"
-            : "bg-background/30 backdrop-blur-sm",
+          "fixed left-0 right-0 top-0 z-50",
+          "px-3 pt-3 sm:px-6 sm:pt-4",
         )}
-        // Auto-hide navbar when scrolling down, show when scrolling up
+        initial={false}
         animate={{
-          paddingTop: scrolled ? "0.25rem" : "0.5rem",
-          paddingBottom: scrolled ? "0.25rem" : "0.5rem",
+          y: 0,
+          opacity: 1,
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
       >
-        {/* Progress bar */}
-        <div
-          className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-          style={{
-            width: `${scrollProgress * 100}%`,
-            transition: isNavigating ? "none" : "width ease",
-          }}
-        />
+        <HudPanel
+          glow={false}
+          className={cn(
+            "mx-auto max-w-6xl",
+            "border-border/50",
+            scrolled ? "bg-background/30" : "bg-background/18",
+          )}
+        >
+          <div className="relative">
+            <div
+              className="absolute left-0 top-0 h-[2px] bg-gradient-to-r from-cyan-300/70 via-indigo-300/70 to-violet-300/70"
+              style={{ width: `${Math.min(1, Math.max(0, scrollProgress)) * 100}%` }}
+            />
 
-        <div className="container mx-auto px-3 sm:px-6 lg:px-8">
-          <nav className="flex items-center justify-between h-14 sm:h-16">
-            {/* Logo - responsive sizing */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
-              className="flex-shrink-0"
-            >
+            <div className="flex h-14 items-center justify-between gap-3 px-3 sm:h-16 sm:px-4">
               <Link
                 href="/"
-                className="flex items-center gap-1 sm:gap-2"
-                onClick={() => setMobileMenuOpen(false)}
+                className="flex min-w-0 items-center gap-2"
+                onClick={() => setMobileOpen(false)}
               >
                 <div className="relative">
-                  <Avatar className="h-7 w-7 sm:h-9 sm:w-9 border-2 border-primary/30 shadow-lg">
+                  <Avatar className="h-9 w-9 border border-border/50 bg-background/10">
                     <AvatarImage
                       src={personalInfo.profilePicture}
                       alt={`${personalInfo.name}'s profile picture`}
                     />
-                    <AvatarFallback className="bg-primary/10 text-xs sm:text-sm">
+                    <AvatarFallback className="bg-primary/10 text-xs">
                       {personalInfo.name.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
-                  <motion.div
-                    className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                  />
+                  <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full border-2 border-background bg-emerald-400" />
                 </div>
-                <motion.div className="flex flex-col">
-                  <motion.span
-                    className="font-bold text-base sm:text-xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-500"
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
+                <div className="min-w-0">
+                  <div className="truncate text-sm font-semibold tracking-tight text-foreground/90 sm:text-base">
                     {personalInfo.name}
-                  </motion.span>
-                  <span className="text-[10px] text-muted-foreground -mt-1 hidden sm:block">
+                  </div>
+                  <div className="hidden truncate text-[11px] text-muted-foreground sm:block">
                     {personalInfo.title}
-                  </span>
-                </motion.div>
+                  </div>
+                </div>
               </Link>
-            </motion.div>
 
-            {/* Desktop Navigation Menu - Modern glassy design */}
-            <div className="hidden md:block">
-              <motion.div
-                className="bg-background/50 backdrop-blur-md rounded-full px-1 py-1 border border-border/50 shadow-sm"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <NavigationMenu>
-                  <NavigationMenuList className="gap-0.5 lg:gap-1">
-                    {getVisibleNavItems().map((item) => (
-                      <NavigationMenuItem key={item.name}>
-                        <NavigationMenuLink
-                          className={cn(
-                            "transition-all text-xs lg:text-sm rounded-full px-3 lg:px-4 py-1.5 flex items-center gap-1.5 hover:bg-accent/50 hover:text-foreground cursor-pointer",
-                            activeRoute === item.href.replace("/#", "")
-                              ? "bg-primary/15 text-primary font-medium shadow-sm"
-                              : "text-muted-foreground",
-                          )}
-                          onClick={() => handleLinkClick(item.href)}
-                        >
-                          <motion.div
-                            className="flex items-center gap-1.5 md:gap-2"
-                            transition={{
-                              type: "spring",
-                              stiffness: 400,
-                              damping: 17,
-                            }}
-                          >
-                            <div
-                              className={cn(
-                                "flex items-center justify-center",
-                                activeRoute === item.href.replace("/#", "")
-                                  ? "text-primary"
-                                  : "text-muted-foreground",
-                              )}
-                            >
-                              {getIcon(item.icon)}
-                            </div>
-                            <span
-                              className={
-                                isSmallScreen ? "hidden lg:inline" : ""
-                              }
-                            >
-                              {item.name}
-                            </span>
-                          </motion.div>
-                        </NavigationMenuLink>
-                      </NavigationMenuItem>
-                    ))}
-
-                    {/* More dropdown for extra items */}
-                    {hasMoreItems && (
-                      <NavigationMenuItem>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="rounded-full text-xs lg:text-sm px-3 hover:bg-accent/50"
-                            >
-                              <span className="hidden lg:inline">More</span>
-                              <span className="lg:hidden">•••</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent
-                            align="end"
-                            className="w-40 rounded-xl backdrop-blur-md bg-background/80 border-border/40"
-                          >
-                            {moreItems().map((item) => (
-                              <DropdownMenuItem key={item.name} asChild>
-                                <Link
-                                  href={item.href}
-                                  className={cn(
-                                    "flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm",
-                                    activeRoute === item.href.replace("/#", "")
-                                      ? "bg-primary/10 text-primary font-medium"
-                                      : "text-foreground hover:bg-accent/50",
-                                  )}
-                                >
-                                  <div className="w-6 h-6 rounded-full bg-background flex items-center justify-center">
-                                    {getIcon(item.icon)}
-                                  </div>
-                                  <span>{item.name}</span>
-                                </Link>
-                              </DropdownMenuItem>
-                            ))}
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </NavigationMenuItem>
+              <nav className="hidden items-center gap-1 lg:flex">
+                {navItems.map((item) => (
+                  <button
+                    key={item.name}
+                    type="button"
+                    onClick={() => onNav(item.href)}
+                    className={cn(
+                      "inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs transition-colors",
+                      "border border-transparent",
+                      isActive(item.href)
+                        ? "bg-background/25 text-foreground border-border/60"
+                        : "text-muted-foreground hover:bg-background/15 hover:text-foreground",
                     )}
-                  </NavigationMenuList>
-                </NavigationMenu>
-              </motion.div>
-            </div>
-
-            {/* Actions - Right side of navbar */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center gap-2 sm:gap-3"
-            >
-              <div className="hidden md:block">
-                <ThemeToggle />
-              </div>
-              <div className="hidden md:flex">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="rounded-full text-xs sm:text-sm group border-primary/20 hover:border-primary/50"
-                  asChild
-                >
-                  <Link href="/resume">
-                    <FileText className="mr-1.5 h-3.5 w-3.5 group-hover:scale-110 transition-transform" />
-                    <span className={isSmallScreen ? "hidden lg:inline" : ""}>
-                      Resume
+                  >
+                    <span
+                      className={cn(
+                        "inline-flex h-6 w-6 items-center justify-center rounded-full border border-border/40 bg-background/10",
+                        isActive(item.href) ? "text-primary" : "text-muted-foreground",
+                      )}
+                    >
+                      {getIcon(item.icon, "h-4 w-4")}
                     </span>
-                  </Link>
+                    <span className="font-medium">{item.name}</span>
+                  </button>
+                ))}
+              </nav>
+
+              <div className="flex items-center gap-2">
+                <div className="hidden sm:block">
+                  <ThemeToggle />
+                </div>
+                <div className="hidden sm:block">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-9 rounded-full border-border/50 bg-background/10 backdrop-blur hover:bg-background/20"
+                    asChild
+                  >
+                    <Link href="/resume">
+                      <FileText className="mr-2 h-4 w-4" />
+                      Resume
+                    </Link>
+                  </Button>
+                </div>
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-9 w-9 rounded-full lg:hidden hover:bg-background/15"
+                  onClick={() => setMobileOpen(true)}
+                  aria-label="Open menu"
+                >
+                  <Menu className="h-5 w-5" />
                 </Button>
               </div>
-
-              {/* Mobile menu button */}
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden text-foreground rounded-full h-8 w-8"
-                onClick={() => setMobileMenuOpen(true)}
-                aria-label="Open mobile menu"
-              >
-                <Menu size={isMobile ? 16 : 20} />
-              </Button>
-            </motion.div>
-          </nav>
-        </div>
+            </div>
+          </div>
+        </HudPanel>
       </motion.header>
 
-      {/* Mobile Navigation Drawer - Modern design */}
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {mobileOpen ? (
           <motion.div
+            className="fixed inset-0 z-50 lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 md:hidden"
           >
-            {/* Backdrop */}
             <motion.div
-              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/55 backdrop-blur-sm"
+              onClick={() => setMobileOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Side drawer */}
             <motion.div
-              className="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-background/95 backdrop-blur-md shadow-xl"
+              className="absolute right-0 top-0 h-full w-[88%] max-w-sm p-3"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
             >
-              <div className="flex flex-col h-full">
-                <div className="flex justify-between items-center p-4 border-b border-border/30">
-                  <Link
-                    href="/"
-                    className="flex items-center gap-2"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <Avatar className="h-8 w-8 border-2 border-primary/20">
-                      <AvatarImage
-                        src={personalInfo.profilePicture}
-                        alt={personalInfo.name}
-                      />
-                      <AvatarFallback className="bg-primary/10 text-xs">
-                        {personalInfo.name.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-500">
-                        {personalInfo.name}
-                      </span>
-                      <span className="text-[10px] text-muted-foreground -mt-1">
-                        {personalInfo.title}
-                      </span>
+              <HudPanel className="h-full p-0">
+                <div className="flex h-full flex-col">
+                  <div className="flex items-center justify-between border-b border-border/40 px-4 py-4">
+                    <div className="text-xs font-semibold tracking-[0.18em] text-muted-foreground">
+                      NAVIGATION HUD
                     </div>
-                  </Link>
-
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full h-8 w-8"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <X size={isMobile ? 18 : 22} />
-                  </Button>
-                </div>
-
-                <motion.div
-                  className="flex-1 overflow-auto py-6 px-4"
-                  variants={{
-                    hidden: { opacity: 0 },
-                    show: {
-                      opacity: 1,
-                      transition: {
-                        staggerChildren: 0.07,
-                      },
-                    },
-                  }}
-                  initial="hidden"
-                  animate="show"
-                >
-                  <div
-                    className={cn(
-                      "space-y-2",
-                      isTinyScreen ? "grid grid-cols-2 gap-2 space-y-0" : "",
-                    )}
-                  >
-                    {navItems.map((item) => (
-                      <motion.div
-                        key={item.name}
-                        variants={{
-                          hidden: { opacity: 0, x: -20 },
-                          show: { opacity: 1, x: 0 },
-                        }}
-                      >
-                        <Link
-                          href={item.href}
-                          className={cn(
-                            "flex items-center rounded-xl transition-all",
-                            isTinyScreen
-                              ? "p-2 text-sm flex-col text-center gap-1"
-                              : "p-3 text-base gap-2",
-                            activeRoute === item.href.replace("/#", "")
-                              ? "bg-primary/10 text-primary font-medium shadow-sm"
-                              : "text-foreground hover:bg-muted/50",
-                          )}
-                          onClick={() => {
-                            setMobileMenuOpen(false);
-                            handleLinkClick();
-                          }}
-                        >
-                          <div
-                            className={cn(
-                              "rounded-full bg-background/80 border border-border/30 flex items-center justify-center shadow-sm",
-                              isTinyScreen ? "w-8 h-8" : "w-9 h-9 mr-3",
-                              activeRoute === item.href.replace("/#", "")
-                                ? "bg-primary/5 border-primary/20 text-primary"
-                                : "text-muted-foreground",
-                            )}
-                          >
-                            {getIcon(item.icon)}
-                          </div>
-                          <span>{item.name}</span>
-                          {!isTinyScreen && (
-                            <ChevronRight className="ml-auto h-4 w-4 text-muted-foreground" />
-                          )}
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-
-                <div className="p-4 border-t border-border/30 flex items-center justify-between">
-                  <ThemeToggle />
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="rounded-full text-xs group border-primary/20 hover:border-primary/50"
-                    asChild
-                  >
-                    <Link
-                      href="/resume"
-                      onClick={() => setMobileMenuOpen(false)}
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-9 w-9 rounded-full hover:bg-background/15"
+                      onClick={() => setMobileOpen(false)}
+                      aria-label="Close menu"
                     >
-                      <FileText className="mr-1.5 h-3.5 w-3.5 group-hover:scale-110 transition-transform" />
-                      <span className={isVeryTinyScreen ? "sr-only" : ""}>
+                      <X className="h-5 w-5" />
+                    </Button>
+                  </div>
+
+                  <div className="flex-1 overflow-auto px-4 py-5">
+                    <div className="grid gap-2">
+                      {navItems.map((item) => (
+                        <button
+                          key={item.name}
+                          type="button"
+                          onClick={() => onNav(item.href)}
+                          className={cn(
+                            "flex items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-colors",
+                            isActive(item.href)
+                              ? "border-border/70 bg-background/20"
+                              : "border-border/40 bg-background/10 hover:bg-background/18",
+                          )}
+                        >
+                          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/50 bg-background/10">
+                            {getIcon(item.icon, "h-5 w-5")}
+                          </span>
+                          <div className="min-w-0">
+                            <div className="text-sm font-semibold text-foreground/90">
+                              {item.name}
+                            </div>
+                            <div className="truncate text-[11px] text-muted-foreground">
+                              {item.href}
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3 border-t border-border/40 px-4 py-4">
+                    <ThemeToggle />
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="h-9 rounded-full border-border/50 bg-background/10 backdrop-blur hover:bg-background/20"
+                      asChild
+                    >
+                      <Link href="/resume" onClick={() => setMobileOpen(false)}>
+                        <FileText className="mr-2 h-4 w-4" />
                         Resume
-                      </span>
-                    </Link>
-                  </Button>
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
-              </div>
+              </HudPanel>
             </motion.div>
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
     </>
   );
 }
+

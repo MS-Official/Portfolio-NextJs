@@ -183,7 +183,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
               placeholder="Search projects..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 border border-border/40 bg-muted/5"
+              className="pl-9 h-11 rounded-2xl border border-border/50 bg-background/10 text-foreground placeholder:text-muted-foreground/70 backdrop-blur"
             />
             {searchQuery && (
               <button 
@@ -200,7 +200,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
           <motion.div variants={controlItem}>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="flex items-center gap-1.5 border-border/40">
+                <Button variant="outline" className="h-11 rounded-full border-border/50 bg-background/10 backdrop-blur hover:bg-background/20 flex items-center gap-1.5">
                   <ArrowUpDown className="h-4 w-4" /> Sort
                 </Button>
               </DropdownMenuTrigger>
@@ -244,7 +244,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
           <motion.div variants={controlItem}>
             <Button
               variant="outline"
-              className={`border-border/40 ${showFilters ? "bg-muted" : ""}`}
+              className={`h-11 rounded-full border-border/50 bg-background/10 backdrop-blur hover:bg-background/20 ${showFilters ? "bg-background/20" : ""}`}
               onClick={() => setShowFilters(!showFilters)}
               aria-expanded={showFilters}
               aria-controls="filter-panel"
@@ -259,7 +259,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
               <Button
                 variant="ghost"
                 onClick={clearFilters}
-                className="text-muted-foreground hover:text-foreground"
+                className="h-11 rounded-full text-muted-foreground hover:text-foreground hover:bg-background/10"
               >
                 Clear filters
               </Button>
@@ -276,7 +276,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: P
               initial="hidden"
               animate="visible"
               exit="hidden"
-              className="border border-border/30 rounded-lg p-4 bg-muted/5"
+              className="border border-border/50 rounded-2xl p-4 bg-background/10 backdrop-blur"
             >
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Tech stacks */}

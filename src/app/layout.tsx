@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { domainPath, experiences, personalInfo } from "@/data";
 import { Toaster } from "sonner";
+import { GameHudBackground } from "@/components/game/game-hud-background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -104,6 +105,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen bg-background text-foreground">
+            <GameHudBackground />
             <Navbar />
             {children}
             <Footer />

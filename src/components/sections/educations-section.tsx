@@ -1,212 +1,129 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { School, Calendar, Award, ExternalLink, BookOpen, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { educations } from "@/data";
-import { formatStartEndDate, cn } from "@/lib/utils";
 import Image from "next/image";
-// Animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
+import { motion } from "framer-motion";
+import { GraduationCap, MapPin, TimerReset } from "lucide-react";
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const timelineVariants = {
-  hidden: { opacity: 0, height: 0 },
-  visible: {
-    opacity: 1,
-    height: '100%',
-    transition: { duration: 1.5, ease: "easeInOut" as const }
-  }
-};
+import { educations } from "@/data";
+import { formatStartEndDate } from "@/lib/utils";
+import { SectionWrapper } from "@/components/ux/section-wrapper";
+import { HudPanel } from "@/components/game/hud-panel";
+import { Button } from "@/components/ui/button";
 
 export function EducationsSection() {
   return (
-    <section id="education" className="py-24 bg-muted/5">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
-          className="text-center mb-16"
-        >
-          <div className="inline-block p-1.5 px-3 mb-4 rounded-full bg-primary/10 border border-primary/20">
-            <BookOpen className="h-4 w-4 text-primary inline mr-1" />
-            <span className="text-xs font-medium">Academic Journey</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Education & Certifications</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            My academic journey and continuous learning path that has shaped my professional skills.
-          </p>
-        </motion.div>
-        
-        <div className="relative max-w-4xl mx-auto">
-          {/* Timeline line */}
-          <motion.div 
-            className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1"
-            variants={timelineVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <div className="h-full w-full bg-gradient-to-b from-primary via-primary/50 to-primary/10 rounded-full"></div>
-          </motion.div>
-          
+    <SectionWrapper
+      id="education"
+      eyebrow={
+        <>
+          <GraduationCap className="h-3.5 w-3.5 text-primary" />
+          <span className="font-medium text-foreground/80">Training Path</span>
+        </>
+      }
+      title="Academy Levels"
+      description="A clean progression view of your education and training milestones."
+    >
+      <div className="mx-auto max-w-6xl space-y-6">
+        {educations.map((edu, idx) => (
           <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="relative z-10"
+            key={`${edu.institution}-${idx}`}
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-120px" }}
+            transition={{ duration: 0.55, delay: idx * 0.03, ease: [0.22, 1, 0.36, 1] }}
           >
-            {educations.map((edu, index) => (
-              <motion.div 
-                key={index} 
-                variants={fadeIn}
-                className={`mb-12 md:mb-24 flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-              >
-                {/* Timeline node */}
-                <div className="hidden md:flex absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full border-2 border-primary/80 bg-background items-center justify-center shadow-[0_0_10px_rgba(var(--primary),0.3)]">
-                  <div className="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+            <HudPanel className="p-6 sm:p-7">
+              <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-start">
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full border border-border/50 bg-background/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-muted-foreground">
+                      LEVEL {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-border/50 bg-background/10 px-3 py-1 text-[11px] text-muted-foreground">
+                      <TimerReset className="h-3.5 w-3.5 text-primary/75" />
+                      {formatStartEndDate(edu.startDate, edu.endDate)}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-3 text-pretty text-lg font-semibold tracking-tight sm:text-xl">
+                    {edu.degree}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {edu.institution}
+                  </p>
+
+                  <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPin className="h-3.5 w-3.5 text-primary/70" />
+                      {edu.location}
+                    </span>
+                    {edu.cgpa ? <span>CGPA: {edu.cgpa}</span> : null}
+                  </div>
+
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {edu.description}
+                  </p>
+
+                  {edu.techStacks?.length ? (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {edu.techStacks.slice(0, 14).map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-full border border-border/50 bg-background/10 px-3 py-1 text-[11px] text-foreground/90 backdrop-blur"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
-                
-                {/* Date tag */}
-                <div className={cn(
-                  "hidden md:flex absolute md:left-1/2 transform items-center",
-                  index % 2 === 0 ? "md:translate-x-12" : "md:-translate-x-[calc(100%+48px)] flex-row-reverse"
-                )}>
-                  <div className={cn(
-                    "flex items-center bg-primary/10 border border-primary/20 rounded-full py-1 px-3 text-xs font-mono",
-                    index % 2 === 0 ? "pl-3 pr-4" : "pl-4 pr-3"
-                  )}>
-                    <Calendar className="h-3 w-3 text-primary shrink-0" />
-                    <span className="ml-1.5">{formatStartEndDate(edu.startDate, edu.endDate)}</span>
+
+                <div className="flex flex-col gap-3 lg:items-end">
+                  {edu.logo ? (
+                    <div className="rounded-2xl border border-border/50 bg-background/10 p-3">
+                      <Image
+                        src={edu.logo}
+                        alt={edu.institution}
+                        width={160}
+                        height={64}
+                        className="h-10 w-auto opacity-80"
+                      />
+                    </div>
+                  ) : null}
+
+                  <div className="flex flex-wrap gap-2">
+                    {edu.documents?.[0]?.url && edu.documents[0].url !== "#" ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-9 rounded-full border-border/50 bg-background/10 backdrop-blur hover:bg-background/20"
+                        asChild
+                      >
+                        <a href={edu.documents[0].url} target="_blank" rel="noopener noreferrer">
+                          Certificate
+                        </a>
+                      </Button>
+                    ) : null}
+                    {edu.documents?.[0]?.Turl && edu.documents[0].Turl !== "#" ? (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        className="h-9 rounded-full bg-muted/20 backdrop-blur hover:bg-muted/30"
+                        asChild
+                      >
+                        <a href={edu.documents[0].Turl} target="_blank" rel="noopener noreferrer">
+                          Transcript
+                        </a>
+                      </Button>
+                    ) : null}
                   </div>
                 </div>
-                
-                {/* Timeline content */}
-                <div className={`relative ml-6 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <motion.div 
-                    className="relative p-6 bg-background/80 backdrop-blur-sm border border-border/40 rounded-lg hover:shadow-lg transition-all duration-300"
-                    whileHover={{ 
-                      scale: 1.02, 
-                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
-                    }}
-                  >
-                    {/* Mobile timeline marker */}
-                    <div className="absolute -left-8 md:hidden top-8 flex flex-col items-center">
-                      <div className="w-4 h-4 rounded-full border border-primary bg-background flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                      </div>
-                      <div className="h-full w-0.5 bg-gradient-to-b from-primary to-primary/10"></div>
-                    </div>
-                    
-                    {/* Content header */}
-                    <div className="mb-4">
-                      <div className="flex items-start justify-between">
-                        <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-500">
-                          {edu.degree}
-                        </h3>
-                      </div>
-                      
-                      <div className="flex flex-wrap items-center mt-2 text-muted-foreground">
-                        <div className="flex items-center mr-4">
-                          <School className="h-3.5 w-3.5 mr-1 text-primary" />
-                          <span className="text-sm">{edu.institution}</span>
-                        </div>
-                        <div className="flex items-center mt-1 sm:mt-0">
-                          <MapPin className="h-3.5 w-3.5 mr-1 text-primary/70" />
-                          <span className="text-sm">{edu.location}</span>
-                        </div>
-                        <div className="md:hidden flex items-center mt-1 sm:mt-0">
-                          <Calendar className="h-3.5 w-3.5 mr-1 text-primary/70" />
-                          <span className="text-sm">{formatStartEndDate(edu.startDate, edu.endDate)}</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="relative">
-                      {/* Decorative line */}
-                      <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-primary/30 to-transparent"></div>
-                      <p className="text-muted-foreground text-sm my-4 pl-3">{edu.description}</p>
-                    </div>
-                    
-                    {edu.achievements.length > 0 && (
-                      <div className="mt-5 pt-4 border-t border-border/40">
-                        <h4 className="text-sm font-semibold mb-2 flex items-center">
-                          <Award className="h-4 w-4 mr-1.5 text-primary" /> Achievements & Honors
-                        </h4>
-                        <ul className="grid sm:grid-cols-2 gap-y-1 gap-x-4">
-                          {edu.achievements.map((achievement, i) => (
-                            <li key={i} className="text-xs pl-5 relative before:absolute before:left-1.5 before:top-1.5 before:w-1.5 before:h-1.5 before:bg-primary/40 before:rounded-full">
-                              {achievement}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    
-                    <div className="mt-4 pt-4 border-t border-border/40 flex justify-between items-center">
-                      <div className="text-xs text-muted-foreground">
-                        {edu.logo && (
-                          <Image src={edu.logo} alt={edu.institution} className="h-6 opacity-70" width={42} height={24} />
-                        )}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {edu.documents?.[0]?.url && edu.documents[0].url !== "#" && (
-                          <Button variant="ghost" size="sm" className="text-xs h-8 px-2" asChild>
-                            <a href={edu.documents[0].url} target="_blank" rel="noopener noreferrer" className="flex items-center group">
-                              <span>View certificate</span>
-                              <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                            </a>
-                          </Button>
-                        )}
-                        {edu.documents?.[0]?.Turl && edu.documents[0].Turl !== "#" && (
-                          <Button variant="ghost" size="sm" className="text-xs h-8 px-2" asChild>
-                            <a href={edu.documents[0].Turl} target="_blank" rel="noopener noreferrer" className="flex items-center group">
-                              <span>View transcript</span>
-                              <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                            </a>
-                          </Button>
-                        )}
-                      </div>
-                      
-                    </div>
-                    
-                    {/* Visual highlight effect */}
-                    <div className={`absolute ${index % 2 === 0 ? '-right-1 md:-right-3' : '-right-1 md:-left-3'} top-8 transform translate-x-1/2 md:translate-x-0 w-2 h-16 bg-gradient-to-b from-primary/80 to-transparent rounded-full blur-sm opacity-60`}></div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
+              </div>
+            </HudPanel>
           </motion.div>
-        </div>
-        
-        {/* <motion.div 
-          className="text-center mt-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
-        >
-          <Button variant="outline" className="rounded-full text-sm group">
-            <span>View All Certifications</span>
-            <ExternalLink className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Button>
-        </motion.div> */}
+        ))}
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
+

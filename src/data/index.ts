@@ -5,11 +5,11 @@ export const domainPath = "https://portfolio-ms-lac.vercel.app/p/";
 
 export const experiences: Experience[] = [
   {
-    title: "Software Developer | BA Analyst",
+    title: "Associate Software Engineer | Business Analyst",
     company: "GeoEDGE (PVT) LTD",
     companyUrl: "https://geoedge.lk/",
     location: "Hybrid (Sri Lanka)",
-    type: "Internship",
+    type: "Full-Time",
     startDate: "2025-10-06",
     endDate: undefined,
     description: "Contributed to multiple client and internal software projects under Heaven’sCode, focusing on performance, scalability, and modern web design.",
@@ -28,7 +28,7 @@ export const experiences: Experience[] = [
     projects: []
   },
   {
-  title: "Intern | Software Developer | Frontend & Backend Engineer",
+  title: "Intern | Software Engineer | Frontend & Backend Engineer",
   company: "Heaven'sCode (PVT) LTD",
   companyUrl: "https://theheavenscode.com/",
   location: "Remote",

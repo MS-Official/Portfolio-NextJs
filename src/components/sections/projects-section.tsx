@@ -1,70 +1,55 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { projects } from "@/data";
-import { ProjectCard } from "@/components/project-card";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { Archive, ArrowRight } from "lucide-react";
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
+import { projects } from "@/data";
+import { Button } from "@/components/ui/button";
+import { ProjectCard } from "@/components/project-card";
+import { SectionWrapper } from "@/components/ux/section-wrapper";
 
-const staggerContainer = {
+const grid = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
-          className="text-center mb-16"
+    <SectionWrapper
+      id="projects"
+      eyebrow={
+        <>
+          <Archive className="h-3.5 w-3.5 text-primary" />
+          <span className="font-medium text-foreground/80">Mission Archive</span>
+        </>
+      }
+      title="Case Files"
+      description="Each project is stored as a mission file: preview, stack, timeline, and actions."
+    >
+      <motion.div
+        variants={grid}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-120px" }}
+        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+      >
+        {projects.slice(0, 3).map((project, index) => (
+          <ProjectCard key={`${project.title}-${index}`} project={project} index={index} />
+        ))}
+      </motion.div>
+
+      <div className="mt-10 flex justify-center">
+        <Button
+          variant="outline"
+          className="rounded-full border-border/50 bg-background/10 backdrop-blur hover:bg-background/20"
+          asChild
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Here are some projects I&apos;ve worked on that showcase my skills and approach to problem-solving.
-          </p>
-        </motion.div>
-        
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {projects.slice(0, 3).map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
-          ))}
-        </motion.div>
-        
-        <motion.div 
-          className="text-center mt-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
-        >
-          <Button variant="outline" className="rounded-full" asChild>
-            <Link href="/projects">
-              See All Projects <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </motion.div>
+          <Link href="/projects">
+            See All Projects <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
       </div>
-    </section>
+    </SectionWrapper>
   );
-} 
+}

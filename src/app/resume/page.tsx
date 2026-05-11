@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-background text-foreground">
+    <div className="pt-24 pb-16 min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl space-y-6">
           <HudPanel className="p-6 sm:p-7" glow={false}>

@@ -8,7 +8,8 @@ import {
   Sparkles,
   GraduationCap,
   Send,
-  Bookmark
+  Bookmark,
+  FileText,
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
@@ -23,6 +24,7 @@ export const Icons = {
   graduationCap: GraduationCap,
   send: Send,
   bookmark: Bookmark,
+  fileText: FileText,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden='true'

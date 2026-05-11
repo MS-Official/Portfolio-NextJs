@@ -17,11 +17,11 @@ export function EducationsSection() {
       eyebrow={
         <>
           <GraduationCap className="h-3.5 w-3.5 text-primary" />
-          <span className="font-medium text-foreground/80">Training Path</span>
+          <span className="font-medium text-foreground/80">Education</span>
         </>
       }
-      title="Academy Levels"
-      description="A clean progression view of your education and training milestones."
+      title="Education Timeline"
+      description="Education and training milestones with dates and key details."
     >
       <div className="mx-auto max-w-6xl space-y-6">
         {educations.map((edu, idx) => (
@@ -37,7 +37,7 @@ export function EducationsSection() {
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="rounded-full border border-border/50 bg-background/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-muted-foreground">
-                      LEVEL {String(idx + 1).padStart(2, "0")}
+                      ITEM {String(idx + 1).padStart(2, "0")}
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-border/50 bg-background/10 px-3 py-1 text-[11px] text-muted-foreground">
                       <TimerReset className="h-3.5 w-3.5 text-primary/75" />
@@ -126,4 +126,3 @@ export function EducationsSection() {
     </SectionWrapper>
   );
 }
-

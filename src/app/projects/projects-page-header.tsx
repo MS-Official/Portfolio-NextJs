@@ -34,7 +34,7 @@ export function ProjectsPageHeader() {
       <HudPanel className="p-6 sm:p-7" glow={false}>
         <motion.div variants={item} className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/10 px-3 py-1.5 text-xs text-muted-foreground">
           <Archive className="h-3.5 w-3.5 text-primary/90" />
-          <span>Mission Archive</span>
+          <span>Project Library</span>
         </motion.div>
 
         <motion.h1

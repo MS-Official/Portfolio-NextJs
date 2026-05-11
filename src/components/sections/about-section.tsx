@@ -17,11 +17,11 @@ export function AboutSection() {
       eyebrow={
         <>
           <UserCircle2 className="h-3.5 w-3.5 text-primary" />
-          <span className="font-medium text-foreground/80">Operator Brief</span>
+          <span className="font-medium text-foreground/80">Profile Overview</span>
         </>
       }
       title="Professional Summary"
-      description="A concise operator dossier built directly from your portfolio profile."
+      description="A concise overview built directly from the portfolio profile."
       className="bg-transparent"
     >
       <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.05fr_1.45fr]">
@@ -99,8 +99,8 @@ export function AboutSection() {
               <div className="mt-3 flex flex-wrap gap-2">
                 {[
                   { label: "Projects", href: "/#projects" },
-                  { label: "Missions", href: "/#experience" },
-                  { label: "Abilities", href: "/#skills" },
+                  { label: "Experience", href: "/#experience" },
+                  { label: "Skills", href: "/#skills" },
                   { label: "Contact", href: "/#contact" },
                 ].map((x) => (
                   <Link
@@ -119,4 +119,3 @@ export function AboutSection() {
     </SectionWrapper>
   );
 }
-

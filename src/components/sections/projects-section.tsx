@@ -6,7 +6,7 @@ import { Archive, ArrowRight } from "lucide-react";
 
 import { projects } from "@/data";
 import { Button } from "@/components/ui/button";
-import { ProjectCard } from "@/components/project-card";
+import { ProjectGameCard } from "@/components/game/project-game-card";
 import { SectionWrapper } from "@/components/ux/section-wrapper";
 
 const grid = {
@@ -21,11 +21,11 @@ export function ProjectsSection() {
       eyebrow={
         <>
           <Archive className="h-3.5 w-3.5 text-primary" />
-          <span className="font-medium text-foreground/80">Mission Archive</span>
+          <span className="font-medium text-foreground/80">Project Library</span>
         </>
       }
-      title="Case Files"
-      description="Each project is stored as a mission file: preview, stack, timeline, and actions."
+      title="Projects"
+      description="Selected work with previews, tech stack, timeline, and links."
     >
       <motion.div
         variants={grid}
@@ -35,7 +35,7 @@ export function ProjectsSection() {
         className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
       >
         {projects.slice(0, 3).map((project, index) => (
-          <ProjectCard key={`${project.title}-${index}`} project={project} index={index} />
+          <ProjectGameCard key={`${project.title}-${index}`} project={project} index={index} />
         ))}
       </motion.div>
 

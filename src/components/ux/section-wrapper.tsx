@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
@@ -28,13 +28,15 @@ export function SectionWrapper({
   children: ReactNode;
   className?: string;
 }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id={id} className={cn("relative py-20 sm:py-24", className)}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          variants={reveal}
-          initial="hidden"
-          whileInView="visible"
+          variants={reduceMotion ? undefined : reveal}
+          initial={reduceMotion ? false : "hidden"}
+          whileInView={reduceMotion ? undefined : "visible"}
           viewport={{ once: true, margin: "-120px" }}
           className="mx-auto mb-10 max-w-3xl text-center"
         >

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export function HudPanel({
   children,
@@ -15,6 +15,8 @@ export function HudPanel({
   glow?: boolean;
   tone?: "default" | "muted" | "danger" | "success";
 }) {
+  const reduceMotion = useReducedMotion();
+
   const toneClass =
     tone === "muted"
       ? "bg-background/20"
@@ -26,8 +28,8 @@ export function HudPanel({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
       className={cn(
@@ -57,4 +59,3 @@ export function HudPanel({
     </motion.div>
   );
 }
-

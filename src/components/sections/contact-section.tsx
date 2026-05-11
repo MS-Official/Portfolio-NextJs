@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Globe, Linkedin, Mail, MapPin, Phone, Swords } from "lucide-react";
+import { Github, Globe, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 
 import { personalInfo } from "@/data";
 import { SectionWrapper } from "@/components/ux/section-wrapper";
-import { HudPanel } from "@/components/game/hud-panel";
 import { Button } from "@/components/ui/button";
+import { ContactActionPanel } from "@/components/game/contact-action-panel";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -57,13 +57,11 @@ export function ContactSection() {
       id="contact"
       eyebrow={
         <>
-          <Swords className="h-3.5 w-3.5 text-primary" />
-          <span className="font-medium text-foreground/80">
-            Final Boss CTA
-          </span>
+          <Send className="h-3.5 w-3.5 text-primary" />
+          <span className="font-medium text-foreground/80">Contact</span>
         </>
       }
-      title="Ready to start a mission together?"
+      title="Let’s work together"
       description="Recruiter, client, or collaborator—send a message and we’ll take it from there."
     >
       <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
@@ -73,11 +71,8 @@ export function ContactSection() {
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <HudPanel className="p-6 sm:p-7">
-            <div className="text-xs font-semibold tracking-[0.18em] text-muted-foreground">
-              CONTACT CHANNELS
-            </div>
-            <div className="mt-6 space-y-4">
+          <ContactActionPanel title="CONTACT CHANNELS">
+            <div className="space-y-4">
               {[
                 { icon: Mail, label: "Email", value: personalInfo.contact.email, href: `mailto:${personalInfo.contact.email}` },
                 { icon: Phone, label: "Phone", value: personalInfo.contact.phone, href: `tel:${personalInfo.contact.phone}` },
@@ -115,7 +110,7 @@ export function ContactSection() {
                 </div>
               ))}
             </div>
-          </HudPanel>
+          </ContactActionPanel>
         </motion.div>
 
         <motion.div
@@ -124,11 +119,8 @@ export function ContactSection() {
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
         >
-          <HudPanel className="p-6 sm:p-7">
-            <div className="text-xs font-semibold tracking-[0.18em] text-muted-foreground">
-              MISSION REQUEST FORM
-            </div>
-            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+          <ContactActionPanel title="MESSAGE FORM">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">
                   Name
@@ -176,12 +168,12 @@ export function ContactSection() {
                 className="h-11 w-full rounded-2xl"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Send Mission Request"}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
 
               {submitStatus === "success" ? (
                 <p className="text-center text-sm text-emerald-400">
-                  Mission request sent successfully!
+                  Message sent successfully!
                 </p>
               ) : null}
               {submitStatus === "error" ? (
@@ -190,10 +182,9 @@ export function ContactSection() {
                 </p>
               ) : null}
             </form>
-          </HudPanel>
+          </ContactActionPanel>
         </motion.div>
       </div>
     </SectionWrapper>
   );
 }
-

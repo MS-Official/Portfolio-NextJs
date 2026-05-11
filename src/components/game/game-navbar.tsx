@@ -9,7 +9,7 @@ import { FileText, Menu } from "lucide-react";
 import { navItems } from "@/constants/navItems";
 import { personalInfo } from "@/data";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/theme-toggle";
+// import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MobilePauseMenu } from "@/components/game/mobile-pause-menu";
@@ -167,9 +167,9 @@ export function GameNavbar() {
               </nav>
 
               <div className="flex items-center gap-2">
-                <div className="hidden sm:block">
+                {/* <div className="hidden sm:block">
                   <ThemeToggle />
-                </div>
+                </div> */}
                 <div className="hidden sm:block">
                   <Button
                     size="sm"
